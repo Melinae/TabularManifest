@@ -1,0 +1,54 @@
+\name{histogram_continuous}
+\alias{histogram_continuous}
+\title{Generate a Histogram for a \code{numeric} or \code{integer} variable.}
+\usage{
+histogram_continuous(ds_observed, variable_name, bin_width = NULL,
+  main_title = variable_name, x_title = paste0(variable_name,
+  " (each bin is ", scales::comma(bin_width), " units wide)"),
+  y_title = "Frequency", rounded_digits = 0L)
+}
+\arguments{
+  \item{ds_observed}{The \code{data.frame} with the
+  variable to graph.}
+
+  \item{variable_name}{The name of the variable to graph.
+  \code{character}.}
+
+  \item{bin_width}{The width of the histogram bins. If
+  NULL, the \code{ggplot2} default is used.
+  \code{numeric}.}
+
+  \item{main_title}{The desired title on top of the graph.
+  Defaults to \code{variable_name}. If no title is desired,
+  pass a value of \code{NULL}. \code{character}.}
+
+  \item{x_title}{The desired title on the \emph{x}-axis.
+  Defaults to the \code{variable_name} and the
+  \code{bin_width}. If no axis title is desired, pass a
+  value of \code{NULL}. \code{character}.}
+
+  \item{y_title}{The desired title on the \emph{y}-axis.
+  Defaults to ``Frequency''. If no axis title is desired,
+  pass a value of \code{NULL}. \code{character}.}
+
+  \item{rounded_digits}{The number of decimals to show for
+  the mean and median annotations. \code{character}.}
+}
+\value{
+Returns a histogram as a \code{ggplot2} object.
+}
+\description{
+Generate a histogram for a \code{numeric} or \code{integer}
+variable.  This graph is intended to quickly provide the
+researcher with a quick, yet thorough representation of the
+continuous variable.  The additional annotations may not be
+desired for publication-quality plots.
+}
+\examples{
+library(datasets)
+#Don't run graphs on a headless machine without any the basic graphics packages installed.
+if( require(grDevices) ) {
+  histogram_continuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
+}
+}
+

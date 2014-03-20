@@ -1,0 +1,26 @@
+\name{calculate_rounding_digits}
+\alias{calculate_rounding_digits}
+\title{Internal function for calculating rounding digits for dataset variables}
+\usage{
+calculate_rounding_digits(ds_observed)
+}
+\arguments{
+  \item{ds_observed}{The \code{data.frame} with columns to
+  calculate bins.}
+}
+\value{
+Returns a \code{numeric} vector, indicating how many
+rounding digits *might* be appropriate.  Each element is an
+array with as many values as columns in \code{ds_observed}.
+}
+\description{
+An internal function (ie, that's not currently
+exposed/exported outside the package) for creating default
+bins for dataset variables.
+}
+\examples{
+tabularmanifest:::calculate_rounding_digits(ds_observed=freeny)
+tabularmanifest:::calculate_rounding_digits(ds_observed=InsectSprays)
+tabularmanifest:::calculate_rounding_digits(ds_observed=beaver1)
+}
+

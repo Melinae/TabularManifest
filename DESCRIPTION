@@ -1,0 +1,32 @@
+Package: TabularManifest
+Title: Tabular Manifest
+Description: Assists the manipulation and exploration of wide datasets with
+    tabular configuration files
+Date: 2014-03-20
+Version: 0.1-15
+Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
+    "wibeasley@hotmail.com"),
+    person("Chad", "Scherrer", role = "ctb"),
+    person("Steve", "Soloway", role = "ctb"),
+	 person("Martin", "Lenardon", role = "aut"))
+License: LGPL
+LazyData: TRUE
+VignetteBuilder: knitr
+Maintainer: Will Beasley <wibeasley@hotmail.com>
+URL: http://melinae.com/
+Depends:
+    R(>= 3.0.0),
+    stats
+Imports:
+    ggplot2,
+    grid,
+    mgcv,
+    plyr,
+    scales
+Suggests:
+    datasets,
+    devtools,
+    knitr,
+    RColorBrewer,
+    testit,
+    testthat
