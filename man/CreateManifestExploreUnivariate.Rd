@@ -6,16 +6,16 @@
 CreateManifestExploreUnivariate(
     dsObserved,
     writeToDisk = TRUE,
-    path_out = getwd(),
-    overwrite_file = FALSE,
-    default_class_graph = c(
+    pathOut = getwd(),
+    overwriteFile = FALSE,
+    defaultClassGraph = c(
       numeric = "HistogramContinuous",
       integer = "HistogramContinuous",
       factor = "HistogramDiscrete",
       character = "HistogramDiscrete",
       notMatched = "histogram_generic"
     ),
-    default_format = c(
+    defaultFormat = c(
       numeric = "scales::comma",
       notMatched = "scales::comma"
     ),
@@ -29,17 +29,17 @@ CreateManifestExploreUnivariate(
   \item{writeToDisk}{Indicates if the meta-dataset should
   be saved as a CSV.}
 
-  \item{path_out}{The file path to save the meta-dataset.}
+  \item{pathOut}{The file path to save the meta-dataset.}
 
-  \item{overwrite_file}{Indicates if the CSV of the
+  \item{overwriteFile}{Indicates if the CSV of the
   meta-dataset should be overwritten if a file already
   exists at the location.}
 
-  \item{default_format}{A \code{character} array indicating
+  \item{defaultFormat}{A \code{character} array indicating
   which formatting function should be displayed on the axis
   of the univariate graph.}
 
-  \item{default_class_graph}{A \code{character} array
+  \item{defaultClassGraph}{A \code{character} array
   indicating which graph should be used with variables of a
   certain class.}
 
@@ -51,14 +51,14 @@ CreateManifestExploreUnivariate(
 Returns a \code{data.frame} where each row in the metadata represents a column in \code{dsObserved}.
 The metadata contains the following columns
 \enumerate{
-\item{\code{variable_name} The variable name (in \code{dsObserved}). \code{character}.}
+\item{\code{variableName} The variable name (in \code{dsObserved}). \code{character}.}
 \item{\code{remark} A blank field that allows theuser to enter notes in the CSV for later reference.}
 \item{\code{class} The variable's \code{\link{class}} (eg, numeric, Date, factor).  \code{character}.}
-\item{\code{should_graph} A boolean value indicating if the variable should be graphed. \code{logical}.}
-\item{\code{graph_function} The name of the function used to graph the variable. \code{character}.}
-\item{\code{x_label_format} The name of the function used to format the \emph{x}-axis. \code{character}.}
-\item{\code{bin_width} The uniform width of the bins. \code{numeric}.}
-\item{\code{bin_start} The location of the left boundary of the first bin. \code{numeric}.}
+\item{\code{shouldGraph} A boolean value indicating if the variable should be graphed. \code{logical}.}
+\item{\code{graphFunction} The name of the function used to graph the variable. \code{character}.}
+\item{\code{xLabelFormat} The name of the function used to format the \emph{x}-axis. \code{character}.}
+\item{\code{binWidth} The uniform width of the bins. \code{numeric}.}
+\item{\code{binStart} The location of the left boundary of the first bin. \code{numeric}.}
 }
 }
 \description{

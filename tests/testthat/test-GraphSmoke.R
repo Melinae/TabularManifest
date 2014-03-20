@@ -6,19 +6,19 @@ context("Graphing Smoke Tests")
 ###########
 
 test_that("HistogramContinuous: InsectSprays", {  
-  HistogramContinuous(dsObserved=InsectSprays, variable_name="count", bin_width=1)
+  HistogramContinuous(dsObserved=InsectSprays, variableName="count", binWidth=1)
   expect_true(TRUE) #Put an assert to show a dot and more easily verify the function executed without bursting into flames.
 })
 test_that("HistogramContinuous: beaver", {  
-  HistogramContinuous(dsObserved=beaver1, variable_name="temp", bin_width=.1)
+  HistogramContinuous(dsObserved=beaver1, variableName="temp", binWidth=.1)
   expect_true(TRUE) #Put an assert to show a dot and more easily verify the function executed without bursting into flames.
 })
 
 test_that("HistogramDiscrete: eduction", {  
-  HistogramDiscrete(dsObserved=infert, variable_name="education")
+  HistogramDiscrete(dsObserved=infert, variableName="education")
   expect_true(TRUE) #Put an assert to show a dot and more easily verify the function executed without bursting into flames.
 })
 test_that("HistogramDiscrete: age", {  
-  HistogramDiscrete(dsObserved=infert, variable_name="age")
+  HistogramDiscrete(dsObserved=infert, variableName="age")
   expect_true(TRUE) #Put an assert to show a dot and more easily verify the function executed without bursting into flames.
 })

@@ -22,14 +22,14 @@
 construct_graph_univariate <- function( variableName, ds_metadata, dsObserved ) {
   ds_for_variable <- ds_metadata[ds_metadata$variableName==variableName, ]
   variableName <- ds_for_variable$variableName
-  should_graph <- ds_for_variable$should_graph
+  shouldGraph <- ds_for_variable$shouldGraph
   remark <- ds_for_variable$remark
-  graphing_fx <- get(ds_for_variable$graph_function)
-  x_label_fx <- .get_with_package(ds_for_variable$x_label_format)
+  graphing_fx <- get(ds_for_variable$graphFunction)
+  x_label_fx <- .get_with_package(ds_for_variable$xLabelFormat)
   
-  bin_width <- ds_for_variable$bin_width
-  if( should_graph ) 
-    g <- graphing_fx(dsObserved=dsObserved, variableName=variableName, bin_width=bin_width)
+  binWidth <- ds_for_variable$binWidth
+  if( shouldGraph ) 
+    g <- graphing_fx(dsObserved=dsObserved, variableName=variableName, binWidth=binWidth)
   else
     g <- NULL
   

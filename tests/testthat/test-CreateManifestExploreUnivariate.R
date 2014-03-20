@@ -10,13 +10,13 @@ test_that("Dataset: InsectSprays", {
   dsObserved <- datasets::InsectSprays
   
   #Declare the expected values.
-  expected_metadata <- structure(list(variable_name = c("count", "spray"), remark = c("", 
-                                                                                      ""), class = c("numeric", "factor"), should_graph = c(TRUE, TRUE
-                                                                                      ), graph_function = c("HistogramContinuous", "HistogramDiscrete"
-                                                                                      ), x_label_format = c("scales::comma", "scales::comma"), bin_width = c(1, 1), 
-                                      bin_start = c(0, 1), rounding_digits = c(0, 1)), .Names = c("variable_name", 
-                                                                                                  "remark", "class", "should_graph", "graph_function", "x_label_format", 
-                                                                                                  "bin_width", "bin_start", "rounding_digits"), row.names = c(NA, 
+  expected_metadata <- structure(list(variableName = c("count", "spray"), remark = c("", 
+                                                                                      ""), class = c("numeric", "factor"), shouldGraph = c(TRUE, TRUE
+                                                                                      ), graphFunction = c("HistogramContinuous", "HistogramDiscrete"
+                                                                                      ), xLabelFormat = c("scales::comma", "scales::comma"), binWidth = c(1, 1), 
+                                      binStart = c(0, 1), rounding_digits = c(0, 1)), .Names = c("variableName", 
+                                                                                                  "remark", "class", "shouldGraph", "graphFunction", "xLabelFormat", 
+                                                                                                  "binWidth", "binStart", "rounding_digits"), row.names = c(NA, 
                                                                                                                                                               -2L), class = "data.frame")
   #Run the function
   returned_metadata <- CreateManifestExploreUnivariate(dsObserved, write_to_disk=FALSE) #dput(returned_metadata)
@@ -32,18 +32,18 @@ test_that("Dataset: freeny", {
   dsObserved <- datasets::freeny
   
   #Declare the expected values.
-  expected_metadata <- structure(list(variable_name = c("y", "lag.quarterly.revenue", 
+  expected_metadata <- structure(list(variableName = c("y", "lag.quarterly.revenue", 
                                                         "price.index", "income.level", "market.potential"), remark = c("", 
                                                                                                                        "", "", "", ""), class = c("ts", "numeric", "numeric", "numeric", 
-                                                                                                                                                  "numeric"), should_graph = c(TRUE, TRUE, TRUE, TRUE, TRUE), graph_function = c("histogram_generic", 
+                                                                                                                                                  "numeric"), shouldGraph = c(TRUE, TRUE, TRUE, TRUE, TRUE), graphFunction = c("histogram_generic", 
                                                                                                                                                                                                                                  "HistogramContinuous", "HistogramContinuous", "HistogramContinuous", 
-                                                                                                                                                                                                                                 "HistogramContinuous"), x_label_format = c("scales::comma", "scales::comma", 
-                                                                                                                                                                                                                                                                             "scales::comma", "scales::comma", "scales::comma"), bin_width = c(1, 0.0500000000000007, 
+                                                                                                                                                                                                                                 "HistogramContinuous"), xLabelFormat = c("scales::comma", "scales::comma", 
+                                                                                                                                                                                                                                                                             "scales::comma", "scales::comma", "scales::comma"), binWidth = c(1, 0.0500000000000007, 
                                                                                                                                                                                                                                                                                                                        0.0199999999999996, 0.00999999999999979, 0.00500000000000078), 
-                                      bin_start = c(1, 8.75, 4.26, 5.82, 12.965), rounding_digits = c(1, 
-                                                                                                      2, 2, 2, 2)), .Names = c("variable_name", "remark", "class", 
-                                                                                                                               "should_graph", "graph_function", "x_label_format", "bin_width", 
-                                                                                                                               "bin_start", "rounding_digits"), row.names = c(NA, -5L), class = "data.frame")
+                                      binStart = c(1, 8.75, 4.26, 5.82, 12.965), rounding_digits = c(1, 
+                                                                                                      2, 2, 2, 2)), .Names = c("variableName", "remark", "class", 
+                                                                                                                               "shouldGraph", "graphFunction", "xLabelFormat", "binWidth", 
+                                                                                                                               "binStart", "rounding_digits"), row.names = c(NA, -5L), class = "data.frame")
   #Run the function
   returned_metadata <- CreateManifestExploreUnivariate(dsObserved, write_to_disk=FALSE) #dput(returned_metadata)
   
@@ -55,14 +55,14 @@ test_that("Dataset: freeny", {
 
 # test_that("InsectSprays2", {  
 #   
-#   expected_data <- structure(list(variable_name = structure(1:2, .Label = c("countDDDDD", 
+#   expected_data <- structure(list(variableName = structure(1:2, .Label = c("countDDDDD", 
 #                                                                             "spray"), class = "factor"), class = structure(c(2L, 1L), .Label = c("factor", 
-#                                                                                                                                                  "numeric"), class = "factor"), should_graph = c(TRUE, TRUE), 
-#                                   graph_function = structure(1:2, .Label = c("HistogramContinuous", 
-#                                                                              "HistogramDiscrete"), class = "factor"), x_label_format = structure(c(1L, 
+#                                                                                                                                                  "numeric"), class = "factor"), shouldGraph = c(TRUE, TRUE), 
+#                                   graphFunction = structure(1:2, .Label = c("HistogramContinuous", 
+#                                                                              "HistogramDiscrete"), class = "factor"), xLabelFormat = structure(c(1L, 
 #                                                                                                                                                     1L), .Label = "scales::comma", class = "factor"), remark = structure(c(1L, 
-#                                                                                                                                                                                                                            1L), class = "factor", .Label = "")), .Names = c("variable_name", 
-#                                                                                                                                                                                                                                                                             "class", "should_graph", "graph_function", "x_label_format", 
+#                                                                                                                                                                                                                            1L), class = "factor", .Label = "")), .Names = c("variableName", 
+#                                                                                                                                                                                                                                                                             "class", "shouldGraph", "graphFunction", "xLabelFormat", 
 #                                                                                                                                                                                                                                                                             "remark"), row.names = c("count", "spray"), class = "data.frame")
 #   
 #   returned_object <- CreateManifestExploreUnivariate(datasets::InsectSprays, write_to_disk=FALSE) #dput(returned_object)
