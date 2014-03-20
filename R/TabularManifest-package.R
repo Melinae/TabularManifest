@@ -14,8 +14,8 @@
 #' Thanks, the Melinae Analytics Team
 #' 
 #' @docType package
-#' @name tabularmanifest-package
-#' @aliases tabularmanifest
+#' @name TabularManifest-package
+#' @aliases TabularManifest
 #' @note 
 #' Our company has benefited from many tools developed by the community, and we'd like to contribute back.  
 #' Suggestions, criticisms, and code contributions are welcome.  If any developer is interested in trying a direction 
@@ -29,7 +29,7 @@
 #' [Is there anything else someone would like to include?]
 #' 
 #' #TODO: this line needs to be adapated when we move to GitHub.  For those interested in use the development version of 
-#' `tabularmanifest`, run 
+#' `TabularManifest`, run 
 #' 
 #' \code{devtools::install_git(repo="Melinae/TabularManifest")}
 #' 
@@ -49,7 +49,7 @@
 ##' create_manifest_explore_univariate(datasets::InsectSprays, write_to_disk=FALSE)
 ##' 
 ##' if( require(grDevices) ) {
-##'   histogram_continuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
-##'   histogram_discrete(ds_observed=infert, variable_name="age")
+##'   HistogramContinuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
+##'   HistogramDiscrete(ds_observed=infert, variable_name="age")
 ##' }
 NULL

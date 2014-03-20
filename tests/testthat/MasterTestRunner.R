@@ -8,14 +8,14 @@ require(testthat)
 require(devtools)
 
 #directoryTests <- file.path(devtools::inst("REDCapR"), "tests/testthat")
-directoryTests <- file.path(devtools::inst("tabularmanifest"), "tests")
+directoryTests <- file.path(devtools::inst("TabularManifest"), "tests")
 
 ClearMostVariables <- function( ) {
   rm(list=ls(all=TRUE)[!(ls(all=TRUE) %in% c("ClearMostVariables", "directoryTests"))])
 }
 
-try(detach("package:tabularmanifest"), silent=TRUE)
-require(tabularmanifest)
+try(detach("package:TabularManifest"), silent=TRUE)
+require(TabularManifest)
 #?REDCapR
 
 ClearMostVariables()

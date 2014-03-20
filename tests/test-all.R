@@ -1,5 +1,5 @@
 library(testthat)
-library(tabularmanifest)
+library(TabularManifest)
 
 packages <- utils::installed.packages()
 testthatVersion <- packages[packages[, 1]=="testthat", "Version"]
@@ -7,8 +7,8 @@ message("testthat package version: ", testthatVersion)
 
 if(  testthatVersion >= "0.8" ) {
   # But this is working in the reverse way for me (the old way works for the new structure, but not the new way.)
-  testthat::test_check("tabularmanifest") #The new way: when tests are located in `./tests/testthat/`
-#   testthat::test_package("tabularmanifest") #The old way: when tests are located in `./inst/tests/` 
+  testthat::test_check("TabularManifest") #The new way: when tests are located in `./tests/testthat/`
+#   testthat::test_package("TabularManifest") #The old way: when tests are located in `./inst/tests/` 
 
 }
 rm(packages)

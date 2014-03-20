@@ -1,13 +1,13 @@
 #http://stackoverflow.com/questions/21224800/using-rs-get-function-while-qualifying-with-the-package
 
 rm(list=ls(all=TRUE))
-require(tabularmanifest)
+require(TabularManifest)
 require(datasets)
 require(scales)
 
 #ds_observed <- beaver1
 ds_observed <- InsectSprays
-ds_manifest <- tabularmanifest::create_manifest_explore_univariate(ds, write_to_disk=FALSE)
+ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds, write_to_disk=FALSE)
 
 get_with_package <- function( qualified_function ) {
   #TODO: write regex so that it accommodates a period in the variable name.

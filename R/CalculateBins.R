@@ -13,12 +13,12 @@
 ##' \item{\code{bin_start} The variable's \code{\link{class}}. (eg, numeric, Date, factor)}
 ##' }
 ##' @examples
-##' #tabularmanifest:::calculate_bins(ds_observed=datasets::freeny)
-##' #tabularmanifest:::calculate_bins(ds_observed=datasets::InsectSprays)
+##' #TabularManifest:::calculate_bins(ds_observed=datasets::freeny)
+##' #TabularManifest:::calculate_bins(ds_observed=datasets::InsectSprays)
 
 calculate_bins <- function( ds_observed, bin_count_suggestion=30L ) {
   columnClass <- base::sapply(X=ds_observed, FUN=base::class)
-  is_continuous <- (columnClass  %in% c("numeric", "integer"))
+  is_continuous <- (columnClass %in% c("numeric", "integer"))
   
   #TODO: mapply might be more memory efficient.  An entire data.frame is recreated (minus the non-contintuous variables).  
   bin_breaks <- base::lapply(X=ds_observed[,is_continuous, drop=FALSE], FUN=pretty, n=bin_count_suggestion) #, simplify=FALSE)

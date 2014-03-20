@@ -30,3 +30,4 @@ Suggests:
     RColorBrewer,
     testit,
     testthat
+Roxygen: list(wrap = FALSE)

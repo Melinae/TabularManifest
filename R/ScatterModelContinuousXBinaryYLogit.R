@@ -1,4 +1,4 @@
-##' @name scatter_model_continuous_x_binary_y_logit
+##' @name ScatterModelContinuousXBinaryYLogit
 ##' @export
 ##' 
 ##' @title Internal function for examining a logit performance
@@ -21,7 +21,7 @@
 ##' @param jitter_predicted A function dictating how the predicted values are jittered.
 ##' @param seed_value The value of the RNG seed, which affects jittering. No seed is set if a value of \code{NA} is passed.  \code{numeric}.
 
-scatter_model_continuous_x_binary_y_logit <- function(   
+ScatterModelContinuousXBinaryYLogit <- function(   
   ds_plot, 
   x_name, 
   y_name = "y", 

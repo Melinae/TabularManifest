@@ -24,7 +24,7 @@ Construct a graph or list of graphs, whose characteristics are determined by a c
 \examples{
 #ds_observed <- beaver1
 ds_observed <- InsectSprays
-ds_manifest <- tabularmanifest::create_manifest_explore_univariate(ds_observed, write_to_disk=FALSE)
+ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds_observed, write_to_disk=FALSE)
 
 construct_graph_univariate(variable_name="count", ds_manifest, InsectSprays)
 

@@ -24,7 +24,7 @@ Returns a \code{list}, with two elements.  Each element is an array with as many
 An internal function (ie, that's not currently exposed/exported outside the package) for creating default bins for dataset variables.
 }
 \examples{
-#tabularmanifest:::calculate_bins(ds_observed=datasets::freeny)
-#tabularmanifest:::calculate_bins(ds_observed=datasets::InsectSprays)
+#TabularManifest:::calculate_bins(ds_observed=datasets::freeny)
+#TabularManifest:::calculate_bins(ds_observed=datasets::InsectSprays)
 }
 

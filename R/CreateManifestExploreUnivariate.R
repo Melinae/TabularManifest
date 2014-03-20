@@ -14,10 +14,10 @@
 ##'     path_out = getwd(), 
 ##'     overwrite_file = FALSE,
 ##'     default_class_graph = c(
-##'       numeric = "histogram_continuous", 
-##'       integer = "histogram_continuous", 
-##'       factor = "histogram_discrete", 
-##'       character = "histogram_discrete", 
+##'       numeric = "HistogramContinuous", 
+##'       integer = "HistogramContinuous", 
+##'       factor = "HistogramDiscrete", 
+##'       character = "HistogramDiscrete", 
 ##'       notMatched = "histogram_generic"
 ##'     ),
 ##'     default_format = c(
@@ -62,10 +62,10 @@ create_manifest_explore_univariate <- function(
   path_out = getwd(), 
   overwrite_file = FALSE,
   default_class_graph = c(
-    "numeric" = "histogram_continuous",
-    "integer" = "histogram_continuous",
-    "factor" = "histogram_discrete",
-    "character" = "histogram_discrete",
+    "numeric" = "HistogramContinuous",
+    "integer" = "HistogramContinuous",
+    "factor" = "HistogramDiscrete",
+    "character" = "HistogramDiscrete",
     "notMatched" = "histogram_generic"
     ),
   default_format = c(
@@ -86,8 +86,8 @@ create_manifest_explore_univariate <- function(
   matchedIndexFormat <- match(columnClass, names(default_format))
   matchedIndexFormat <- ifelse(!is.na(matchedIndexFormat), matchedIndexFormat, which(names(default_format)=="notMatched"))
   
-  bins <- tabularmanifest:::calculate_bins(ds_observed, bin_count_suggestion=bin_count_suggestion)
-  rounding_digits <- tabularmanifest:::calculate_rounding_digits(ds_observed)
+  bins <- TabularManifest:::calculate_bins(ds_observed, bin_count_suggestion=bin_count_suggestion)
+  rounding_digits <- TabularManifest:::calculate_rounding_digits(ds_observed)
   
   #Create the data.frame of metadata.
   ds_skeleton <- data.frame(

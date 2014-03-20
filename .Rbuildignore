@@ -3,7 +3,7 @@
 ^\.gitignore$
 ^\.travis.yml$
 
-documentation_peek.pdf
-documentation_for_developers/
-playgrounds/
-utility_scripts/
+DocumentationPeek.pdf
+DocumentationForDevelopers/
+Playgrounds/
+UtilityScripts/

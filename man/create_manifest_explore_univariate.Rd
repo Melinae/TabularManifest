@@ -9,10 +9,10 @@ create_manifest_explore_univariate(
     path_out = getwd(),
     overwrite_file = FALSE,
     default_class_graph = c(
-      numeric = "histogram_continuous",
-      integer = "histogram_continuous",
-      factor = "histogram_discrete",
-      character = "histogram_discrete",
+      numeric = "HistogramContinuous",
+      integer = "HistogramContinuous",
+      factor = "HistogramDiscrete",
+      character = "HistogramDiscrete",
       notMatched = "histogram_generic"
     ),
     default_format = c(

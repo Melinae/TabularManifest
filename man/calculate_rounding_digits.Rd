@@ -17,8 +17,8 @@ Returns a \code{numeric} vector, indicating how many rounding digits *might* be 
 An internal function (ie, that's not currently exposed/exported outside the package) for creating default bins for dataset variables.
 }
 \examples{
-tabularmanifest:::calculate_rounding_digits(ds_observed=freeny)
-tabularmanifest:::calculate_rounding_digits(ds_observed=InsectSprays)
-tabularmanifest:::calculate_rounding_digits(ds_observed=beaver1)
+TabularManifest:::calculate_rounding_digits(ds_observed=freeny)
+TabularManifest:::calculate_rounding_digits(ds_observed=InsectSprays)
+TabularManifest:::calculate_rounding_digits(ds_observed=beaver1)
 }
 
