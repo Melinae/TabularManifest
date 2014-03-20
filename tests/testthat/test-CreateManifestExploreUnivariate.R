@@ -19,7 +19,7 @@ test_that("Dataset: InsectSprays", {
                                                                                                   "binWidth", "binStart", "rounding_digits"), row.names = c(NA, 
                                                                                                                                                               -2L), class = "data.frame")
   #Run the function
-  returned_metadata <- CreateManifestExploreUnivariate(dsObserved, write_to_disk=FALSE) #dput(returned_metadata)
+  returned_metadata <- CreateManifestExploreUnivariate(dsObserved, writeToDisk=FALSE) #dput(returned_metadata)
   
   #Compare the returned & expected values.
   expect_equal(ncol(expected_metadata), expected_metadata_column_count, label="The number of metadata columns should be correct.")
@@ -45,7 +45,7 @@ test_that("Dataset: freeny", {
                                                                                                                                "shouldGraph", "graphFunction", "xLabelFormat", "binWidth", 
                                                                                                                                "binStart", "rounding_digits"), row.names = c(NA, -5L), class = "data.frame")
   #Run the function
-  returned_metadata <- CreateManifestExploreUnivariate(dsObserved, write_to_disk=FALSE) #dput(returned_metadata)
+  returned_metadata <- CreateManifestExploreUnivariate(dsObserved, writeToDisk=FALSE) #dput(returned_metadata)
   
   #Compare the returned & expected values.
   expect_equal(ncol(expected_metadata), expected_metadata_column_count, label="The number of metadata columns should be correct.")
@@ -65,7 +65,7 @@ test_that("Dataset: freeny", {
 #                                                                                                                                                                                                                                                                             "class", "shouldGraph", "graphFunction", "xLabelFormat", 
 #                                                                                                                                                                                                                                                                             "remark"), row.names = c("count", "spray"), class = "data.frame")
 #   
-#   returned_object <- CreateManifestExploreUnivariate(datasets::InsectSprays, write_to_disk=FALSE) #dput(returned_object)
+#   returned_object <- CreateManifestExploreUnivariate(datasets::InsectSprays, writeToDisk=FALSE) #dput(returned_object)
 #   
 #   
 #   expect_equivalent(returned_object, expected=expected_data, label="The returned data.frame should be correct") # dput(returned_object$data)

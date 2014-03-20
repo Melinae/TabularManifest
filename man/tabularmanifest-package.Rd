@@ -30,12 +30,12 @@ If your organization is interested in the consulting services of Melinae, please
 [Is there anything else someone would like to include?]
 
 #TODO: this line needs to be adapated when we move to GitHub.  For those interested in use the development version of
-`TabularManifest`, run
+\code{TabularManifest}, run
 
 \code{devtools::install_git(repo="Melinae/TabularManifest")}
 }
 \examples{
-CreateManifestExploreUnivariate(datasets::InsectSprays, write_to_disk=FALSE)
+CreateManifestExploreUnivariate(datasets::InsectSprays, writeToDisk=FALSE)
 
 if( require(grDevices) ) {
   HistogramContinuous(dsObserved=beaver1, variableName="temp", binWidth=.1)
