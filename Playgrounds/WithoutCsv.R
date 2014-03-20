@@ -7,44 +7,44 @@ require(scales)
 
 #dsObserved <- beaver1
 dsObserved <- InsectSprays
-ds_manifest <- TabularManifest::CreateManifestExploreUnivariate(ds, writeToDisk=FALSE)
+dsManifest <- TabularManifest::CreateManifestExploreUnivariate(ds, writeToDisk=FALSE)
 
-get_with_package <- function( qualified_function ) {
-  #TODO: write regex so that it accommodates a period in the variable name.
-#   if( !grepl("^(\\w+)::(\\w+)$", qualified_function, perl=TRUE) )
-#     stop("The function name should be qualified with it's package. For instance, pass `scales::comma` instead of simply `comma`.")
-  split_function <- strsplit(qualified_function, split="::")[[1]]
-  fx <- getExportedValue(split_function[1], split_function[2])
-  return( fx )
-}
+# get_with_package <- function( qualifiedFunction ) {
+#   #TODO: write regex so that it accommodates a period in the variable name.
+# #   if( !grepl("^(\\w+)::(\\w+)$", qualifiedFunction, perl=TRUE) )
+# #     stop("The function name should be qualified with it's package. For instance, pass `scales::comma` instead of simply `comma`.")
+#   split_function <- strsplit(qualifiedFunction, split="::")[[1]]
+#   fx <- getExportedValue(split_function[1], split_function[2])
+#   return( fx )
+# }
 # get_with_package("scales::comma")
 # 
-# for( variable_index in seq_len(nrow(ds_manifest)) ) {  
+# for( variable_index in seq_len(nrow(dsManifest)) ) {  
 # # for( variable_index in 2 ) {  
-#   variableName <- ds_manifest[variable_index, "variableName"]
-#   shouldGraph <- ds_manifest[variable_index, "shouldGraph"]
-#   remark <- ds_manifest[variable_index, "remark"]
-#   graphing_fx <- get(ds_manifest[variable_index, "graphFunction"])
-# #   x_label_string <- ds_manifest[variable_index, "xLabelFormat"]
+#   variableName <- dsManifest[variable_index, "variableName"]
+#   shouldGraph <- dsManifest[variable_index, "shouldGraph"]
+#   remark <- dsManifest[variable_index, "remark"]
+#   graphing_fx <- get(dsManifest[variable_index, "graphFunction"])
+# #   x_label_string <- dsManifest[variable_index, "xLabelFormat"]
 # #   x_label_split <- strsplit(x_label_string, split="::")[[1]]
 # #   x_label_fx <- getExportedValue(x_label_split[1], x_label_split[2])
-#   x_label_fx <- get_with_package(ds_manifest[variable_index, "xLabelFormat"])
+#   x_label_fx <- get_with_package(dsManifest[variable_index, "xLabelFormat"])
 # 
 #   
-#   binWidth <- ds_manifest[variable_index, "binWidth"]
+#   binWidth <- dsManifest[variable_index, "binWidth"]
 #   if( shouldGraph ) {
 #     graphing_fx(dsObserved=ds, variableName=variableName, binWidth=binWidth)
 #   }
 # }
 
 # construct_graph <- function( variable_index ) {
-#   variableName <- ds_manifest[variable_index, "variableName"]
-#   shouldGraph <- ds_manifest[variable_index, "shouldGraph"]
-#   remark <- ds_manifest[variable_index, "remark"]
-#   graphing_fx <- get(ds_manifest[variable_index, "graphFunction"])
-#   x_label_fx <- get_with_package(ds_manifest[variable_index, "xLabelFormat"])
+#   variableName <- dsManifest[variable_index, "variableName"]
+#   shouldGraph <- dsManifest[variable_index, "shouldGraph"]
+#   remark <- dsManifest[variable_index, "remark"]
+#   graphing_fx <- get(dsManifest[variable_index, "graphFunction"])
+#   x_label_fx <- get_with_package(dsManifest[variable_index, "xLabelFormat"])
 #   
-#   binWidth <- ds_manifest[variable_index, "binWidth"]
+#   binWidth <- dsManifest[variable_index, "binWidth"]
 #   if( shouldGraph ) 
 #     g <- graphing_fx(dsObserved=ds, variableName=variableName, binWidth=binWidth)
 #   else
@@ -53,29 +53,29 @@ get_with_package <- function( qualified_function ) {
 #   return(list(variableName=variableName, graph=g, remark=remark))
 # }
 # 
-# graph_list <- lapply(X=seq_len(nrow(ds_manifest)), construct_graph)
+# graph_list <- lapply(X=seq_len(nrow(dsManifest)), construct_graph)
 # 
 # graph_list[[2]]$graph
 
 
-construct_graph_univariate <- function( variableName, ds_metadata, dsObserved ) {
-  ds_for_variable <- ds_metadata[ds_metadata$variableName==variableName, ]
-  variableName <- ds_for_variable$variableName
-  shouldGraph <- ds_for_variable$shouldGraph
-  remark <- ds_for_variable$remark
-  graphing_fx <- get(ds_for_variable$graphFunction)
-  x_label_fx <- get_with_package(ds_for_variable$xLabelFormat)
-  
-  binWidth <- ds_for_variable$binWidth
-  if( shouldGraph ) 
-    g <- graphing_fx(dsObserved=dsObserved, variableName=variableName, binWidth=binWidth)
-  else
-    g <- NULL
-  
-  return(list(variableName=variableName, graph=g, remark=remark))
-}
+# ConstructGraphUnivariate <- function( variableName, dsMetadata, dsObserved ) {
+#   ds_for_variable <- dsMetadata[dsMetadata$variableName==variableName, ]
+#   variableName <- ds_for_variable$variableName
+#   shouldGraph <- ds_for_variable$shouldGraph
+#   remark <- ds_for_variable$remark
+#   graphing_fx <- get(ds_for_variable$graphFunction)
+#   x_label_fx <- get_with_package(ds_for_variable$xLabelFormat)
+#   
+#   binWidth <- ds_for_variable$binWidth
+#   if( shouldGraph ) 
+#     g <- graphing_fx(dsObserved=dsObserved, variableName=variableName, binWidth=binWidth)
+#   else
+#     g <- NULL
+#   
+#   return(list(variableName=variableName, graph=g, remark=remark))
+# }
 
-# graph_list <- lapply(X=ds_manifest$variableName, FUN=construct_graph_univariate, ds_metadata=ds_manifest, dsObserved=dsObserved)
+# graph_list <- lapply(X=dsManifest$variableName, FUN=ConstructGraphUnivariate, dsMetadata=dsManifest, dsObserved=dsObserved)
 
 
 rnorm(1)

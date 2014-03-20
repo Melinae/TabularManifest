@@ -1,4 +1,4 @@
-##' @name calculate_rounding_digits
+##' @name CalculateRoundingDigits
 ##' 
 ##' @title Internal function for calculating rounding digits for dataset variables
 ##' 
@@ -9,11 +9,11 @@
 ##' @return Returns a \code{numeric} vector, indicating how many rounding digits *might* be appropriate.
 ##'   Each element is an array with as many values as columns in \code{dsObserved}.
 ##' @examples
-##' TabularManifest:::calculate_rounding_digits(dsObserved=freeny)
-##' TabularManifest:::calculate_rounding_digits(dsObserved=InsectSprays)
-##' TabularManifest:::calculate_rounding_digits(dsObserved=beaver1)
+##' TabularManifest:::CalculateRoundingDigits(dsObserved=freeny)
+##' TabularManifest:::CalculateRoundingDigits(dsObserved=InsectSprays)
+##' TabularManifest:::CalculateRoundingDigits(dsObserved=beaver1)
 
-calculate_rounding_digits <- function( dsObserved ) {
+CalculateRoundingDigits <- function( dsObserved ) {
   columnClass <- base::sapply(X=dsObserved, FUN=base::class)
   is_continuous <- (columnClass  %in% c("numeric", "integer"))
   
@@ -26,6 +26,6 @@ calculate_rounding_digits <- function( dsObserved ) {
   return( digits_all )
 }
 
-# calculate_rounding_digits(dsObserved=freeny)
-# calculate_rounding_digits(dsObserved=InsectSprays)
-# calculate_rounding_digits(dsObserved=beaver1)
+# CalculateRoundingDigits(dsObserved=freeny)
+# CalculateRoundingDigits(dsObserved=InsectSprays)
+# CalculateRoundingDigits(dsObserved=beaver1)
