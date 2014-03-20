@@ -7,7 +7,7 @@ expected_metadata_column_count <- 9L #This is a property of the function, and no
 
 test_that("Dataset: InsectSprays", {  
   #Declare the input.
-  ds_observed <- datasets::InsectSprays
+  dsObserved <- datasets::InsectSprays
   
   #Declare the expected values.
   expected_metadata <- structure(list(variable_name = c("count", "spray"), remark = c("", 
@@ -19,17 +19,17 @@ test_that("Dataset: InsectSprays", {
                                                                                                   "bin_width", "bin_start", "rounding_digits"), row.names = c(NA, 
                                                                                                                                                               -2L), class = "data.frame")
   #Run the function
-  returned_metadata <- create_manifest_explore_univariate(ds_observed, write_to_disk=FALSE) #dput(returned_metadata)
+  returned_metadata <- CreateManifestExploreUnivariate(dsObserved, write_to_disk=FALSE) #dput(returned_metadata)
   
   #Compare the returned & expected values.
   expect_equal(ncol(expected_metadata), expected_metadata_column_count, label="The number of metadata columns should be correct.")
-  expect_equal(nrow(expected_metadata), ncol(ds_observed), label="The number of metadata rows should equal the number of rows in ds_observed.")
+  expect_equal(nrow(expected_metadata), ncol(dsObserved), label="The number of metadata rows should equal the number of rows in dsObserved.")
   expect_equivalent(returned_metadata, expected=expected_metadata, label="The returned data.frame should be correct") # dput(returned_object$data)
 })
 
 test_that("Dataset: freeny", {  
   #Declare the input.
-  ds_observed <- datasets::freeny
+  dsObserved <- datasets::freeny
   
   #Declare the expected values.
   expected_metadata <- structure(list(variable_name = c("y", "lag.quarterly.revenue", 
@@ -45,11 +45,11 @@ test_that("Dataset: freeny", {
                                                                                                                                "should_graph", "graph_function", "x_label_format", "bin_width", 
                                                                                                                                "bin_start", "rounding_digits"), row.names = c(NA, -5L), class = "data.frame")
   #Run the function
-  returned_metadata <- create_manifest_explore_univariate(ds_observed, write_to_disk=FALSE) #dput(returned_metadata)
+  returned_metadata <- CreateManifestExploreUnivariate(dsObserved, write_to_disk=FALSE) #dput(returned_metadata)
   
   #Compare the returned & expected values.
   expect_equal(ncol(expected_metadata), expected_metadata_column_count, label="The number of metadata columns should be correct.")
-  expect_equal(nrow(expected_metadata), ncol(ds_observed), label="The number of metadata rows should equal the number of rows in ds_observed.")
+  expect_equal(nrow(expected_metadata), ncol(dsObserved), label="The number of metadata rows should equal the number of rows in dsObserved.")
   expect_equivalent(returned_metadata, expected=expected_metadata, label="The returned data.frame should be correct") # dput(returned_object$data)
 })
 
@@ -65,7 +65,7 @@ test_that("Dataset: freeny", {
 #                                                                                                                                                                                                                                                                             "class", "should_graph", "graph_function", "x_label_format", 
 #                                                                                                                                                                                                                                                                             "remark"), row.names = c("count", "spray"), class = "data.frame")
 #   
-#   returned_object <- create_manifest_explore_univariate(datasets::InsectSprays, write_to_disk=FALSE) #dput(returned_object)
+#   returned_object <- CreateManifestExploreUnivariate(datasets::InsectSprays, write_to_disk=FALSE) #dput(returned_object)
 #   
 #   
 #   expect_equivalent(returned_object, expected=expected_data, label="The returned data.frame should be correct") # dput(returned_object$data)

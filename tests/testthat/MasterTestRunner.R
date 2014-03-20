@@ -19,4 +19,4 @@ require(TabularManifest)
 #?REDCapR
 
 ClearMostVariables()
-# test_file(file.path(directoryTests, "test-create_manifest_explore_univariate.R"))
+# test_file(file.path(directoryTests, "test-CreateManifestExploreUnivariate.R"))

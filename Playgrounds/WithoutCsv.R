@@ -5,9 +5,9 @@ require(TabularManifest)
 require(datasets)
 require(scales)
 
-#ds_observed <- beaver1
-ds_observed <- InsectSprays
-ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds, write_to_disk=FALSE)
+#dsObserved <- beaver1
+dsObserved <- InsectSprays
+ds_manifest <- TabularManifest::CreateManifestExploreUnivariate(ds, writeToDisk=FALSE)
 
 get_with_package <- function( qualified_function ) {
   #TODO: write regex so that it accommodates a period in the variable name.
@@ -21,7 +21,7 @@ get_with_package <- function( qualified_function ) {
 # 
 # for( variable_index in seq_len(nrow(ds_manifest)) ) {  
 # # for( variable_index in 2 ) {  
-#   variable_name <- ds_manifest[variable_index, "variable_name"]
+#   variableName <- ds_manifest[variable_index, "variableName"]
 #   should_graph <- ds_manifest[variable_index, "should_graph"]
 #   remark <- ds_manifest[variable_index, "remark"]
 #   graphing_fx <- get(ds_manifest[variable_index, "graph_function"])
@@ -33,12 +33,12 @@ get_with_package <- function( qualified_function ) {
 #   
 #   bin_width <- ds_manifest[variable_index, "bin_width"]
 #   if( should_graph ) {
-#     graphing_fx(ds_observed=ds, variable_name=variable_name, bin_width=bin_width)
+#     graphing_fx(dsObserved=ds, variableName=variableName, bin_width=bin_width)
 #   }
 # }
 
 # construct_graph <- function( variable_index ) {
-#   variable_name <- ds_manifest[variable_index, "variable_name"]
+#   variableName <- ds_manifest[variable_index, "variableName"]
 #   should_graph <- ds_manifest[variable_index, "should_graph"]
 #   remark <- ds_manifest[variable_index, "remark"]
 #   graphing_fx <- get(ds_manifest[variable_index, "graph_function"])
@@ -46,11 +46,11 @@ get_with_package <- function( qualified_function ) {
 #   
 #   bin_width <- ds_manifest[variable_index, "bin_width"]
 #   if( should_graph ) 
-#     g <- graphing_fx(ds_observed=ds, variable_name=variable_name, bin_width=bin_width)
+#     g <- graphing_fx(dsObserved=ds, variableName=variableName, bin_width=bin_width)
 #   else
 #     g <- NULL
 #   
-#   return(list(variable_name=variable_name, graph=g, remark=remark))
+#   return(list(variableName=variableName, graph=g, remark=remark))
 # }
 # 
 # graph_list <- lapply(X=seq_len(nrow(ds_manifest)), construct_graph)
@@ -58,9 +58,9 @@ get_with_package <- function( qualified_function ) {
 # graph_list[[2]]$graph
 
 
-construct_graph_univariate <- function( variable_name, ds_metadata, ds_observed ) {
-  ds_for_variable <- ds_metadata[ds_metadata$variable_name==variable_name, ]
-  variable_name <- ds_for_variable$variable_name
+construct_graph_univariate <- function( variableName, ds_metadata, dsObserved ) {
+  ds_for_variable <- ds_metadata[ds_metadata$variableName==variableName, ]
+  variableName <- ds_for_variable$variableName
   should_graph <- ds_for_variable$should_graph
   remark <- ds_for_variable$remark
   graphing_fx <- get(ds_for_variable$graph_function)
@@ -68,14 +68,14 @@ construct_graph_univariate <- function( variable_name, ds_metadata, ds_observed 
   
   bin_width <- ds_for_variable$bin_width
   if( should_graph ) 
-    g <- graphing_fx(ds_observed=ds_observed, variable_name=variable_name, bin_width=bin_width)
+    g <- graphing_fx(dsObserved=dsObserved, variableName=variableName, bin_width=bin_width)
   else
     g <- NULL
   
-  return(list(variable_name=variable_name, graph=g, remark=remark))
+  return(list(variableName=variableName, graph=g, remark=remark))
 }
 
-# graph_list <- lapply(X=ds_manifest$variable_name, FUN=construct_graph_univariate, ds_metadata=ds_manifest, ds_observed=ds_observed)
+# graph_list <- lapply(X=ds_manifest$variableName, FUN=construct_graph_univariate, ds_metadata=ds_manifest, dsObserved=dsObserved)
 
 
 rnorm(1)

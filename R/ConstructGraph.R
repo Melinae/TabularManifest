@@ -6,22 +6,22 @@
 ##' 
 ##' @description Construct a graph or list of graphs, whose characteristics are determined by a configuration file.
 ##' 
-##' @param variable_name The name of the single variable to graph.
-##' @param ds_metadata The \code{data.frame} containing the metadata. See \code{\link{create_manifest_explore_univariate}}.
-##' @param ds_observed The \code{data.frame} containing the data to be graphed.
+##' @param variableName The name of the single variable to graph.
+##' @param ds_metadata The \code{data.frame} containing the metadata. See \code{\link{CreateManifestExploreUnivariate}}.
+##' @param dsObserved The \code{data.frame} containing the data to be graphed.
 ##' 
 ##' @examples
-##' #ds_observed <- beaver1
-##' ds_observed <- InsectSprays
-##' ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds_observed, write_to_disk=FALSE)
+##' #dsObserved <- beaver1
+##' dsObserved <- InsectSprays
+##' ds_manifest <- TabularManifest::CreateManifestExploreUnivariate(dsObserved, writeToDisk=FALSE)
 ##'
-##' construct_graph_univariate(variable_name="count", ds_manifest, InsectSprays)
+##' construct_graph_univariate(variableName="count", ds_manifest, InsectSprays)
 ##' 
-##' construct_graph_list_univariate(ds_manifest=ds_manifest, ds_observed=ds_observed)
+##' construct_graph_list_univariate(ds_manifest=ds_manifest, dsObserved=dsObserved)
 
-construct_graph_univariate <- function( variable_name, ds_metadata, ds_observed ) {
-  ds_for_variable <- ds_metadata[ds_metadata$variable_name==variable_name, ]
-  variable_name <- ds_for_variable$variable_name
+construct_graph_univariate <- function( variableName, ds_metadata, dsObserved ) {
+  ds_for_variable <- ds_metadata[ds_metadata$variableName==variableName, ]
+  variableName <- ds_for_variable$variableName
   should_graph <- ds_for_variable$should_graph
   remark <- ds_for_variable$remark
   graphing_fx <- get(ds_for_variable$graph_function)
@@ -29,15 +29,15 @@ construct_graph_univariate <- function( variable_name, ds_metadata, ds_observed 
   
   bin_width <- ds_for_variable$bin_width
   if( should_graph ) 
-    g <- graphing_fx(ds_observed=ds_observed, variable_name=variable_name, bin_width=bin_width)
+    g <- graphing_fx(dsObserved=dsObserved, variableName=variableName, bin_width=bin_width)
   else
     g <- NULL
   
-  return(list(variable_name=variable_name, graph=g, remark=remark))
+  return(list(variableName=variableName, graph=g, remark=remark))
 }
 
-construct_graph_list_univariate <- function( ds_manifest, ds_observed ) {
-  graph_list <- lapply(X=ds_manifest$variable_name, FUN=construct_graph_univariate, ds_metadata=ds_manifest, ds_observed=ds_observed)
+construct_graph_list_univariate <- function( ds_manifest, dsObserved ) {
+  graph_list <- lapply(X=ds_manifest$variableName, FUN=construct_graph_univariate, ds_metadata=ds_manifest, dsObserved=dsObserved)
   return( graph_list )
 }
 
@@ -51,11 +51,11 @@ construct_graph_list_univariate <- function( ds_manifest, ds_observed ) {
 }
 
 
-# ds_observed <- beaver1
-# ds_observed <- InsectSprays
-# ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds_observed, write_to_disk=FALSE)
-# construct_graph_univariate(variable_name="temp", ds_manifest, beaver1)
+# dsObserved <- beaver1
+# dsObserved <- InsectSprays
+# ds_manifest <- TabularManifest::CreateManifestExploreUnivariate(dsObserved, writeToDisk=FALSE)
+# construct_graph_univariate(variableName="temp", ds_manifest, beaver1)
  
-# graph_list <- lapply(X=ds_manifest$variable_name, FUN=construct_graph_univariate, ds_metadata=ds_manifest, ds_observed=ds_observed)
+# graph_list <- lapply(X=ds_manifest$variableName, FUN=construct_graph_univariate, ds_metadata=ds_manifest, dsObserved=dsObserved)
 # 
-# construct_graph_list_univariate(ds_manifest=ds_manifest, ds_observed=ds_observed)
+# construct_graph_list_univariate(ds_manifest=ds_manifest, dsObserved=dsObserved)

@@ -5,29 +5,29 @@
 \alias{construct_graph_univariate}
 \title{Construct a graph or list of graphs}
 \usage{
-construct_graph_univariate(variable_name, ds_metadata, ds_observed)
+construct_graph_univariate(variableName, ds_metadata, dsObserved)
 }
 \arguments{
-  \item{variable_name}{The name of the single variable to
+  \item{variableName}{The name of the single variable to
   graph.}
 
   \item{ds_metadata}{The \code{data.frame} containing the
   metadata. See
-  \code{\link{create_manifest_explore_univariate}}.}
+  \code{\link{CreateManifestExploreUnivariate}}.}
 
-  \item{ds_observed}{The \code{data.frame} containing the
+  \item{dsObserved}{The \code{data.frame} containing the
   data to be graphed.}
 }
 \description{
 Construct a graph or list of graphs, whose characteristics are determined by a configuration file.
 }
 \examples{
-#ds_observed <- beaver1
-ds_observed <- InsectSprays
-ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds_observed, write_to_disk=FALSE)
+#dsObserved <- beaver1
+dsObserved <- InsectSprays
+ds_manifest <- TabularManifest::CreateManifestExploreUnivariate(dsObserved, writeToDisk=FALSE)
 
-construct_graph_univariate(variable_name="count", ds_manifest, InsectSprays)
+construct_graph_univariate(variableName="count", ds_manifest, InsectSprays)
 
-construct_graph_list_univariate(ds_manifest=ds_manifest, ds_observed=ds_observed)
+construct_graph_list_univariate(ds_manifest=ds_manifest, dsObserved=dsObserved)
 }
 
