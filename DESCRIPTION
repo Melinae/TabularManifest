@@ -8,7 +8,7 @@ Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
     "wibeasley@hotmail.com"),
     person("Chad", "Scherrer", role = "ctb"),
     person("Steve", "Soloway", role = "ctb"),
-	 person("Martin", "Lenardon", role = "aut"))
+    person("Martin", "Lenardon", role = "aut"))
 License: LGPL
 LazyData: TRUE
 VignetteBuilder: knitr

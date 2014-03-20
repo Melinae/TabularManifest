@@ -10,7 +10,7 @@ Thanks, the [Melinae](http://melinae.com/) Analytics Team
 
 Chad Scherrer, Steve Soloway, and Will Beasley
 
-If your organization is interested in the services of Insight Results, please contact [Steve Soloway](info@melinae.com) at {what belongs here}?  {Is there anything else someone would like to include?}
+If your organization is interested in the consulting services of Melinae, please contact [Steve Soloway](info@melinae.com) at {what belongs here}?  {Is there anything else someone would like to include?}
 
 For those interested in use the development version of `TabularManifest`, run the following two lines:
 ```

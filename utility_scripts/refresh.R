@@ -4,7 +4,7 @@ options(device = "windows") #http://support.rstudio.org/help/discussions/problem
 
 devtools::document()
 devtools::check_doc() #Should return NULL
-system("R CMD Rd2pdf --force --output=./documentation_peek.pdf ." )
+# system("R CMD Rd2pdf --force --output=./DocumentationPeek.pdf ." )
 
 devtools::run_examples(); dev.off() #This overwrites the NAMESPACE file too
 # devtools::run_examples(, "Go.Rd")
