@@ -56,5 +56,23 @@ HistogramContinuous <- function(
   g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color="tomato", hjust=c(1, 0), parse=TRUE)
   return( g )  
 }
+# dsMidPoints <- data.frame(Label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=F)  
+# dsMidPoints$Value <- c(median(dsPlot[, responseName], na.rm=TRUE), mean(dsPlot[, responseName], na.rm=TRUE))
+# dsMidPoints$ValueRounded <- round(dsMidPoints$Value, roundedDigits)
+# 
+# if( diff( dsMidPoints$Value) > 0) labelAlignment <- c(1, 0) #The median is less than the mean
+# else labelAlignment <- c(0, 1) #The mean is less than the median
+# 
+# g <- ggplot(dsPlot, aes_string(x=responseName)) 
+# g <- g + geom_bar(stat="bin", binwidth=binwidth, fill="gray70", color=color )
+# g <- g + geom_vline(xintercept=dsMidPoints$Value, color="gray30")
+# g <- g + geom_text(data=dsMidPoints, aes(x=Value, y=0, label=ValueRounded), color="red", hjust=labelAlignment, vjust=.5)
+# g <- g + scale_x_continuous(labels=comma_format())
+# g <- g + scale_y_continuous(labels=comma_format())
+# g <- g + labs(title=title, x=xLabel, y=yLabel)
+# g <- g + theme_bw()
+# dsMidPoints$Top <- quantile(ggplot_build(g)$panel$ranges[[1]]$y.range, .8)
+# g <- g + geom_text(data=dsMidPoints, aes(x=Value, y=Top, label=Label), color="red", hjust=labelAlignment, parse=T)
+# return( g ) 
 
 # HistogramContinuous(dsObserved=beaver1, variableName="temp", binWidth=.1)
