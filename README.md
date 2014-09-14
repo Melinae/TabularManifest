@@ -8,7 +8,7 @@ Our company has benefited from many tools developed by the community, and we'd l
 
 Thanks, the [Melinae](http://melinae.com/) Analytics Team
 
-Chad Scherrer, Steve Soloway, and Will Beasley
+Steve Soloway and Will Beasley
 
 If your organization is interested in the consulting services of Melinae, please contact [Steve Soloway](info@melinae.com) at {what belongs here}?  {Is there anything else someone would like to include?}
 
