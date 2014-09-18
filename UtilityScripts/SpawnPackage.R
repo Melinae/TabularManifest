@@ -7,3 +7,4 @@ devtools::create(  path=file.path(getwd(), "seed"), check=TRUE, description=list
   "Maintainer"="'Will Beasley' <wibeasley@hotmail.com>"
 ))
 
+add_travis(pkg = ".")

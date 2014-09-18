@@ -2,13 +2,13 @@ Package: TabularManifest
 Title: Tabular Manifest
 Description: Assists the manipulation and exploration of wide datasets with
     tabular configuration files
-Date: 2014-03-20
-Version: 0.1-15
+Date: 2014-09-18
+Version: 0.1-16
 Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
     "wibeasley@hotmail.com"),
     person("Chad", "Scherrer", role = "ctb"),
     person("Steve", "Soloway", role = "ctb"),
-    person("Martin", "Lenardon", role = "aut"))
+    person("Martin", "Lenardon", role = "ctb"))
 License: LGPL
 LazyData: TRUE
 VignetteBuilder: knitr

@@ -7,3 +7,4 @@ DocumentationPeek.pdf
 DocumentationForDevelopers/
 Playgrounds/
 UtilityScripts/
+^\.travis\.yml$

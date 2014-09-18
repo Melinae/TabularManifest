@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Melinae/TabularManifest.png?branch=master)](https://travis-ci.org/Melinae/TabularManifest)
+
 Tabular Manifest
 =======
 Our consulting company, [Melinae](http://melinae.com/), frequently assists clients with large datasets consisting of many variables of varying quality.  Before we can develop sophisticated statistical models to provide our client with insight and a competitive advantage, we first learn the characteristics of their existing datasets.  This package provides tools that assist our initial exploration of real-world datasets.  Although these tools are not a substitute of thoughtful inspection in our later analyses, these make the exploration more time efficient.  These tools allow us to more quickly start developing innovative solutions and delivering results.
