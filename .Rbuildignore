@@ -2,9 +2,9 @@
 ^\.Rproj\.user$
 ^\.gitignore$
 ^\.travis.yml$
+^ShortcutLucky1404\.lnk$
 
 DocumentationPeek.pdf
 DocumentationForDevelopers/
 Playgrounds/
 UtilityScripts/
-^\.travis\.yml$
