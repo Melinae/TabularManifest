@@ -1,5 +1,7 @@
-[![Build Status](https://travis-ci.org/Melinae/TabularManifest.png?branch=master)](https://travis-ci.org/Melinae/TabularManifest)
-[![DOI](https://zenodo.org/badge/4971/Melinae/TabularManifest.png)](http://dx.doi.org/10.5281/zenodo.11797)
+Travis-CI on Ubuntu 12.04 LTS: [![Build Status](https://travis-ci.org/Melinae/TabularManifest.png?branch=master)](https://travis-ci.org/Melinae/TabularManifest);
+AppVeyor on Windows Server 2012: [![Build status](https://ci.appveyor.com/api/projects/status/4elq22d0i3fvqufx/branch/master?svg=true)](https://ci.appveyor.com/project/wibeasley/tabularmanifest/branch/master).
+
+Independently-hosted Archive: [![DOI](https://zenodo.org/badge/4971/Melinae/TabularManifest.png)](http://dx.doi.org/10.5281/zenodo.11797).
 
 Tabular Manifest
 =======
