@@ -24,7 +24,7 @@ ConstructGraphUnivariate <- function( variableName, dsMetadata, dsObserved ) {
   variableName <- ds_for_variable$variableName
   shouldGraph <- ds_for_variable$shouldGraph
   remark <- ds_for_variable$remark
-  graphing_fx <- get(ds_for_variable$graphFunction)
+  graphing_fx <- base::get(ds_for_variable$graphFunction)
   x_label_fx <- .getWithPackage(ds_for_variable$xLabelFormat)
   
   binWidth <- ds_for_variable$binWidth
@@ -45,8 +45,8 @@ ConstructGraphListUnivariate <- function( dsManifest, dsObserved ) {
   #TODO: write regex so that it accommodates a period in the variable name.
   #   if( !grepl("^(\\w+)::(\\w+)$", qualifiedFunction, perl=TRUE) )
   #     stop("The function name should be qualified with it's package. For instance, pass `scales::comma` instead of simply `comma`.")
-  split_function <- strsplit(qualifiedFunction, split="::")[[1]]
-  fx <- getExportedValue(split_function[1], split_function[2])
+  split_function <- base::strsplit(qualifiedFunction, split="::")[[1]]
+  fx <- base::getExportedValue(split_function[1], split_function[2])
   return( fx )
 }
 
