@@ -13,8 +13,8 @@
 ##' \item{\code{binStart} The variable's \code{\link{class}}. (eg, numeric, Date, factor)}
 ##' }
 ##' @examples
-##' #TabularManifest:::CalculateBins(dsObserved=datasets::freeny)
-##' #TabularManifest:::CalculateBins(dsObserved=datasets::InsectSprays)
+##' #CalculateBins(dsObserved=datasets::freeny)
+##' #CalculateBins(dsObserved=datasets::InsectSprays)
 
 CalculateBins <- function( dsObserved, binCountSuggestion=30L ) {
   columnClass <- base::sapply(X=dsObserved, FUN=base::class)

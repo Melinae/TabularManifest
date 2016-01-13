@@ -86,8 +86,8 @@ CreateManifestExploreUnivariate <- function(
   matchedIndexFormat <- match(columnClass, names(defaultFormat))
   matchedIndexFormat <- ifelse(!is.na(matchedIndexFormat), matchedIndexFormat, which(names(defaultFormat)=="notMatched"))
   
-  bins <- TabularManifest:::CalculateBins(dsObserved, binCountSuggestion=binCountSuggestion)
-  rounding_digits <- TabularManifest:::CalculateRoundingDigits(dsObserved)
+  bins <- CalculateBins(dsObserved, binCountSuggestion=binCountSuggestion)
+  rounding_digits <- CalculateRoundingDigits(dsObserved)
   
   #Create the data.frame of metadata.
   ds_skeleton <- data.frame(

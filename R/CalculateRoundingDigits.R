@@ -9,9 +9,11 @@
 ##' @return Returns a \code{numeric} vector, indicating how many rounding digits *might* be appropriate.
 ##'   Each element is an array with as many values as columns in \code{dsObserved}.
 ##' @examples
-##' TabularManifest:::CalculateRoundingDigits(dsObserved=freeny)
-##' TabularManifest:::CalculateRoundingDigits(dsObserved=InsectSprays)
-##' TabularManifest:::CalculateRoundingDigits(dsObserved=beaver1)
+##' CalculateRoundingDigits(dsObserved=freeny)
+##' CalculateRoundingDigits(dsObserved=InsectSprays)
+##' CalculateRoundingDigits(dsObserved=beaver1)
+
+##' @export
 
 CalculateRoundingDigits <- function( dsObserved ) {
   columnClass <- base::sapply(X=dsObserved, FUN=base::class)
