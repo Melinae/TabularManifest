@@ -9,7 +9,7 @@
 #' 
 #' @usage
 #' CreateManifestExploreUnivariate(
-#'     dsObserved, 
+#'     ds_observed, 
 #'     writeToDisk = TRUE,
 #'     pathOut = getwd(), 
 #'     overwriteFile = FALSE,
@@ -24,29 +24,29 @@
 #'       numeric = "scales::comma", 
 #'       notMatched = "scales::comma"
 #'     ),
-#'     binCountSuggestion = 30L
+#'     bin_count_suggestion = 30L
 #' )
 #' 
 #' 
-#' @param dsObserved The \code{data.frame} to create metadata for.
+#' @param ds_observed The \code{data.frame} to create metadata for.
 #' @param writeToDisk Indicates if the meta-dataset should be saved as a CSV.
 #' @param pathOut The file path to save the meta-dataset.
 #' @param overwriteFile Indicates if the CSV of the meta-dataset should be overwritten if a file already exists at the location.
 #' @param defaultFormat A \code{character} array indicating which formatting function should be displayed on the axis of the univariate graph.
 #' @param defaultClassGraph A \code{character} array indicating which graph should be used with variables of a certain class.
-#' @param binCountSuggestion An \code{integer} value of the number of roughly the number bins desired for a histogram.
+#' @param bin_count_suggestion An \code{integer} value of the number of roughly the number bins desired for a histogram.
 #' 
-#' @return Returns a \code{data.frame} where each row in the metadata represents a column in \code{dsObserved}.
+#' @return Returns a \code{data.frame} where each row in the metadata represents a column in \code{ds_observed}.
 #' The metadata contains the following columns
 #' \enumerate{
-#' \item{\code{variableName} The variable name (in \code{dsObserved}). \code{character}.}
+#' \item{\code{variable_name} The variable name (in \code{ds_observed}). \code{character}.}
 #' \item{\code{remark} A blank field that allows theuser to enter notes in the CSV for later reference.}
 #' \item{\code{class} The variable's \code{\link{class}} (eg, numeric, Date, factor).  \code{character}.}
-#' \item{\code{shouldGraph} A boolean value indicating if the variable should be graphed. \code{logical}.}
-#' \item{\code{graphFunction} The name of the function used to graph the variable. \code{character}.}
-#' \item{\code{xLabelFormat} The name of the function used to format the \emph{x}-axis. \code{character}.}
-#' \item{\code{binWidth} The uniform width of the bins. \code{numeric}.}
-#' \item{\code{binStart} The location of the left boundary of the first bin. \code{numeric}.}
+#' \item{\code{should_graph} A boolean value indicating if the variable should be graphed. \code{logical}.}
+#' \item{\code{graph_function} The name of the function used to graph the variable. \code{character}.}
+#' \item{\code{x_label_format} The name of the function used to format the \emph{x}-axis. \code{character}.}
+#' \item{\code{bin_width} The uniform width of the bins. \code{numeric}.}
+#' \item{\code{bin_start} The location of the left boundary of the first bin. \code{numeric}.}
 #' }
 #' @keywords explore
 #' @examples
@@ -57,7 +57,7 @@
 #' CreateManifestExploreUnivariate(datasets::freeny, writeToDisk=FALSE)  
 
 CreateManifestExploreUnivariate <- function( 
-  dsObserved, 
+  ds_observed, 
   writeToDisk = TRUE, 
   pathOut = getwd(), 
   overwriteFile = FALSE,
@@ -72,38 +72,38 @@ CreateManifestExploreUnivariate <- function(
     "numeric" = "scales::comma",
     "notMatched" = "scales::comma"
     ),
-  binCountSuggestion = 30L
+  bin_count_suggestion = 30L
   ) {
   
   #Determine the variable's class (eg, numeric, integer, factor, ...).
-  columnClass <- sapply(X=dsObserved, FUN=class)
+  column_class <- sapply(X=ds_observed, FUN=class)
   
   #Determine the index of the most appropriate graph.
-  matchedIndexGraph <- match(columnClass, names(defaultClassGraph))
+  matchedIndexGraph <- match(column_class, names(defaultClassGraph))
   matchedIndexGraph <- ifelse(!is.na(matchedIndexGraph), matchedIndexGraph, which(names(defaultClassGraph)=="notMatched"))
  
   #Determine the index of the most appropriate format.
-  matchedIndexFormat <- match(columnClass, names(defaultFormat))
+  matchedIndexFormat <- match(column_class, names(defaultFormat))
   matchedIndexFormat <- ifelse(!is.na(matchedIndexFormat), matchedIndexFormat, which(names(defaultFormat)=="notMatched"))
   
-  bins <- CalculateBins(dsObserved, binCountSuggestion=binCountSuggestion)
-  rounding_digits <- CalculateRoundingDigits(dsObserved)
+  bins <- calculate_bins(ds_observed, bin_count_suggestion=bin_count_suggestion)
+  rounding_digits <- calculate_rounding_digits(ds_observed)
   
   #Create the data.frame of metadata.
   ds_skeleton <- data.frame(
-    variableName = colnames(dsObserved), 
+    variable_name = colnames(ds_observed), 
     remark = "", 
-    class = columnClass,
-    shouldGraph = TRUE, 
-    graphFunction = defaultClassGraph[matchedIndexGraph], 
-    xLabelFormat = defaultFormat[matchedIndexFormat],
-    binWidth = bins$binWidth,
-    binStart = bins$binStart,
+    class = column_class,
+    should_graph = TRUE, 
+    graph_function = defaultClassGraph[matchedIndexGraph], 
+    x_label_format = defaultFormat[matchedIndexFormat],
+    bin_width = bins$bin_width,
+    bin_start = bins$bin_start,
     rounding_digits = rounding_digits,
     stringsAsFactors = FALSE
   )
 
-  #Ths sapply function sets rownames for the dataset.  They're redundant with the `variableName` column.
+  #Ths sapply function sets rownames for the dataset.  They're redundant with the `variable_name` column.
   row.names(ds_skeleton) <- NULL 
   
   #If desired, write the data.frame to disk as a CSV.

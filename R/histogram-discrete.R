@@ -7,22 +7,22 @@
 #' the researcher with a quick, yet thorough representation of the continuous variable.  The additional annotations may not
 #' be desired for publication-quality plots.
 #' 
-#' @param dsObserved The \code{data.frame} with the variable to graph.
-#' @param variableName The name of the variable to graph. \code{character}.
+#' @param ds_observed The \code{data.frame} with the variable to graph.
+#' @param variable_name The name of the variable to graph. \code{character}.
 #' @param levelsToExclude An array of of the levels to be excluded from the histogram. Pass an empty variable (\emph{ie}, \code{character(0)}) if all levels are desired; this is the default. \code{character}.
-#' @param mainTitle The desired title on top of the graph.  Defaults to \code{variableName}. If no title is desired, pass a value of \code{NULL}. \code{character}.
+#' @param mainTitle The desired title on top of the graph.  Defaults to \code{variable_name}. If no title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param xTitle The desired title on the \emph{x}-axis.  Defaults to the number of included records. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param yTitle The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param textSizePercentage The size of the percentage values on top of the bars. \code{character}.
-#' @param binWidth (This parameter is included for compatibility with other graphing functions.  It should always be \code{1} for discrete and boolean variables.)
+#' @param bin_width (This parameter is included for compatibility with other graphing functions.  It should always be \code{1} for discrete and boolean variables.)
 #' 
 #' @return Returns a histogram as a \code{ggplot2} object. 
 #' @examples
 #' library(datasets)
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) ) { 
-#'   HistogramDiscrete(dsObserved=infert, variableName="education")
-#'   HistogramDiscrete(dsObserved=infert, variableName="age")
+#'   HistogramDiscrete(ds_observed=infert, variable_name="education")
+#'   HistogramDiscrete(ds_observed=infert, variable_name="age")
 #' }
 
 ##TODO: also include the number of missing & excluded records.  Possibly the excluded levels too.
@@ -31,21 +31,21 @@
 ##TODO: add parameter for toggling between bars or points. create_manifest defaults to dots if they're more than 10 or 15 categories.  Otherwise it's a bar.
 
 HistogramDiscrete <- function( 
-  dsObserved, 
-  variableName, 
+  ds_observed, 
+  variable_name, 
   levelsToExclude = character(0), 
-  mainTitle = variableName, 
+  mainTitle = variable_name, 
   xTitle = NULL, 
   yTitle = "Number of Included Records", 
   textSizePercentage = 6,
-  binWidth = 1L) {
+  bin_width = 1L) {
   
-  if( !base::is.factor(dsObserved[, variableName]) )
-    dsObserved[, variableName] <- base::factor(dsObserved[, variableName])
+  if( !base::is.factor(ds_observed[, variable_name]) )
+    ds_observed[, variable_name] <- base::factor(ds_observed[, variable_name])
   
-  dsObserved$IV <- base::ordered(dsObserved[, variableName], levels=rev(levels(dsObserved[, variableName])))
+  ds_observed$IV <- base::ordered(ds_observed[, variable_name], levels=rev(levels(ds_observed[, variable_name])))
   
-  dsCount <- plyr::count(dsObserved, vars=c("IV"))
+  dsCount <- plyr::count(ds_observed, vars=c("IV"))
 #   if( base::length(levelsToExclude)>0 ) {
   dsCount <- dsCount[!(dsCount$IV %in% levelsToExclude), ]
   
@@ -75,5 +75,5 @@ HistogramDiscrete <- function(
   return( g )
 }
 
-# HistogramDiscrete(dsObserved=infert, variableName="education")
-# HistogramDiscrete(dsObserved=infert, variableName="age")
+# HistogramDiscrete(ds_observed=infert, variable_name="education")
+# HistogramDiscrete(ds_observed=infert, variable_name="age")

@@ -6,7 +6,7 @@
 \usage{
 ScatterModelDiscreteXBinaryYLogit(dsPlot, xName, yName = "y",
   yHatName = "yhat", residualName = "residual", alphaPoint = 0.05,
-  alphaSEBand = 0.15, xLabelFormat = scales::comma,
+  alphaSEBand = 0.15, x_label_format = scales::comma,
   colorSmoothObserved = "#1b9e77", colorSmoothPredicted = "#d95f02",
   colorSmoothResidual = "#7570b3", colorGroupCount = "tomato",
   verticalLimits = c(-0.05, 1.05),
@@ -29,7 +29,7 @@ ScatterModelDiscreteXBinaryYLogit(dsPlot, xName, yName = "y",
 
 \item{alphaSEBand}{The transparency of the standard error bands. A \code{numeric} value from 0 to 1.}
 
-\item{xLabelFormat}{The name of the function used to format the \emph{x}-axis. \code{character}.}
+\item{x_label_format}{The name of the function used to format the \emph{x}-axis. \code{character}.}
 
 \item{colorSmoothObserved}{The plotted color of the observed values' GAM trend.  \code{character}.}
 

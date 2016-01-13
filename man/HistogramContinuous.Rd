@@ -4,21 +4,21 @@
 \alias{HistogramContinuous}
 \title{Generate a Histogram for a \code{numeric} or \code{integer} variable.}
 \usage{
-HistogramContinuous(dsObserved, variableName, binWidth = NULL,
-  mainTitle = variableName, xTitle = paste0(variableName, " (each bin is ",
-  scales::comma(binWidth), " units wide)"), yTitle = "Frequency",
-  roundedDigits = 0L)
+HistogramContinuous(ds_observed, variable_name, bin_width = NULL,
+  mainTitle = variable_name, xTitle = paste0(variable_name,
+  " (each bin is ", scales::comma(bin_width), " units wide)"),
+  yTitle = "Frequency", roundedDigits = 0L)
 }
 \arguments{
-\item{dsObserved}{The \code{data.frame} with the variable to graph.}
+\item{ds_observed}{The \code{data.frame} with the variable to graph.}
 
-\item{variableName}{The name of the variable to graph. \code{character}.}
+\item{variable_name}{The name of the variable to graph. \code{character}.}
 
-\item{binWidth}{The width of the histogram bins. If NULL, the \code{ggplot2} default is used. \code{numeric}.}
+\item{bin_width}{The width of the histogram bins. If NULL, the \code{ggplot2} default is used. \code{numeric}.}
 
-\item{mainTitle}{The desired title on top of the graph.  Defaults to \code{variableName}. If no title is desired, pass a value of \code{NULL}. \code{character}.}
+\item{mainTitle}{The desired title on top of the graph.  Defaults to \code{variable_name}. If no title is desired, pass a value of \code{NULL}. \code{character}.}
 
-\item{xTitle}{The desired title on the \emph{x}-axis.  Defaults to the \code{variableName} and the \code{binWidth}. If no axis title is desired, pass a value of \code{NULL}. \code{character}.}
+\item{xTitle}{The desired title on the \emph{x}-axis.  Defaults to the \code{variable_name} and the \code{bin_width}. If no axis title is desired, pass a value of \code{NULL}. \code{character}.}
 
 \item{yTitle}{The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.}
 
@@ -36,7 +36,7 @@ be desired for publication-quality plots.
 library(datasets)
 #Don't run graphs on a headless machine without any the basic graphics packages installed.
 if( require(grDevices) ) { 
-  HistogramContinuous(dsObserved=beaver1, variableName="temp", binWidth=.1)
+  HistogramContinuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
 }
 }
 

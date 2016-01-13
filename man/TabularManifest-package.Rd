@@ -40,8 +40,8 @@ If your organization is interested in the consulting services of Melinae, please
 CreateManifestExploreUnivariate(datasets::InsectSprays, writeToDisk=FALSE)
 
 if( require(grDevices) ) {
-  HistogramContinuous(dsObserved=beaver1, variableName="temp", binWidth=.1)
-  HistogramDiscrete(dsObserved=infert, variableName="age")
+  HistogramContinuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
+  HistogramDiscrete(ds_observed=infert, variable_name="age")
 }
 }
 \author{

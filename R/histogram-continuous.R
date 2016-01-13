@@ -7,11 +7,11 @@
 #' the researcher with a quick, yet thorough representation of the continuous variable.  The additional annotations may not
 #' be desired for publication-quality plots.
 #' 
-#' @param dsObserved The \code{data.frame} with the variable to graph.
-#' @param variableName The name of the variable to graph. \code{character}.
-#' @param binWidth The width of the histogram bins. If NULL, the \code{ggplot2} default is used. \code{numeric}.
-#' @param mainTitle The desired title on top of the graph.  Defaults to \code{variableName}. If no title is desired, pass a value of \code{NULL}. \code{character}.
-#' @param xTitle The desired title on the \emph{x}-axis.  Defaults to the \code{variableName} and the \code{binWidth}. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
+#' @param ds_observed The \code{data.frame} with the variable to graph.
+#' @param variable_name The name of the variable to graph. \code{character}.
+#' @param bin_width The width of the histogram bins. If NULL, the \code{ggplot2} default is used. \code{numeric}.
+#' @param mainTitle The desired title on top of the graph.  Defaults to \code{variable_name}. If no title is desired, pass a value of \code{NULL}. \code{character}.
+#' @param xTitle The desired title on the \emph{x}-axis.  Defaults to the \code{variable_name} and the \code{bin_width}. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param yTitle The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param roundedDigits The number of decimals to show for the mean and median annotations. \code{character}.
 #' 
@@ -20,7 +20,7 @@
 #' library(datasets)
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) ) { 
-#'   HistogramContinuous(dsObserved=beaver1, variableName="temp", binWidth=.1)
+#'   HistogramContinuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
 #' }
 
 #TODO: switch the hadj if there's a negative skew (so the mean is on the left side of the median)
@@ -28,23 +28,23 @@
 ##TODO: add option for facet variable.
 
 HistogramContinuous <- function( 
-  dsObserved, 
-  variableName, 
-  binWidth = NULL, 
-  mainTitle = variableName, 
-  xTitle = paste0(variableName, " (each bin is ", scales::comma(binWidth), " units wide)"), 
+  ds_observed, 
+  variable_name, 
+  bin_width = NULL, 
+  mainTitle = variable_name, 
+  xTitle = paste0(variable_name, " (each bin is ", scales::comma(bin_width), " units wide)"), 
   yTitle = "Frequency",
   roundedDigits = 0L
   ) {
   
-  dsObserved <- dsObserved[!base::is.na(dsObserved[, variableName]), ]
+  ds_observed <- ds_observed[!base::is.na(ds_observed[, variable_name]), ]
   
   ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)  
-  ds_mid_points$value <- c(stats::median(dsObserved[, variableName]), base::mean(dsObserved[, variableName]))
+  ds_mid_points$value <- c(stats::median(ds_observed[, variable_name]), base::mean(ds_observed[, variable_name]))
   ds_mid_points$value_rounded <- base::round(ds_mid_points$value, roundedDigits)
   
-  g <- ggplot2::ggplot(dsObserved, ggplot2::aes_string(x=variableName)) 
-  g <- g + ggplot2::geom_bar(stat="bin", binwidth=binWidth, fill="gray70", color="gray90", position=ggplot2::position_identity())
+  g <- ggplot2::ggplot(ds_observed, ggplot2::aes_string(x=variable_name)) 
+  g <- g + ggplot2::geom_bar(stat="bin", binwidth=bin_width, fill="gray70", color="gray90", position=ggplot2::position_identity())
   g <- g + ggplot2::geom_vline(xintercept=ds_mid_points$value, color="gray30")
   g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=0, label="value_rounded"), color="tomato", hjust=c(1, 0), vjust=.5)
   g <- g + ggplot2::scale_x_continuous(labels=scales::comma_format())
@@ -64,7 +64,7 @@ HistogramContinuous <- function(
 # else labelAlignment <- c(0, 1) #The mean is less than the median
 # 
 # g <- ggplot(dsPlot, aes_string(x=responseName)) 
-# g <- g + geom_bar(stat="bin", binwidth=binwidth, fill="gray70", color=color )
+# g <- g + geom_bar(stat="bin", binwidth=bin_width, fill="gray70", color=color )
 # g <- g + geom_vline(xintercept=dsMidPoints$Value, color="gray30")
 # g <- g + geom_text(data=dsMidPoints, aes(x=Value, y=0, label=ValueRounded), color="red", hjust=labelAlignment, vjust=.5)
 # g <- g + scale_x_continuous(labels=comma_format())
@@ -75,4 +75,4 @@ HistogramContinuous <- function(
 # g <- g + geom_text(data=dsMidPoints, aes(x=Value, y=Top, label=Label), color="red", hjust=labelAlignment, parse=T)
 # return( g ) 
 
-# HistogramContinuous(dsObserved=beaver1, variableName="temp", binWidth=.1)
+# HistogramContinuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)

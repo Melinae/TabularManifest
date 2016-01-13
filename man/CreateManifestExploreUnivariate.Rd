@@ -5,7 +5,7 @@
 \title{Create a manifest for exploratoring univariate patterns.}
 \usage{
 CreateManifestExploreUnivariate(
-    dsObserved, 
+    ds_observed, 
     writeToDisk = TRUE,
     pathOut = getwd(), 
     overwriteFile = FALSE,
@@ -20,11 +20,11 @@ CreateManifestExploreUnivariate(
       numeric = "scales::comma", 
       notMatched = "scales::comma"
     ),
-    binCountSuggestion = 30L
+    bin_count_suggestion = 30L
 )
 }
 \arguments{
-\item{dsObserved}{The \code{data.frame} to create metadata for.}
+\item{ds_observed}{The \code{data.frame} to create metadata for.}
 
 \item{writeToDisk}{Indicates if the meta-dataset should be saved as a CSV.}
 
@@ -36,20 +36,20 @@ CreateManifestExploreUnivariate(
 
 \item{defaultFormat}{A \code{character} array indicating which formatting function should be displayed on the axis of the univariate graph.}
 
-\item{binCountSuggestion}{An \code{integer} value of the number of roughly the number bins desired for a histogram.}
+\item{bin_count_suggestion}{An \code{integer} value of the number of roughly the number bins desired for a histogram.}
 }
 \value{
-Returns a \code{data.frame} where each row in the metadata represents a column in \code{dsObserved}.
+Returns a \code{data.frame} where each row in the metadata represents a column in \code{ds_observed}.
 The metadata contains the following columns
 \enumerate{
-\item{\code{variableName} The variable name (in \code{dsObserved}). \code{character}.}
+\item{\code{variable_name} The variable name (in \code{ds_observed}). \code{character}.}
 \item{\code{remark} A blank field that allows theuser to enter notes in the CSV for later reference.}
 \item{\code{class} The variable's \code{\link{class}} (eg, numeric, Date, factor).  \code{character}.}
-\item{\code{shouldGraph} A boolean value indicating if the variable should be graphed. \code{logical}.}
-\item{\code{graphFunction} The name of the function used to graph the variable. \code{character}.}
-\item{\code{xLabelFormat} The name of the function used to format the \emph{x}-axis. \code{character}.}
-\item{\code{binWidth} The uniform width of the bins. \code{numeric}.}
-\item{\code{binStart} The location of the left boundary of the first bin. \code{numeric}.}
+\item{\code{should_graph} A boolean value indicating if the variable should be graphed. \code{logical}.}
+\item{\code{graph_function} The name of the function used to graph the variable. \code{character}.}
+\item{\code{x_label_format} The name of the function used to format the \emph{x}-axis. \code{character}.}
+\item{\code{bin_width} The uniform width of the bins. \code{numeric}.}
+\item{\code{bin_start} The location of the left boundary of the first bin. \code{numeric}.}
 }
 }
 \description{

@@ -6,7 +6,7 @@
 \usage{
 ScatterModelContinuousXBinaryYLogit(ds_plot, x_name, y_name = "y",
   yhat_name = "yhat", residual_name = "residual", alpha_point = 0.05,
-  alpha_se_band = 0.15, xLabelFormat = scales::comma,
+  alpha_se_band = 0.15, x_label_format = scales::comma,
   color_smooth_observed = "#1b9e77", color_smooth_predicted = "#d95f02",
   color_smooth_residual = "#7570b3", vertical_limits = c(-0.05, 1.05),
   jitter_observed = ggplot2::position_jitter(w = 0, h = 0.2),
@@ -28,7 +28,7 @@ ScatterModelContinuousXBinaryYLogit(ds_plot, x_name, y_name = "y",
 
 \item{alpha_se_band}{The transparency of the standard error bands. A \code{numeric} value from 0 to 1.}
 
-\item{xLabelFormat}{The name of the function used to format the \emph{x}-axis. \code{character}.}
+\item{x_label_format}{The name of the function used to format the \emph{x}-axis. \code{character}.}
 
 \item{color_smooth_observed}{The plotted color of the observed values' GAM trend.  \code{character}.}
 

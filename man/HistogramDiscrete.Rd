@@ -4,19 +4,19 @@
 \alias{HistogramDiscrete}
 \title{Generate a Histogram for a \code{character} or \code{factor} variable.}
 \usage{
-HistogramDiscrete(dsObserved, variableName, levelsToExclude = character(0),
-  mainTitle = variableName, xTitle = NULL,
+HistogramDiscrete(ds_observed, variable_name, levelsToExclude = character(0),
+  mainTitle = variable_name, xTitle = NULL,
   yTitle = "Number of Included Records", textSizePercentage = 6,
-  binWidth = 1L)
+  bin_width = 1L)
 }
 \arguments{
-\item{dsObserved}{The \code{data.frame} with the variable to graph.}
+\item{ds_observed}{The \code{data.frame} with the variable to graph.}
 
-\item{variableName}{The name of the variable to graph. \code{character}.}
+\item{variable_name}{The name of the variable to graph. \code{character}.}
 
 \item{levelsToExclude}{An array of of the levels to be excluded from the histogram. Pass an empty variable (\emph{ie}, \code{character(0)}) if all levels are desired; this is the default. \code{character}.}
 
-\item{mainTitle}{The desired title on top of the graph.  Defaults to \code{variableName}. If no title is desired, pass a value of \code{NULL}. \code{character}.}
+\item{mainTitle}{The desired title on top of the graph.  Defaults to \code{variable_name}. If no title is desired, pass a value of \code{NULL}. \code{character}.}
 
 \item{xTitle}{The desired title on the \emph{x}-axis.  Defaults to the number of included records. If no axis title is desired, pass a value of \code{NULL}. \code{character}.}
 
@@ -24,7 +24,7 @@ HistogramDiscrete(dsObserved, variableName, levelsToExclude = character(0),
 
 \item{textSizePercentage}{The size of the percentage values on top of the bars. \code{character}.}
 
-\item{binWidth}{(This parameter is included for compatibility with other graphing functions.  It should always be \code{1} for discrete and boolean variables.)}
+\item{bin_width}{(This parameter is included for compatibility with other graphing functions.  It should always be \code{1} for discrete and boolean variables.)}
 }
 \value{
 Returns a histogram as a \code{ggplot2} object.
@@ -38,8 +38,8 @@ be desired for publication-quality plots.
 library(datasets)
 #Don't run graphs on a headless machine without any the basic graphics packages installed.
 if( require(grDevices) ) { 
-  HistogramDiscrete(dsObserved=infert, variableName="education")
-  HistogramDiscrete(dsObserved=infert, variableName="age")
+  HistogramDiscrete(ds_observed=infert, variable_name="education")
+  HistogramDiscrete(ds_observed=infert, variable_name="age")
 }
 }
 

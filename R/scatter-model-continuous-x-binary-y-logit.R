@@ -12,7 +12,7 @@
 #' @param residual_name The name of the model residual. \code{character}.
 #' @param alpha_point The transparency of each plotted point. A \code{numeric} value from 0 to 1.
 #' @param alpha_se_band  The transparency of the standard error bands. A \code{numeric} value from 0 to 1.
-#' @param xLabelFormat The name of the function used to format the \emph{x}-axis. \code{character}.
+#' @param x_label_format The name of the function used to format the \emph{x}-axis. \code{character}.
 #' @param color_smooth_observed The plotted color of the observed values' GAM trend.  \code{character}.
 #' @param color_smooth_predicted The plotted color of the predicted's GAM trend.  \code{character}.
 #' @param color_smooth_residual The plotted color of the residual's GAM trend.  \code{character}.
@@ -29,7 +29,7 @@ ScatterModelContinuousXBinaryYLogit <- function(
   residual_name = "residual",
   alpha_point = .05, 
   alpha_se_band = .15, 
-  xLabelFormat = scales::comma,
+  x_label_format = scales::comma,
   color_smooth_observed = "#1b9e77",
   color_smooth_predicted = "#d95f02",
   color_smooth_residual = "#7570b3",
@@ -59,7 +59,7 @@ ScatterModelContinuousXBinaryYLogit <- function(
   gObs <- ggplot2::ggplot(ds_plot, ggplot2::aes_string(x=x_name, y=y_name)) +
     ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=T, position=jitter_observed) +
     ggplot2::geom_smooth(method="gam", formula=y~s(x,bs="cs"), alpha=alpha_se_band, color=color_smooth_observed, fill=color_smooth_observed, size=1, na.rm=TRUE) +
-    ggplot2::scale_x_continuous(label=xLabelFormat) +
+    ggplot2::scale_x_continuous(label=x_label_format) +
     ggplot2::scale_y_continuous(limits=vertical_limits, breaks=0:1, labels=c("No", "    Yes")) + #The extra spaces are a hack to get the panels to line up.
     #     scale_y_continuous(limits=c(0,1), breaks=0:2, labels=c("No", "Yes","100%")) + #A failed attempt to get the panel borders to line up.
     ggplot2::theme_bw() +
@@ -70,7 +70,7 @@ ScatterModelContinuousXBinaryYLogit <- function(
     ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=T, position=jitter_predicted) +
     ggplot2::geom_smooth(method=mgcv::gam, formula=y~s(x,bs="cs"), alpha=alpha_se_band, color=color_smooth_predicted, fill=color_smooth_predicted, size=1, na.rm=TRUE) +
     ggplot2::geom_smooth(ggplot2::aes_string(y=y_name), method="gam", formula=y~s(x,bs="cs"), alpha=alpha_se_band*alpha_se_band, color=color_smooth_observed, fill=color_smooth_observed, na.rm=TRUE) +
-    ggplot2::scale_x_continuous(label=xLabelFormat) +
+    ggplot2::scale_x_continuous(label=x_label_format) +
     ggplot2::scale_y_continuous(limits=vertical_limits, label=scales::percent) +
     ggplot2::theme_bw() +
     ggplot2::labs(x=NULL, y="Predicted Pr(purchase)")  + 
@@ -79,7 +79,7 @@ ScatterModelContinuousXBinaryYLogit <- function(
   gResidual <- ggplot2::ggplot(ds_plot, ggplot2::aes_string(x=x_name, y=residual_name)) +
     ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=T, position=jitter_predicted) +
     ggplot2::geom_smooth(method=mgcv::gam, formula=y~s(x,bs="cs"), alpha=alpha_se_band, color=color_smooth_residual, fill=color_smooth_residual, size=1, na.rm=TRUE) +
-    ggplot2::scale_x_continuous(label=xLabelFormat) +
+    ggplot2::scale_x_continuous(label=x_label_format) +
     ggplot2::scale_y_continuous(breaks=c(-2,0,2), labels=c("-2", "0","       2")) + #The extra spaces are a hack to get the panels to line up.
     ggplot2::theme_bw() +
     ggplot2::labs(x=NULL, y="Residual") + 
