@@ -5,7 +5,6 @@
 ^appveyor\.yml$
 ^revdep$
 ^cran-comments\.md$
-^ShortcutLucky1404\.lnk$
 
 documentation-peek.pdf
 documentation-for-developers/
