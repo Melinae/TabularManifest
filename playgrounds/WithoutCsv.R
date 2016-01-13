@@ -7,7 +7,7 @@ require(scales)
 
 #ds_observed <- beaver1
 ds_observed <- InsectSprays
-ds_manifest <- TabularManifest::CreateManifestExploreUnivariate(ds, writeToDisk=FALSE)
+ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds, write_to_disk=FALSE)
 
 # get_with_package <- function( qualified_function ) {
 #   #TODO: write regex so that it accommodates a period in the variable name.

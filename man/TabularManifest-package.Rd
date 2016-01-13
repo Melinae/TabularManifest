@@ -37,11 +37,11 @@ If your organization is interested in the consulting services of Melinae, please
 }
 \examples{
 
-CreateManifestExploreUnivariate(datasets::InsectSprays, writeToDisk=FALSE)
+create_manifest_explore_univariate(datasets::InsectSprays, write_to_disk=FALSE)
 
 if( require(grDevices) ) {
-  HistogramContinuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
-  HistogramDiscrete(ds_observed=infert, variable_name="age")
+  histogram_continuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
+  histogram_discrete(ds_observed=infert, variable_name="age")
 }
 }
 \author{
