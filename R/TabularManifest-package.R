@@ -46,10 +46,10 @@
 #' @keywords package
 #' @examples
 #' 
-##' CreateManifestExploreUnivariate(datasets::InsectSprays, writeToDisk=FALSE)
-##' 
-##' if( require(grDevices) ) {
-##'   HistogramContinuous(dsObserved=beaver1, variableName="temp", binWidth=.1)
-##'   HistogramDiscrete(dsObserved=infert, variableName="age")
-##' }
+#' CreateManifestExploreUnivariate(datasets::InsectSprays, writeToDisk=FALSE)
+#' 
+#' if( require(grDevices) ) {
+#'   HistogramContinuous(dsObserved=beaver1, variableName="temp", binWidth=.1)
+#'   HistogramDiscrete(dsObserved=infert, variableName="age")
+#' }
 NULL

@@ -1,23 +1,23 @@
-##' @name ConstructGraph
-##' @aliases ConstructGraphUnivariate  ConstructGraphListUnivariate
-##' @export ConstructGraphUnivariate ConstructGraphListUnivariate
-##' 
-##' @title Construct a graph or list of graphs
-##' 
-##' @description Construct a graph or list of graphs, whose characteristics are determined by a configuration file.
-##' 
-##' @param variableName The name of the single variable to graph.
-##' @param dsMetadata The \code{data.frame} containing the metadata. See \code{\link{CreateManifestExploreUnivariate}}.
-##' @param dsObserved The \code{data.frame} containing the data to be graphed.
-##' 
-##' @examples
-##' #dsObserved <- beaver1
-##' dsObserved <- InsectSprays
-##' dsManifest <- TabularManifest::CreateManifestExploreUnivariate(dsObserved, writeToDisk=FALSE)
+#' @name ConstructGraph
+#' @aliases ConstructGraphUnivariate  ConstructGraphListUnivariate
+#' @export ConstructGraphUnivariate ConstructGraphListUnivariate
+#' 
+#' @title Construct a graph or list of graphs
+#' 
+#' @description Construct a graph or list of graphs, whose characteristics are determined by a configuration file.
+#' 
+#' @param variableName The name of the single variable to graph.
+#' @param dsMetadata The \code{data.frame} containing the metadata. See \code{\link{CreateManifestExploreUnivariate}}.
+#' @param dsObserved The \code{data.frame} containing the data to be graphed.
+#' 
+#' @examples
+#' #dsObserved <- beaver1
+#' dsObserved <- InsectSprays
+#' dsManifest <- TabularManifest::CreateManifestExploreUnivariate(dsObserved, writeToDisk=FALSE)
 ##'
-##' ConstructGraphUnivariate(variableName="count", dsManifest, InsectSprays)
-##' 
-##' ConstructGraphListUnivariate(dsManifest=dsManifest, dsObserved=dsObserved)
+#' ConstructGraphUnivariate(variableName="count", dsManifest, InsectSprays)
+#' 
+#' ConstructGraphListUnivariate(dsManifest=dsManifest, dsObserved=dsObserved)
 
 ConstructGraphUnivariate <- function( variableName, dsMetadata, dsObserved ) {
   ds_for_variable <- dsMetadata[dsMetadata$variableName==variableName, ]

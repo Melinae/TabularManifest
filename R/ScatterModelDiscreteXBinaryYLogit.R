@@ -1,26 +1,26 @@
-##' @name ScatterModelDiscreteXBinaryYLogit
-##' @export
-##' 
-##' @title Internal function for examining a logit performance
-##' 
-##' @description Internal function for examining a logit performance
-##' 
-##' @param dsPlot The \code{data.frame} of observed and predicted values to plot.
-##' @param xName The name of the predictor \code{character}.
-##' @param yName The name of the observed response \code{character}.
-##' @param yHatName The name of the predicted response \code{character}.
-##' @param residualName The name of the model residual. \code{character}.
-##' @param alphaPoint The transparency of each plotted point. A \code{numeric} value from 0 to 1.
-##' @param alphaSEBand  The transparency of the standard error bands. A \code{numeric} value from 0 to 1.
-##' @param xLabelFormat The name of the function used to format the \emph{x}-axis. \code{character}.
-##' @param colorSmoothObserved The plotted color of the observed values' GAM trend.  \code{character}.
-##' @param colorSmoothPredicted The plotted color of the predicted's GAM trend.  \code{character}.
-##' @param colorSmoothResidual The plotted color of the residual's GAM trend.  \code{character}.
-##' @param colorGroupCount The color indicating how many cases belong to each level.  \code{character}.
-##' @param verticalLimits The plotted limits of the response variable. A two-element \code{numeric} array.
-##' @param jitterObserved A function dictating how the observed values are jittered.
-##' @param jitterPredicted A function dictating how the predicted values are jittered.
-##' @param seedValue The value of the RNG seed, which affects jittering. No seed is set if a value of \code{NA} is passed.  \code{numeric}.
+#' @name ScatterModelDiscreteXBinaryYLogit
+#' @export
+#' 
+#' @title Internal function for examining a logit performance
+#' 
+#' @description Internal function for examining a logit performance
+#' 
+#' @param dsPlot The \code{data.frame} of observed and predicted values to plot.
+#' @param xName The name of the predictor \code{character}.
+#' @param yName The name of the observed response \code{character}.
+#' @param yHatName The name of the predicted response \code{character}.
+#' @param residualName The name of the model residual. \code{character}.
+#' @param alphaPoint The transparency of each plotted point. A \code{numeric} value from 0 to 1.
+#' @param alphaSEBand  The transparency of the standard error bands. A \code{numeric} value from 0 to 1.
+#' @param xLabelFormat The name of the function used to format the \emph{x}-axis. \code{character}.
+#' @param colorSmoothObserved The plotted color of the observed values' GAM trend.  \code{character}.
+#' @param colorSmoothPredicted The plotted color of the predicted's GAM trend.  \code{character}.
+#' @param colorSmoothResidual The plotted color of the residual's GAM trend.  \code{character}.
+#' @param colorGroupCount The color indicating how many cases belong to each level.  \code{character}.
+#' @param verticalLimits The plotted limits of the response variable. A two-element \code{numeric} array.
+#' @param jitterObserved A function dictating how the observed values are jittered.
+#' @param jitterPredicted A function dictating how the predicted values are jittered.
+#' @param seedValue The value of the RNG seed, which affects jittering. No seed is set if a value of \code{NA} is passed.  \code{numeric}.
 
 ScatterModelDiscreteXBinaryYLogit <- function(   
   dsPlot, 

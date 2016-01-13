@@ -1,19 +1,19 @@
-##' @name CalculateRoundingDigits
-##' 
-##' @title Internal function for calculating rounding digits for dataset variables
-##' 
-##' @description An internal function (ie, that's not currently exposed/exported outside the package) for creating default bins for dataset variables.
-##' 
-##' @param dsObserved The \code{data.frame} with columns to calculate bins.
+#' @name CalculateRoundingDigits
+#' 
+#' @title Internal function for calculating rounding digits for dataset variables
+#' 
+#' @description An internal function (ie, that's not currently exposed/exported outside the package) for creating default bins for dataset variables.
+#' 
+#' @param dsObserved The \code{data.frame} with columns to calculate bins.
 
-##' @return Returns a \code{numeric} vector, indicating how many rounding digits *might* be appropriate.
-##'   Each element is an array with as many values as columns in \code{dsObserved}.
-##' @examples
-##' CalculateRoundingDigits(dsObserved=freeny)
-##' CalculateRoundingDigits(dsObserved=InsectSprays)
-##' CalculateRoundingDigits(dsObserved=beaver1)
+#' @return Returns a \code{numeric} vector, indicating how many rounding digits *might* be appropriate.
+#'   Each element is an array with as many values as columns in \code{dsObserved}.
+#' @examples
+#' CalculateRoundingDigits(dsObserved=freeny)
+#' CalculateRoundingDigits(dsObserved=InsectSprays)
+#' CalculateRoundingDigits(dsObserved=beaver1)
 
-##' @export
+#' @export
 
 CalculateRoundingDigits <- function( dsObserved ) {
   columnClass <- base::sapply(X=dsObserved, FUN=base::class)
