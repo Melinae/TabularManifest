@@ -63,7 +63,7 @@ scatter_model_discrete_x_binary_y_logit <- function(
     ggplot2::scale_x_discrete(label=x_label_format) +
     ggplot2::scale_y_continuous(limits=vertical_limits, breaks=0:1, labels=c("No", "    Yes")) + #The extra spaces are a hack to get the panels to line up.
     #     scale_y_continuous(limits=c(0,1), breaks=0:2, labels=c("No", "Yes","100%")) + #A failed attempt to get the panel borders to line up.
-    ggplot2::theme_bw() +
+    ggplot2::theme_light() +
     ggplot2::labs(x=NULL, y="Purchased") +
     purchase_relationship_theme
 
@@ -74,7 +74,7 @@ scatter_model_discrete_x_binary_y_logit <- function(
     ggplot2::stat_summary(ggplot2::aes_string(y=y_name),fun.y="mean", geom="point", color=color_smooth_observed, shape=5, size=5) + #Chang's Cookbook, Section 6.8
     ggplot2::scale_x_discrete(label=x_label_format) +
     ggplot2::scale_y_continuous(limits=vertical_limits, label=scales::percent) +
-    ggplot2::theme_bw() +
+    ggplot2::theme_light() +
     ggplot2::labs(x=NULL, y="Predicted Pr(purchase)")  +
     purchase_relationship_theme
 
@@ -84,7 +84,7 @@ scatter_model_discrete_x_binary_y_logit <- function(
     ggplot2::stat_summary(fun.y="mean", geom="point", color=color_smooth_residual, shape=5, size=10) + #Chang's Cookbook, Section 6.8
     ggplot2::scale_x_discrete(label=x_label_format) +
     ggplot2::scale_y_continuous(breaks=c(-2,0,2), labels=c("-2", "0","       2")) + #The extra spaces are a hack to get the panels to line up.
-    ggplot2::theme_bw() +
+    ggplot2::theme_light() +
     ggplot2::labs(x=NULL, y="Residual") +
     purchase_relationship_theme
 

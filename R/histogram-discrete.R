@@ -63,7 +63,7 @@ histogram_discrete <- function(
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
   g <- g + ggplot2::coord_flip()
 
-  g <- g + ggplot2::theme_bw(base_size=14)
+  g <- g + ggplot2::theme_light(base_size=14)
   g <- g + ggplot2::theme(legend.position = "none")
   g <- g + ggplot2::theme(axis.text.x=ggplot2::element_text(colour="gray40"))
   g <- g + ggplot2::theme(axis.title.x=ggplot2::element_text(colour="gray40"))

@@ -62,7 +62,7 @@ scatter_model_continuous_x_binary_y_logit <- function(
     ggplot2::scale_x_continuous(label=x_label_format) +
     ggplot2::scale_y_continuous(limits=vertical_limits, breaks=0:1, labels=c("No", "    Yes")) + #The extra spaces are a hack to get the panels to line up.
     #     scale_y_continuous(limits=c(0,1), breaks=0:2, labels=c("No", "Yes","100%")) + #A failed attempt to get the panel borders to line up.
-    ggplot2::theme_bw() +
+    ggplot2::theme_light() +
     ggplot2::labs(x=NULL, y="Purchased") +
     purchase_relationship_theme
 
@@ -72,7 +72,7 @@ scatter_model_continuous_x_binary_y_logit <- function(
     ggplot2::geom_smooth(ggplot2::aes_string(y=y_name), method="gam", formula=y~s(x,bs="cs"), alpha=alpha_se_band*alpha_se_band, color=color_smooth_observed, fill=color_smooth_observed, na.rm=TRUE) +
     ggplot2::scale_x_continuous(label=x_label_format) +
     ggplot2::scale_y_continuous(limits=vertical_limits, label=scales::percent) +
-    ggplot2::theme_bw() +
+    ggplot2::theme_light() +
     ggplot2::labs(x=NULL, y="Predicted Pr(purchase)")  +
     purchase_relationship_theme
 
@@ -81,7 +81,7 @@ scatter_model_continuous_x_binary_y_logit <- function(
     ggplot2::geom_smooth(method=mgcv::gam, formula=y~s(x,bs="cs"), alpha=alpha_se_band, color=color_smooth_residual, fill=color_smooth_residual, size=1, na.rm=TRUE) +
     ggplot2::scale_x_continuous(label=x_label_format) +
     ggplot2::scale_y_continuous(breaks=c(-2,0,2), labels=c("-2", "0","       2")) + #The extra spaces are a hack to get the panels to line up.
-    ggplot2::theme_bw() +
+    ggplot2::theme_light() +
     ggplot2::labs(x=NULL, y="Residual") +
     purchase_relationship_theme
 

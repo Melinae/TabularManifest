@@ -50,7 +50,7 @@ histogram_continuous <- function(
   g <- g + ggplot2::scale_x_continuous(labels=scales::comma_format())
   g <- g + ggplot2::scale_y_continuous(labels=scales::comma_format())
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
-  g <- g + ggplot2::theme_bw()
+  g <- g + ggplot2::theme_light()
 
   ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$panel$ranges[[1]]$y.range, .8)
   g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color="tomato", hjust=c(1, 0), parse=TRUE)
@@ -70,7 +70,7 @@ histogram_continuous <- function(
 # g <- g + scale_x_continuous(labels=comma_format())
 # g <- g + scale_y_continuous(labels=comma_format())
 # g <- g + labs(title=title, x=xLabel, y=yLabel)
-# g <- g + theme_bw()
+# g <- g + theme_light()
 # ds_midpoints$Top <- quantile(ggplot_build(g)$panel$ranges[[1]]$y.range, .8)
 # g <- g + geom_text(data=ds_midpoints, aes(x=Value, y=Top, label=Label), color="red", hjust=label_alignment, parse=T)
 # return( g )
