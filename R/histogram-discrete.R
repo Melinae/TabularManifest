@@ -40,6 +40,12 @@ histogram_discrete <- function(
   text_size_percentage = 6,
   bin_width = 1L) {
 
+  if( inherits(ds_observed, "data.frame") ) {
+    ds_observed <- as.data.frame(ds_observed)
+  } else {
+    stop("`ds_observed` should inherit from the data.frame class.")
+  }
+  
   if( !base::is.factor(ds_observed[, variable_name]) )
     ds_observed[, variable_name] <- base::factor(ds_observed[, variable_name])
 
