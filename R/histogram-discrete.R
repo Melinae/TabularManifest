@@ -69,17 +69,17 @@ histogram_discrete <- function(
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
   g <- g + ggplot2::coord_flip()
 
-  theme  <- theme_light(base_size=14) +
-    theme(legend.position = "none") +
-    theme(panel.grid.major.y=element_blank(), panel.grid.minor.y=element_blank()) +
-    theme(axis.text.x=element_text(colour="gray40")) +
-    theme(axis.title.x=element_text(colour="gray40")) +
-    theme(axis.text.y=element_text(size=14)) +
-    theme(panel.border = element_rect(colour="gray80")) +
-    theme(axis.ticks.length = grid::unit(0, "cm"))
+  theme  <- ggplot2::theme_light(base_size=14) +
+    ggplot2::theme(legend.position        = "none") +
+    ggplot2::theme(panel.grid.major.y     = ggplot2::element_blank(), panel.grid.minor.y=ggplot2::element_blank()) +
+    ggplot2::theme(axis.text.x            = ggplot2::element_text(colour="gray40")) +
+    ggplot2::theme(axis.title.x           = ggplot2::element_text(colour="gray40")) +
+    ggplot2::theme(axis.text.y            = ggplot2::element_text(size=14)) +
+    ggplot2::theme(panel.border           = ggplot2::element_rect(colour="gray80")) +
+    ggplot2::theme(axis.ticks.length      = grid::unit(0, "cm"))
 
   # g <- g + facet_grid(~AgeIntakeInYearsMaxPretty)
-  return( g +theme )
+  return( g + theme )
 }
 
 # histogram_discrete(ds_observed=infert, variable_name="education")
