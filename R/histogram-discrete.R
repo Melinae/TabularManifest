@@ -61,24 +61,25 @@ histogram_discrete <- function(
   y_title <- base::paste0(y_title, " (n=", scales::comma(base::sum(ds_summary$freq)), ")")
 
   g <- ggplot2::ggplot(ds_summary, ggplot2::aes_string(x="IV", y="Count", fill="IV", label="Percentage"))
-  g <- g + ggplot2::geom_bar(stat="identity")
-  g <- g + ggplot2::geom_text(stat="identity", size=text_size_percentage, hjust=.8)
+  g <- g + ggplot2::geom_bar(stat="identity", alpha=.4)
+  g <- g + ggplot2::geom_text(stat="identity", size=text_size_percentage, hjust=.5)
   g <- g + ggplot2::scale_y_continuous(labels=scales::comma_format())
 #   if( !base::is.null(palette) )
 #     g <- g +  ggplot2::scale_fill_manual(values = base::rev(RColorBrewer::brewer.pal(base::nrow(ds_summary), palette)))
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
   g <- g + ggplot2::coord_flip()
 
-  g <- g + ggplot2::theme_light(base_size=14)
-  g <- g + ggplot2::theme(legend.position = "none")
-  g <- g + ggplot2::theme(axis.text.x=ggplot2::element_text(colour="gray40"))
-  g <- g + ggplot2::theme(axis.title.x=ggplot2::element_text(colour="gray40"))
-  g <- g + ggplot2::theme(axis.text.y=ggplot2::element_text(size=14))
-  g <- g + ggplot2::theme(panel.border = ggplot2::element_rect(colour="gray80"))
-  g <- g + ggplot2::theme(axis.ticks.length = grid::unit(0, "cm"))
+  theme  <- theme_light(base_size=14) +
+    theme(legend.position = "none") +
+    theme(panel.grid.major.y=element_blank(), panel.grid.minor.y=element_blank()) +
+    theme(axis.text.x=element_text(colour="gray40")) +
+    theme(axis.title.x=element_text(colour="gray40")) +
+    theme(axis.text.y=element_text(size=14)) +
+    theme(panel.border = element_rect(colour="gray80")) +
+    theme(axis.ticks.length = grid::unit(0, "cm"))
 
   # g <- g + facet_grid(~AgeIntakeInYearsMaxPretty)
-  return( g )
+  return( g +theme )
 }
 
 # histogram_discrete(ds_observed=infert, variable_name="education")

@@ -1,7 +1,7 @@
 Package: TabularManifest
 Title: Tabular Manifest
 Description: Tabular configuration files are used to assist the manipulation and exploration of wide datasets.
-Date: 2016-02-16
+Date: 2016-03-13
 Version: 0.1-16.9000
 Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
     "wibeasley@hotmail.com"),
