@@ -36,7 +36,13 @@ histogram_continuous <- function(
   y_title = "Frequency",
   rounded_digits = 0L
   ) {
-
+  
+  if( inherits(ds_observed, "data.frame") ) {
+    ds_observed <- as.data.frame(ds_observed)
+  } else {
+    stop("`ds_observed` should inherit from the data.frame class.")
+  }
+  
   ds_observed <- ds_observed[!base::is.na(ds_observed[, variable_name]), ]
 
   ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
