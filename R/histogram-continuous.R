@@ -36,7 +36,13 @@ histogram_continuous <- function(
   y_title = "Frequency",
   rounded_digits = 0L
   ) {
-
+  
+  if( inherits(ds_observed, "data.frame") ) {
+    ds_observed <- as.data.frame(ds_observed)
+  } else {
+    stop("`ds_observed` should inherit from the data.frame class.")
+  }
+  
   ds_observed <- ds_observed[!base::is.na(ds_observed[, variable_name]), ]
 
   ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
@@ -44,7 +50,7 @@ histogram_continuous <- function(
   ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
 
   g <- ggplot2::ggplot(ds_observed, ggplot2::aes_string(x=variable_name))
-  g <- g + ggplot2::geom_bar(stat="bin", binwidth=bin_width, fill="gray70", color="gray90", position=ggplot2::position_identity())
+  g <- g + ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray70", color="gray90", alpha=.7)
   g <- g + ggplot2::geom_vline(xintercept=ds_mid_points$value, color="gray30")
   g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=0, label="value_rounded"), color="tomato", hjust=c(1, 0), vjust=.5)
   g <- g + ggplot2::scale_x_continuous(labels=scales::comma_format())
