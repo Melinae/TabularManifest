@@ -48,22 +48,22 @@ histogram_discrete <- function(
   if( !base::is.factor(ds_observed[[variable_name]]) )
     ds_observed[[variable_name]] <- base::factor(ds_observed[[variable_name]])
 
-  ds_observed$IV <- base::ordered(ds_observed[[variable_name]], levels=rev(levels(ds_observed[[variable_name]])))
+  ds_observed$iv <- base::ordered(ds_observed[[variable_name]], levels=rev(levels(ds_observed[[variable_name]])))
 
-  ds_observed <- ds_observed[!(ds_observed %in% levels_to_exclude), ]
+  ds_observed <- ds_observed[!(ds_observed$iv %in% levels_to_exclude), ]
 
   d_summary <- ds_observed %>%
-    dplyr::count_("IV") %>% 
+    dplyr::count_("iv") %>% 
     dplyr::mutate_(
       "count"             = "n",
-      "proportion"        = "n/sum(n)",
-      "Percentage"        = "base::paste0(base::round(proportion*100), '%')"
+      "proportion"        = "n / sum(n)",
+      "percent_pretty"    = "base::paste0(base::round(proportion*100), '%')"
     )
   
 
   y_title <- base::paste0(y_title, " (n=", scales::comma(base::sum(d_summary$n)), ")")
 
-  g <- ggplot2::ggplot(d_summary, ggplot2::aes_string(x="IV", y="count", fill="IV", label="Percentage"))
+  g <- ggplot2::ggplot(d_summary, ggplot2::aes_string(x="iv", y="count", fill="iv", label="percent_pretty"))
   g <- g + ggplot2::geom_bar(stat="identity", alpha=.4)
   g <- g + ggplot2::geom_text(stat="identity", size=text_size_percentage, hjust=.5)
   g <- g + ggplot2::scale_y_continuous(labels=scales::comma_format())
