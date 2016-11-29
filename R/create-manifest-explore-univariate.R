@@ -110,9 +110,11 @@ create_manifest_explore_univariate <- function(
   if( write_to_disk ) {
     if( overwrite_file & base::file.exists(path_out) ) stop(paste0("The file `", path_out, "` already exists, and will not be overwritten by `create_manifest_explore()`."))
 
-    write.csv(x = ds_skeleton,
-              file = path_out,
-              row.names = FALSE)
+    utils::write.csv(
+      x         = ds_skeleton,
+      file      = path_out,
+      row.names = FALSE
+    )
   }
 
   return( ds_skeleton )
