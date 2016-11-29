@@ -35,12 +35,13 @@
 histogram_discrete <- function(
   ds_observed,
   variable_name,
-  levels_to_exclude = character(0),
-  main_title = variable_name,
-  x_title = NULL,
-  y_title = "Number of Included Records",
-  text_size_percentage = 6,
-  bin_width = 1L) {
+  levels_to_exclude       = character(0),
+  main_title              = variable_name,
+  x_title                 = NULL,
+  y_title                 = "Number of Included Records",
+  text_size_percentage    = 6,
+  bin_width               = 1L
+) {
 
   if( !inherits(ds_observed, "data.frame") ) 
     stop("`ds_observed` should inherit from the data.frame class.")
@@ -60,15 +61,14 @@ histogram_discrete <- function(
       "percent_pretty"    = "base::paste0(base::round(proportion*100), '%')"
     )
   
-
   y_title <- base::paste0(y_title, " (n=", scales::comma(base::sum(d_summary$n)), ")")
 
   g <- ggplot2::ggplot(d_summary, ggplot2::aes_string(x="iv", y="count", fill="iv", label="percent_pretty"))
   g <- g + ggplot2::geom_bar(stat="identity", alpha=.4)
   g <- g + ggplot2::geom_text(stat="identity", size=text_size_percentage, hjust=.5)
   g <- g + ggplot2::scale_y_continuous(labels=scales::comma_format())
-#   if( !base::is.null(palette) )
-#     g <- g +  ggplot2::scale_fill_manual(values = base::rev(RColorBrewer::brewer.pal(base::nrow(d_summary), palette)))
+  if( !base::is.null(palette) )
+    g <- g +  ggplot2::scale_fill_manual(values = base::rev(RColorBrewer::brewer.pal(base::nrow(d_summary), palette)))
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
   g <- g + ggplot2::coord_flip()
 
