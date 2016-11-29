@@ -54,10 +54,10 @@ histogram_discrete <- function(
 
   d_summary <- ds_observed %>%
     dplyr::count_("IV") %>% 
-    dplyr::mutate(
-      count             = n,
-      proportion        = n/sum(n) ,
-      Percentage        = base::paste0(base::round(proportion*100), "%")
+    dplyr::mutate_(
+      "count"             = "n",
+      "proportion"        = "n/sum(n)",
+      "Percentage"        = "base::paste0(base::round(proportion*100), '%')"
     )
   
 
