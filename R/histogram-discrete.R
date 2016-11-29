@@ -67,8 +67,8 @@ histogram_discrete <- function(
   g <- g + ggplot2::geom_bar(stat="identity", alpha=.4)
   g <- g + ggplot2::geom_text(stat="identity", size=text_size_percentage, hjust=.5)
   g <- g + ggplot2::scale_y_continuous(labels=scales::comma_format())
-  if( !base::is.null(palette) )
-    g <- g +  ggplot2::scale_fill_manual(values = base::rev(RColorBrewer::brewer.pal(base::nrow(d_summary), palette)))
+  # if( !base::is.null(palette) )
+  #   g <- g +  ggplot2::scale_fill_manual(values = base::rev(RColorBrewer::brewer.pal(base::nrow(d_summary), palette)))
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
   g <- g + ggplot2::coord_flip()
 
