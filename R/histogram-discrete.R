@@ -76,7 +76,7 @@ histogram_discrete <- function(
     ggplot2::theme(axis.title.x           = ggplot2::element_text(colour="gray40")) +
     ggplot2::theme(axis.text.y            = ggplot2::element_text(size=14)) +
     ggplot2::theme(panel.border           = ggplot2::element_rect(colour="gray80")) +
-    ggplot2::theme(axis.ticks.length      = grid::unit(0, "cm"))
+    ggplot2::theme(axis.ticks             = ggplot2::element_blank())
 
   # g <- g + facet_grid(~AgeIntakeInYearsMaxPretty)
   return( g + theme )
