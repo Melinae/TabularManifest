@@ -30,18 +30,15 @@
 histogram_continuous <- function(
   ds_observed,
   variable_name,
-  bin_width = NULL,
-  main_title = variable_name,
-  x_title = paste0(variable_name, " (each bin is ", scales::comma(bin_width), " units wide)"),
-  y_title = "Frequency",
-  rounded_digits = 0L
-  ) {
+  bin_width               = NULL,
+  main_title              = variable_name,
+  x_title                 = paste0(variable_name, " (each bin is ", scales::comma(bin_width), " units wide)"),
+  y_title                 = "Frequency",
+  rounded_digits          = 0L
+) {
   
-  if( inherits(ds_observed, "data.frame") ) {
-    ds_observed <- as.data.frame(ds_observed)
-  } else {
+  if( !inherits(ds_observed, "data.frame") ) 
     stop("`ds_observed` should inherit from the data.frame class.")
-  }
   
   ds_observed <- ds_observed[!base::is.na(ds_observed[[variable_name]]), ]
 
