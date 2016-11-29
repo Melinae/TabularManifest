@@ -1,12 +1,14 @@
 #' @name histogram_discrete
 #' @export
+#' @importFrom magrittr %>%
 #'
 #' @title Generate a Histogram for a \code{character} or \code{factor} variable.
 #'
 #' @description Generate a histogram for a \code{character} or \code{factor} variable.  This graph is intended to quickly provide
 #' the researcher with a quick, yet thorough representation of the continuous variable.  The additional annotations may not
 #' be desired for publication-quality plots.
-#'
+#' 
+#' 
 #' @param ds_observed The \code{data.frame} with the variable to graph.
 #' @param variable_name The name of the variable to graph. \code{character}.
 #' @param levels_to_exclude An array of of the levels to be excluded from the histogram. Pass an empty variable (\emph{ie}, \code{character(0)}) if all levels are desired; this is the default. \code{character}.
@@ -40,32 +42,33 @@ histogram_discrete <- function(
   text_size_percentage = 6,
   bin_width = 1L) {
 
-  if( inherits(ds_observed, "data.frame") ) {
-    ds_observed <- as.data.frame(ds_observed)
-  } else {
+  if( !inherits(ds_observed, "data.frame") ) 
     stop("`ds_observed` should inherit from the data.frame class.")
-  }
-  
+
   if( !base::is.factor(ds_observed[[variable_name]]) )
     ds_observed[[variable_name]] <- base::factor(ds_observed[[variable_name]])
 
   ds_observed$IV <- base::ordered(ds_observed[[variable_name]], levels=rev(levels(ds_observed[[variable_name]])))
 
-  ds_count <- plyr::count(ds_observed, vars=c("IV"))
-#   if( base::length(levels_to_exclude)>0 ) {
-  ds_count <- ds_count[!(ds_count$IV %in% levels_to_exclude), ]
+  ds_observed <- ds_observed[!(ds_observed %in% levels_to_exclude), ]
 
-  ds_summary <- plyr::ddply(ds_count, .variables=NULL, transform, Count=freq, proportion = freq/sum(freq) )
-  ds_summary$Percentage <- base::paste0(base::round(ds_summary$proportion*100), "%")
+  d_summary <- ds_observed %>%
+    dplyr::count_("IV") %>% 
+    dplyr::mutate(
+      count             = n,
+      proportion        = n/sum(n) ,
+      Percentage        = base::paste0(base::round(proportion*100), "%")
+    )
+  
 
-  y_title <- base::paste0(y_title, " (n=", scales::comma(base::sum(ds_summary$freq)), ")")
+  y_title <- base::paste0(y_title, " (n=", scales::comma(base::sum(d_summary$n)), ")")
 
-  g <- ggplot2::ggplot(ds_summary, ggplot2::aes_string(x="IV", y="Count", fill="IV", label="Percentage"))
+  g <- ggplot2::ggplot(d_summary, ggplot2::aes_string(x="IV", y="count", fill="IV", label="Percentage"))
   g <- g + ggplot2::geom_bar(stat="identity", alpha=.4)
   g <- g + ggplot2::geom_text(stat="identity", size=text_size_percentage, hjust=.5)
   g <- g + ggplot2::scale_y_continuous(labels=scales::comma_format())
 #   if( !base::is.null(palette) )
-#     g <- g +  ggplot2::scale_fill_manual(values = base::rev(RColorBrewer::brewer.pal(base::nrow(ds_summary), palette)))
+#     g <- g +  ggplot2::scale_fill_manual(values = base::rev(RColorBrewer::brewer.pal(base::nrow(d_summary), palette)))
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
   g <- g + ggplot2::coord_flip()
 
@@ -83,4 +86,6 @@ histogram_discrete <- function(
 }
 
 # histogram_discrete(ds_observed=infert, variable_name="education")
-# histogram_discrete(ds_observed=infert, variable_name="age")
+# devtools::load_all()
+# histogram_discrete(ds_observed=tibble::as_tibble(infert), variable_name="age")
+
