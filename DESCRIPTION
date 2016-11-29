@@ -22,7 +22,6 @@ Imports:
     grid,
     magrittr,
     mgcv,
-    plyr,
     scales
 Suggests:
     datasets,

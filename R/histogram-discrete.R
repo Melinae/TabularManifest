@@ -88,4 +88,3 @@ histogram_discrete <- function(
 # histogram_discrete(ds_observed=infert, variable_name="education")
 # devtools::load_all()
 # histogram_discrete(ds_observed=tibble::as_tibble(infert), variable_name="age")
-
