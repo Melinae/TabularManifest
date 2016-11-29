@@ -46,10 +46,10 @@ histogram_discrete <- function(
     stop("`ds_observed` should inherit from the data.frame class.")
   }
   
-  if( !base::is.factor(ds_observed[, variable_name]) )
-    ds_observed[, variable_name] <- base::factor(ds_observed[, variable_name])
+  if( !base::is.factor(ds_observed[[variable_name]]) )
+    ds_observed[[variable_name]] <- base::factor(ds_observed[[variable_name]])
 
-  ds_observed$IV <- base::ordered(ds_observed[, variable_name], levels=rev(levels(ds_observed[, variable_name])))
+  ds_observed$IV <- base::ordered(ds_observed[[variable_name]], levels=rev(levels(ds_observed[[variable_name]])))
 
   ds_count <- plyr::count(ds_observed, vars=c("IV"))
 #   if( base::length(levels_to_exclude)>0 ) {

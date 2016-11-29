@@ -43,10 +43,10 @@ histogram_continuous <- function(
     stop("`ds_observed` should inherit from the data.frame class.")
   }
   
-  ds_observed <- ds_observed[!base::is.na(ds_observed[, variable_name]), ]
+  ds_observed <- ds_observed[!base::is.na(ds_observed[[variable_name]]), ]
 
   ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
-  ds_mid_points$value <- c(stats::median(ds_observed[, variable_name]), base::mean(ds_observed[, variable_name]))
+  ds_mid_points$value <- c(stats::median(ds_observed[[variable_name]]), base::mean(ds_observed[[variable_name]]))
   ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
 
   g <- ggplot2::ggplot(ds_observed, ggplot2::aes_string(x=variable_name))
