@@ -13,9 +13,9 @@ Our company has benefited from many tools developed by the community, and we'd l
 
 Thanks, the [Melinae](http://melinae.com/) Analytics Team
 
-Steve Soloway and Will Beasley
+Sasha Popovych and Will Beasley
 
-If your organization is interested in the consulting services of Melinae, please contact [Steve Soloway](https://www.linkedin.com/profile/view?id=64434549) at <ssoloway@melinae.com>
+If your organization is interested in the consulting services of Melinae, please contact [Sasha Popovych](https://www.linkedin.com/in/aleksandra-popovych-64739582) at <spopovych@melinae.com>.
 
 For those interested in use the development version of `TabularManifest`, run the following code:
 ```r
