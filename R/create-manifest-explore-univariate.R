@@ -58,49 +58,49 @@
 
 create_manifest_explore_univariate <- function(
   ds_observed,
-  write_to_disk = TRUE,
-  path_out = getwd(),
-  overwrite_file = FALSE,
-  default_class_graph = c(
-    "numeric" = "histogram_continuous",
-    "integer" = "histogram_continuous",
-    "factor" = "histogram_discrete",
-    "character" = "histogram_discrete",
-    "notMatched" = "histogram_generic"
+  write_to_disk         = TRUE,
+  path_out              = getwd(),
+  overwrite_file        = FALSE,
+  default_class_graph   = c(
+    "numeric"                  = "histogram_continuous",
+    "integer"                  = "histogram_continuous",
+    "factor"                   = "histogram_discrete",
+    "character"                = "histogram_discrete",
+    "notMatched"               = "histogram_generic"
     ),
-  default_format = c(
-    "numeric" = "scales::comma",
-    "notMatched" = "scales::comma"
+  default_format        = c(
+    "numeric"                  = "scales::comma",
+    "notMatched"               = "scales::comma"
     ),
-  bin_count_suggestion = 30L
+  bin_count_suggestion  = 30L
   ) {
 
   #Determine the variable's class (eg, numeric, integer, factor, ...).
   column_class <- sapply(X=ds_observed, FUN=class)
 
   #Determine the index of the most appropriate graph.
-  matched_index_graph <- match(column_class, names(default_class_graph))
-  matched_index_graph <- ifelse(!is.na(matched_index_graph), matched_index_graph, which(names(default_class_graph)=="notMatched"))
+  matched_index_graph  <- match(column_class, names(default_class_graph))
+  matched_index_graph  <- ifelse(!is.na(matched_index_graph), matched_index_graph, which(names(default_class_graph)=="notMatched"))
 
   #Determine the index of the most appropriate format.
   matched_index_format <- match(column_class, names(default_format))
   matched_index_format <- ifelse(!is.na(matched_index_format), matched_index_format, which(names(default_format)=="notMatched"))
 
-  bins <- calculate_bins(ds_observed, bin_count_suggestion=bin_count_suggestion)
-  rounding_digits <- calculate_rounding_digits(ds_observed)
+  bins                 <- calculate_bins(ds_observed, bin_count_suggestion=bin_count_suggestion)
+  rounding_digits      <- calculate_rounding_digits(ds_observed)
 
   #Create the data.frame of metadata.
   ds_skeleton <- data.frame(
-    variable_name = colnames(ds_observed),
-    remark = "",
-    class = column_class,
-    should_graph = TRUE,
-    graph_function = default_class_graph[matched_index_graph],
-    x_label_format = default_format[matched_index_format],
-    bin_width = bins$bin_width,
-    bin_start = bins$bin_start,
-    rounding_digits = rounding_digits,
-    stringsAsFactors = FALSE
+    variable_name          = colnames(ds_observed),
+    remark                 = "",
+    class                  = column_class,
+    should_graph           = TRUE,
+    graph_function         = default_class_graph[matched_index_graph],
+    x_label_format         = default_format[matched_index_format],
+    bin_width              = bins$bin_width,
+    bin_start              = bins$bin_start,
+    rounding_digits        = rounding_digits,
+    stringsAsFactors       = FALSE
   )
 
   #Ths sapply function sets rownames for the dataset.  They're redundant with the `variable_name` column.
@@ -108,7 +108,11 @@ create_manifest_explore_univariate <- function(
 
   #If desired, write the data.frame to disk as a CSV.
   if( write_to_disk ) {
-    if( overwrite_file & base::file.exists(path_out) ) stop(paste0("The file `", path_out, "` already exists, and will not be overwritten by `create_manifest_explore()`."))
+    if( overwrite_file & base::file.exists(path_out) ) {
+      stop(paste0(
+        "The file `", path_out, "` already exists, and will not be overwritten by `create_manifest_explore()`."
+      ))
+    }
 
     utils::write.csv(
       x         = ds_skeleton,

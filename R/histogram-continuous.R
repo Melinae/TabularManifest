@@ -31,12 +31,12 @@
 histogram_continuous <- function(
   ds_observed,
   variable_name,
-  bin_width = NULL,
-  main_title = variable_name,
-  x_title = paste0(variable_name, " (each bin is ", scales::comma(bin_width), " units wide)"),
-  y_title = "Frequency",
-  rounded_digits = 0L,
-  font_base_size = 12
+  bin_width               = NULL,
+  main_title              = variable_name,
+  x_title                 = paste0(variable_name, " (each bin is ", scales::comma(bin_width), " units wide)"),
+  y_title                 = "Frequency",
+  rounded_digits          = 0L,
+  font_base_size          = 12
 ) {
   
   if( inherits(ds_observed, "data.frame") ) {
@@ -45,11 +45,11 @@ histogram_continuous <- function(
     stop("`ds_observed` should inherit from the data.frame class.")
   }
   
-  ds_observed <- ds_observed[!base::is.na(ds_observed[, variable_name]), ]
+  ds_observed                   <- ds_observed[!base::is.na(ds_observed[, variable_name]), ]
 
-  ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
-  ds_mid_points$value <- c(stats::median(ds_observed[, variable_name]), base::mean(ds_observed[, variable_name]))
-  ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
+  ds_mid_points                 <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
+  ds_mid_points$value           <- c(stats::median(ds_observed[, variable_name]), base::mean(ds_observed[, variable_name]))
+  ds_mid_points$value_rounded   <- base::round(ds_mid_points$value, rounded_digits)
 
   g <- ggplot2::ggplot(ds_observed, ggplot2::aes_string(x=variable_name))
   g <- g + ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray70", color="gray90", alpha=.7)

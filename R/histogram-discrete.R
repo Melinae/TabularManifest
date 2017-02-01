@@ -34,13 +34,13 @@
 histogram_discrete <- function(
   ds_observed,
   variable_name,
-  levels_to_exclude = character(0),
-  main_title = variable_name,
-  x_title = NULL,
-  y_title = "Number of Included Records",
-  text_size_percentage = 6,
-  bin_width = 1L,
-  font_base_size = 12
+  levels_to_exclude       = character(0),
+  main_title              = variable_name,
+  x_title                 = NULL,
+  y_title                 = "Number of Included Records",
+  text_size_percentage    = 6,
+  bin_width               = 1L,
+  font_base_size          = 12
 ) {
 
   if( inherits(ds_observed, "data.frame") ) {
@@ -52,14 +52,14 @@ histogram_discrete <- function(
   if( !base::is.factor(ds_observed[, variable_name]) )
     ds_observed[, variable_name] <- base::factor(ds_observed[, variable_name])
 
-  ds_observed$IV <- base::ordered(ds_observed[, variable_name], levels=rev(levels(ds_observed[, variable_name])))
+  ds_observed$IV          <- base::ordered(ds_observed[, variable_name], levels=rev(levels(ds_observed[, variable_name])))
 
-  ds_count <- plyr::count(ds_observed, vars=c("IV"))
-#   if( base::length(levels_to_exclude)>0 ) {
-  ds_count <- ds_count[!(ds_count$IV %in% levels_to_exclude), ]
+  ds_count                <- plyr::count(ds_observed, vars=c("IV"))
+  # if( base::length(levels_to_exclude)>0 ) {
+  ds_count                <- ds_count[!(ds_count$IV %in% levels_to_exclude), ]
 
-  ds_summary <- plyr::ddply(ds_count, .variables=NULL, transform, Count=freq, proportion = freq/sum(freq) )
-  ds_summary$Percentage <- base::paste0(base::round(ds_summary$proportion*100), "%")
+  ds_summary              <- plyr::ddply(ds_count, .variables=NULL, transform, Count=freq, proportion = freq/sum(freq) )
+  ds_summary$Percentage   <- base::paste0(base::round(ds_summary$proportion*100), "%")
 
   y_title <- base::paste0(y_title, " (n=", scales::comma(base::sum(ds_summary$freq)), ")")
 
