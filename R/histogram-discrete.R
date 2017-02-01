@@ -12,11 +12,12 @@
 #' @param ds_observed The \code{data.frame} with the variable to graph.
 #' @param variable_name The name of the variable to graph. \code{character}.
 #' @param levels_to_exclude An array of of the levels to be excluded from the histogram. Pass an empty variable (\emph{ie}, \code{character(0)}) if all levels are desired; this is the default. \code{character}.
-#' @param main_title The desired title on top of the graph.  Defaults to \code{variable_name}. If no title is desired, pass a value of \code{NULL}. \code{character}.
+#' @param main_title The desired title on top of the graph.  Defaults to \code{variable_name}, with underscores replaced with spaces. If no title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param x_title The desired title on the \emph{x}-axis.  Defaults to the number of included records. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param y_title The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param text_size_percentage The size of the percentage values on top of the bars. \code{character}.
 #' @param bin_width (This parameter is included for compatibility with other graphing functions.  It should always be \code{1} for discrete and boolean variables.)
+#' @param font_base_size Sets font size through ggplot2's theme.
 #'
 #' @return Returns a histogram as a \code{ggplot2} object.
 #' @examples
@@ -36,11 +37,13 @@ histogram_discrete <- function(
   ds_observed,
   variable_name,
   levels_to_exclude       = character(0),
-  main_title              = variable_name,
+  main_title              = base::gsub("_", " ", variable_name, perl=TRUE),
   x_title                 = NULL,
   y_title                 = "Number of Included Records",
   text_size_percentage    = 6,
-  bin_width               = 1L
+  bin_width               = 1L,
+  font_base_size          = 12
+
 ) {
 
   if( !inherits(ds_observed, "data.frame") ) 
@@ -72,7 +75,7 @@ histogram_discrete <- function(
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
   g <- g + ggplot2::coord_flip()
 
-  theme  <- ggplot2::theme_light(base_size=14) +
+  theme  <- ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(legend.position        = "none") +
     ggplot2::theme(panel.grid.major.y     = ggplot2::element_blank(), panel.grid.minor.y=ggplot2::element_blank()) +
     ggplot2::theme(axis.text.x            = ggplot2::element_text(colour="gray40")) +
