@@ -45,7 +45,7 @@ scatter_model_continuous_x_binary_y_logit <- function(
     purchase_relationship_theme <- ggplot2::theme(
       axis.title          = ggplot2::element_text(color="gray30", size=9),
       axis.text           = ggplot2::element_text(color="gray30"),
-      axis.ticks.length   = grid::unit(0, "cm"), #g <- g + theme(axis.ticks=element_blank())
+      axis.ticks          = ggplot2::element_blank(),
       axis.ticks.margin   = grid::unit(.00001, "cm"),
       #   panel.grid.minor.y  = element_line(color="gray90", size=.1),
       panel.grid.major    = ggplot2::element_line(color="gray85", size=.15),

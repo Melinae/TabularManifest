@@ -16,10 +16,11 @@ Depends:
     R(>= 3.0.0),
     stats
 Imports:
+    dplyr,
     ggplot2,
     grid,
+    magrittr,
     mgcv,
-    plyr,
     scales
 Suggests:
     datasets,

@@ -39,22 +39,25 @@ histogram_continuous <- function(
   font_base_size          = 12
 ) {
   
-  if( inherits(ds_observed, "data.frame") ) {
-    ds_observed <- as.data.frame(ds_observed)
-  } else {
+  if( !inherits(ds_observed, "data.frame") ) 
     stop("`ds_observed` should inherit from the data.frame class.")
-  }
   
-  ds_observed                   <- ds_observed[!base::is.na(ds_observed[, variable_name]), ]
+  ds_observed <- ds_observed[!base::is.na(ds_observed[[variable_name]]), ]
 
-  ds_mid_points                 <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
-  ds_mid_points$value           <- c(stats::median(ds_observed[, variable_name]), base::mean(ds_observed[, variable_name]))
-  ds_mid_points$value_rounded   <- base::round(ds_mid_points$value, rounded_digits)
+  ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
+  ds_mid_points$value <- c(stats::median(ds_observed[[variable_name]]), base::mean(ds_observed[[variable_name]]))
+  ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
+  
+  if( ds_mid_points$value[1] < ds_mid_points$value[2] ) {
+    h_just <- c(1, 0)
+  } else {
+    h_just <- c(0, 1)
+  }
 
   g <- ggplot2::ggplot(ds_observed, ggplot2::aes_string(x=variable_name))
   g <- g + ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray70", color="gray90", alpha=.7)
   g <- g + ggplot2::geom_vline(xintercept=ds_mid_points$value, color="gray30")
-  g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=0, label="value_rounded"), color="tomato", hjust=c(1, 0), vjust=.5)
+  g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=0, label="value_rounded"), color="tomato", hjust=h_just, vjust=.5)
   g <- g + ggplot2::scale_x_continuous(labels=scales::comma_format())
   g <- g + ggplot2::scale_y_continuous(labels=scales::comma_format())
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
@@ -62,8 +65,8 @@ histogram_continuous <- function(
   g <- g + ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank())
 
-  ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$panel$ranges[[1]]$y.range, .8)
-  g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color="tomato", hjust=c(1, 0), parse=TRUE)
+  ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$layout$panel_ranges[[1]]$y.range, .8)
+  g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color="tomato", hjust=h_just, parse=TRUE)
   return( g )
 }
 # ds_midpoints <- data.frame(Label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=F)
@@ -85,4 +88,4 @@ histogram_continuous <- function(
 # g <- g + geom_text(data=ds_midpoints, aes(x=Value, y=Top, label=Label), color="red", hjust=label_alignment, parse=T)
 # return( g )
 
-# histogram_continuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
+# histogram_continuous(ds_observed=beaver1, variable_name="temp", bin_width=.1, rounded_digits = 5)
