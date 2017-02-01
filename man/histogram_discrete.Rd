@@ -7,7 +7,7 @@
 histogram_discrete(ds_observed, variable_name,
   levels_to_exclude = character(0), main_title = variable_name,
   x_title = NULL, y_title = "Number of Included Records",
-  text_size_percentage = 6, bin_width = 1L)
+  text_size_percentage = 6, bin_width = 1L, font_base_size = 12)
 }
 \arguments{
 \item{ds_observed}{The \code{data.frame} with the variable to graph.}
@@ -25,6 +25,8 @@ histogram_discrete(ds_observed, variable_name,
 \item{text_size_percentage}{The size of the percentage values on top of the bars. \code{character}.}
 
 \item{bin_width}{(This parameter is included for compatibility with other graphing functions.  It should always be \code{1} for discrete and boolean variables.)}
+
+\item{font_base_size}{Sets font size through ggplot2's theme.}
 }
 \value{
 Returns a histogram as a \code{ggplot2} object.

@@ -15,6 +15,7 @@
 #' @param y_title The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param text_size_percentage The size of the percentage values on top of the bars. \code{character}.
 #' @param bin_width (This parameter is included for compatibility with other graphing functions.  It should always be \code{1} for discrete and boolean variables.)
+#' @param font_base_size Sets font size through ggplot2's theme.
 #'
 #' @return Returns a histogram as a \code{ggplot2} object.
 #' @examples
@@ -38,7 +39,9 @@ histogram_discrete <- function(
   x_title = NULL,
   y_title = "Number of Included Records",
   text_size_percentage = 6,
-  bin_width = 1L) {
+  bin_width = 1L,
+  font_base_size = 12
+) {
 
   if( inherits(ds_observed, "data.frame") ) {
     ds_observed <- as.data.frame(ds_observed)
@@ -69,14 +72,14 @@ histogram_discrete <- function(
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
   g <- g + ggplot2::coord_flip()
 
-  theme  <- ggplot2::theme_light(base_size=14) +
+  theme  <- ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(legend.position        = "none") +
     ggplot2::theme(panel.grid.major.y     = ggplot2::element_blank(), panel.grid.minor.y=ggplot2::element_blank()) +
     ggplot2::theme(axis.text.x            = ggplot2::element_text(colour="gray40")) +
     ggplot2::theme(axis.title.x           = ggplot2::element_text(colour="gray40")) +
     ggplot2::theme(axis.text.y            = ggplot2::element_text(size=14)) +
     ggplot2::theme(panel.border           = ggplot2::element_rect(colour="gray80")) +
-    ggplot2::theme(axis.ticks.length      = grid::unit(0, "cm"))
+    ggplot2::theme(axis.ticks             = ggplot2::element_blank())
 
   # g <- g + facet_grid(~AgeIntakeInYearsMaxPretty)
   return( g + theme )

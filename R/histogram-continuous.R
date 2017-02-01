@@ -14,6 +14,7 @@
 #' @param x_title The desired title on the \emph{x}-axis.  Defaults to the \code{variable_name} and the \code{bin_width}. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param y_title The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param rounded_digits The number of decimals to show for the mean and median annotations. \code{character}.
+#' @param font_base_size Sets font size through ggplot2's theme.
 #'
 #' @return Returns a histogram as a \code{ggplot2} object.
 #' @examples
@@ -34,8 +35,9 @@ histogram_continuous <- function(
   main_title = variable_name,
   x_title = paste0(variable_name, " (each bin is ", scales::comma(bin_width), " units wide)"),
   y_title = "Frequency",
-  rounded_digits = 0L
-  ) {
+  rounded_digits = 0L,
+  font_base_size = 12
+) {
   
   if( inherits(ds_observed, "data.frame") ) {
     ds_observed <- as.data.frame(ds_observed)
@@ -57,8 +59,8 @@ histogram_continuous <- function(
   g <- g + ggplot2::scale_y_continuous(labels=scales::comma_format())
   g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
   
-  g <- g + ggplot2::theme_light() +
-    ggplot2::theme(axis.ticks.length = grid::unit(0, "cm"))
+  g <- g + ggplot2::theme_light(base_size = font_base_size) +
+    ggplot2::theme(axis.ticks             = ggplot2::element_blank())
 
   ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$panel$ranges[[1]]$y.range, .8)
   g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color="tomato", hjust=c(1, 0), parse=TRUE)

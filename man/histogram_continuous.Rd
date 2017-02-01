@@ -7,7 +7,7 @@
 histogram_continuous(ds_observed, variable_name, bin_width = NULL,
   main_title = variable_name, x_title = paste0(variable_name,
   " (each bin is ", scales::comma(bin_width), " units wide)"),
-  y_title = "Frequency", rounded_digits = 0L)
+  y_title = "Frequency", rounded_digits = 0L, font_base_size = 12)
 }
 \arguments{
 \item{ds_observed}{The \code{data.frame} with the variable to graph.}
@@ -23,6 +23,8 @@ histogram_continuous(ds_observed, variable_name, bin_width = NULL,
 \item{y_title}{The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.}
 
 \item{rounded_digits}{The number of decimals to show for the mean and median annotations. \code{character}.}
+
+\item{font_base_size}{Sets font size through ggplot2's theme.}
 }
 \value{
 Returns a histogram as a \code{ggplot2} object.
