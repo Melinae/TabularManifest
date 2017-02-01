@@ -10,7 +10,7 @@
 #' @param ds_observed The \code{data.frame} with the variable to graph.
 #' @param variable_name The name of the variable to graph. \code{character}.
 #' @param levels_to_exclude An array of of the levels to be excluded from the histogram. Pass an empty variable (\emph{ie}, \code{character(0)}) if all levels are desired; this is the default. \code{character}.
-#' @param main_title The desired title on top of the graph.  Defaults to \code{variable_name}. If no title is desired, pass a value of \code{NULL}. \code{character}.
+#' @param main_title The desired title on top of the graph.  Defaults to \code{variable_name}, with underscores replaced with spaces. If no title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param x_title The desired title on the \emph{x}-axis.  Defaults to the number of included records. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param y_title The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param text_size_percentage The size of the percentage values on top of the bars. \code{character}.
@@ -35,7 +35,7 @@ histogram_discrete <- function(
   ds_observed,
   variable_name,
   levels_to_exclude       = character(0),
-  main_title              = variable_name,
+  main_title              = base::gsub("_", " ", variable_name, perl=TRUE),
   x_title                 = NULL,
   y_title                 = "Number of Included Records",
   text_size_percentage    = 6,
