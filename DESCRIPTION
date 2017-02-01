@@ -10,7 +10,6 @@ Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
     person("Martin", "Lenardon", role = "ctb"))
 License: LGPL
 LazyData: TRUE
-VignetteBuilder: knitr
 Maintainer: Will Beasley <wibeasley@hotmail.com>
 URL: http://melinae.com/
 Depends:
