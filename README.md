@@ -15,7 +15,7 @@ Thanks, the [Melinae](http://melinae.com/) Analytics Team
 
 Sasha Popovych and Will Beasley
 
-If your organization is interested in the consulting services of Melinae, please contact [Sasha Popovych](https://www.linkedin.com/in/aleksandra-popovych-64739582) at <spopovych@melinae.com>.
+If your organization is interested in the consulting services of Melinae, please contact [Sasha Popovych](https://www.linkedin.com/in/aleksandra-popovych-64739582) at <spopovych@melinae.com>.  If you have a question about the package, please consider [starting a new issue](https://github.com/Melinae/TabularManifest/issues/new).
 
 For those interested in use the development version of `TabularManifest`, run the following code:
 ```r
