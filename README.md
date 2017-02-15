@@ -23,7 +23,7 @@ For those interested in use the development version of `TabularManifest`, run th
 install.packages("devtools")
 
 #Install the 'TabularManifest' package.
-devtools::install_git(repo="Melinae/TabularManifest")
+devtools::install_github(repo="Melinae/TabularManifest")
 
 #Load the package into memory
 library(TabularManifest)
