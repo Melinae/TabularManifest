@@ -33,7 +33,7 @@ If your organization is interested in the consulting services of Melinae, please
 #TODO: this line needs to be adapated when we move to GitHub.  For those interested in use the development version of 
 \code{TabularManifest}, run 
 
-\code{devtools::install_git(repo="Melinae/TabularManifest")}
+\code{devtools::install_github(repo="Melinae/TabularManifest")}
 }
 \examples{
 

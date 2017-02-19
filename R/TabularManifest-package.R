@@ -31,7 +31,7 @@
 #' #TODO: this line needs to be adapated when we move to GitHub.  For those interested in use the development version of 
 #' \code{TabularManifest}, run 
 #' 
-#' \code{devtools::install_git(repo="Melinae/TabularManifest")}
+#' \code{devtools::install_github(repo="Melinae/TabularManifest")}
 #' 
 #' @author 
 #'  \href{http://scholar.google.com/citations?user=ffsJTC0AAAAJ}{William Howard Beasley}
