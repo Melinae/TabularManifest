@@ -2,8 +2,8 @@
 % Please edit documentation in R/TabularManifest-package.R
 \docType{package}
 \name{TabularManifest-package}
-\alias{TabularManifest}
 \alias{TabularManifest-package}
+\alias{TabularManifest}
 \title{Tabular Manifest}
 \description{
 Our consulting company, \href{http://melinae.com/}{Melinae}, frequently assists clients with large datasets 
@@ -44,6 +44,9 @@ if( require(grDevices) ) {
   histogram_discrete(ds_observed=infert, variable_name="age")
 }
 }
+\references{
+[Do any article or book references make sense?  Maybe reproducible research?]
+}
 \author{
 \href{http://scholar.google.com/citations?user=ffsJTC0AAAAJ}{William Howard Beasley}
   
@@ -53,8 +56,4 @@ if( require(grDevices) ) {
 
 Maintainer: Will Beasley <wibeasley@hotmail.com>
 }
-\references{
-[Do any article or book references make sense?  Maybe reproducible research?]
-}
 \keyword{package}
-

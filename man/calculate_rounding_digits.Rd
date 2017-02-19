@@ -21,4 +21,3 @@ calculate_rounding_digits(ds_observed=freeny)
 calculate_rounding_digits(ds_observed=InsectSprays)
 calculate_rounding_digits(ds_observed=beaver1)
 }
-

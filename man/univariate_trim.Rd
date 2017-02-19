@@ -28,4 +28,3 @@ TabularManifest::univariate_trim(scores=datasets::beaver1$temp,
 TabularManifest::univariate_trim(scores=datasets::beaver1$temp,
   quantile_lower=.05, quantile_upper=.95)
 }
-

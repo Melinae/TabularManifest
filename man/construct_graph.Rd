@@ -2,8 +2,8 @@
 % Please edit documentation in R/construct-graph.R
 \name{construct_graph}
 \alias{construct_graph}
-\alias{construct_graph_list_univariate}
 \alias{construct_graph_univariate}
+\alias{construct_graph_list_univariate}
 \title{Construct a graph or list of graphs}
 \usage{
 construct_graph_univariate(variable_name, ds_metadata, ds_observed)
@@ -27,4 +27,3 @@ construct_graph_univariate(variable_name="count", ds_manifest, InsectSprays)
 
 construct_graph_list_univariate(ds_manifest=ds_manifest, ds_observed=ds_observed)
 }
-

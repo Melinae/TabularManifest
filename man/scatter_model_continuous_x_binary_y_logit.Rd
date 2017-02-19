@@ -47,4 +47,3 @@ scatter_model_continuous_x_binary_y_logit(ds_plot, x_name, y_name = "y",
 \description{
 Internal function for examining a logit performance
 }
-

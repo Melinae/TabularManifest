@@ -45,4 +45,3 @@ if( require(grDevices) ) {
   histogram_discrete(ds_observed=infert, variable_name="age")
 }
 }
-

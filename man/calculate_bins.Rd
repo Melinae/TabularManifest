@@ -25,4 +25,3 @@ An internal function (ie, that's not currently exposed/exported outside the pack
 #calculate_bins(ds_observed=datasets::freeny)
 #calculate_bins(ds_observed=datasets::InsectSprays)
 }
-

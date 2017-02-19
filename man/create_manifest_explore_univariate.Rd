@@ -65,4 +65,3 @@ create_manifest_explore_univariate(datasets::InsectSprays, write_to_disk=FALSE)
 create_manifest_explore_univariate(datasets::freeny, write_to_disk=FALSE)
 }
 \keyword{explore}
-

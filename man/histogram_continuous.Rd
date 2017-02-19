@@ -42,4 +42,3 @@ if( require(grDevices) ) {
   histogram_continuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
 }
 }
-
