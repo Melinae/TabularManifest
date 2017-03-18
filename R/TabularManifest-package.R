@@ -49,7 +49,7 @@
 #' create_manifest_explore_univariate(datasets::InsectSprays, write_to_disk=FALSE)
 #' 
 #' if( require(grDevices) ) {
-#'   histogram_continuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
-#'   histogram_discrete(ds_observed=infert, variable_name="age")
+#'   histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1)
+#'   histogram_discrete(d_observed=infert, variable_name="age")
 #' }
 NULL

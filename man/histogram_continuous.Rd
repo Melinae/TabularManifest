@@ -4,14 +4,14 @@
 \alias{histogram_continuous}
 \title{Generate a Histogram for a \code{numeric} or \code{integer} variable.}
 \usage{
-histogram_continuous(ds_observed, variable_name, bin_width = NULL,
+histogram_continuous(d_observed, variable_name, bin_width = NULL,
   main_title = base::gsub("_", " ", variable_name, perl = TRUE),
   x_title = paste0(variable_name, " (each bin is ", scales::comma(bin_width),
   " units wide)"), y_title = "Frequency", rounded_digits = 0L,
   font_base_size = 12)
 }
 \arguments{
-\item{ds_observed}{The \code{data.frame} with the variable to graph.}
+\item{d_observed}{The \code{data.frame} with the variable to graph.}
 
 \item{variable_name}{The name of the variable to graph. \code{character}.}
 
@@ -39,6 +39,6 @@ be desired for publication-quality plots.
 library(datasets)
 #Don't run graphs on a headless machine without any the basic graphics packages installed.
 if( require(grDevices) ) {
-  histogram_continuous(ds_observed=beaver1, variable_name="temp", bin_width=.1)
+  histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1)
 }
 }

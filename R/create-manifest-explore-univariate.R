@@ -9,7 +9,7 @@
 #'
 #' @usage
 #' create_manifest_explore_univariate(
-#'     ds_observed,
+#'     d_observed,
 #'     write_to_disk = TRUE,
 #'     path_out = getwd(),
 #'     overwrite_file = FALSE,
@@ -28,7 +28,7 @@
 #' )
 #'
 #'
-#' @param ds_observed The \code{data.frame} to create metadata for.
+#' @param d_observed The \code{data.frame} to create metadata for.
 #' @param write_to_disk Indicates if the meta-dataset should be saved as a CSV.
 #' @param path_out The file path to save the meta-dataset.
 #' @param overwrite_file Indicates if the CSV of the meta-dataset should be overwritten if a file already exists at the location.
@@ -36,10 +36,10 @@
 #' @param default_class_graph A \code{character} array indicating which graph should be used with variables of a certain class.
 #' @param bin_count_suggestion An \code{integer} value of the number of roughly the number bins desired for a histogram.
 #'
-#' @return Returns a \code{data.frame} where each row in the metadata represents a column in \code{ds_observed}.
+#' @return Returns a \code{data.frame} where each row in the metadata represents a column in \code{d_observed}.
 #' The metadata contains the following columns
 #' \enumerate{
-#' \item{\code{variable_name} The variable name (in \code{ds_observed}). \code{character}.}
+#' \item{\code{variable_name} The variable name (in \code{d_observed}). \code{character}.}
 #' \item{\code{remark} A blank field that allows theuser to enter notes in the CSV for later reference.}
 #' \item{\code{class} The variable's \code{\link{class}} (eg, numeric, Date, factor).  \code{character}.}
 #' \item{\code{should_graph} A boolean value indicating if the variable should be graphed. \code{logical}.}
@@ -57,7 +57,7 @@
 #' create_manifest_explore_univariate(datasets::freeny, write_to_disk=FALSE)
 
 create_manifest_explore_univariate <- function(
-  ds_observed,
+  d_observed,
   write_to_disk         = TRUE,
   path_out              = getwd(),
   overwrite_file        = FALSE,
@@ -76,7 +76,7 @@ create_manifest_explore_univariate <- function(
   ) {
 
   #Determine the variable's class (eg, numeric, integer, factor, ...).
-  column_class <- sapply(X=ds_observed, FUN=class)
+  column_class <- sapply(X=d_observed, FUN=class)
 
   #Determine the index of the most appropriate graph.
   matched_index_graph  <- match(column_class, names(default_class_graph))
@@ -86,12 +86,12 @@ create_manifest_explore_univariate <- function(
   matched_index_format <- match(column_class, names(default_format))
   matched_index_format <- ifelse(!is.na(matched_index_format), matched_index_format, which(names(default_format)=="notMatched"))
 
-  bins                 <- calculate_bins(ds_observed, bin_count_suggestion=bin_count_suggestion)
-  rounding_digits      <- calculate_rounding_digits(ds_observed)
+  bins                 <- calculate_bins(d_observed, bin_count_suggestion=bin_count_suggestion)
+  rounding_digits      <- calculate_rounding_digits(d_observed)
 
   #Create the data.frame of metadata.
   ds_skeleton <- data.frame(
-    variable_name          = colnames(ds_observed),
+    variable_name          = colnames(d_observed),
     remark                 = "",
     class                  = column_class,
     should_graph           = TRUE,

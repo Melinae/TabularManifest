@@ -7,9 +7,9 @@
 #' @description Generate a histogram for a \code{character} or \code{factor} variable.  This graph is intended to quickly provide
 #' the researcher with a quick, yet thorough representation of the continuous variable.  The additional annotations may not
 #' be desired for publication-quality plots.
-#' 
-#' 
-#' @param ds_observed The \code{data.frame} with the variable to graph.
+#'
+#'
+#' @param d_observed The \code{data.frame} with the variable to graph.
 #' @param variable_name The name of the variable to graph. \code{character}.
 #' @param levels_to_exclude An array of of the levels to be excluded from the histogram. Pass an empty variable (\emph{ie}, \code{character(0)}) if all levels are desired; this is the default. \code{character}.
 #' @param main_title The desired title on top of the graph.  Defaults to \code{variable_name}, with underscores replaced with spaces. If no title is desired, pass a value of \code{NULL}. \code{character}.
@@ -24,8 +24,8 @@
 #' library(datasets)
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) ) {
-#'   histogram_discrete(ds_observed=infert, variable_name="education")
-#'   histogram_discrete(ds_observed=infert, variable_name="age")
+#'   histogram_discrete(d_observed=infert, variable_name="education")
+#'   histogram_discrete(d_observed=infert, variable_name="age")
 #' }
 
 ##TODO: also include the number of missing & excluded records.  Possibly the excluded levels too.
@@ -34,7 +34,7 @@
 ##TODO: add parameter for toggling between bars or points. create_manifest defaults to dots if they're more than 10 or 15 categories.  Otherwise it's a bar.
 
 histogram_discrete <- function(
-  ds_observed,
+  d_observed,
   variable_name,
   levels_to_exclude       = character(0),
   main_title              = base::gsub("_", " ", variable_name, perl=TRUE),
@@ -46,24 +46,24 @@ histogram_discrete <- function(
 
 ) {
 
-  if( !inherits(ds_observed, "data.frame") ) 
-    stop("`ds_observed` should inherit from the data.frame class.")
+  if( !inherits(d_observed, "data.frame") )
+    stop("`d_observed` should inherit from the data.frame class.")
 
-  if( !base::is.factor(ds_observed[[variable_name]]) )
-    ds_observed[[variable_name]] <- base::factor(ds_observed[[variable_name]])
+  if( !base::is.factor(d_observed[[variable_name]]) )
+    d_observed[[variable_name]] <- base::factor(d_observed[[variable_name]])
 
-  ds_observed$iv <- base::ordered(ds_observed[[variable_name]], levels=rev(levels(ds_observed[[variable_name]])))
+  d_observed$iv <- base::ordered(d_observed[[variable_name]], levels=rev(levels(d_observed[[variable_name]])))
 
-  ds_observed <- ds_observed[!(ds_observed$iv %in% levels_to_exclude), ]
+  d_observed <- d_observed[!(d_observed$iv %in% levels_to_exclude), ]
 
-  d_summary <- ds_observed %>%
-    dplyr::count_("iv") %>% 
+  d_summary <- d_observed %>%
+    dplyr::count_("iv") %>%
     dplyr::mutate_(
       "count"             = "n",
       "proportion"        = "n / sum(n)",
       "percent_pretty"    = "base::paste0(base::round(proportion*100), '%')"
     )
-  
+
   y_title <- base::paste0(y_title, " (n=", scales::comma(base::sum(d_summary$n)), ")")
 
   g <- ggplot2::ggplot(d_summary, ggplot2::aes_string(x="iv", y="count", fill="iv", label="percent_pretty"))
@@ -88,6 +88,6 @@ histogram_discrete <- function(
   return( g + theme )
 }
 
-# histogram_discrete(ds_observed=infert, variable_name="education")
+# histogram_discrete(d_observed=infert, variable_name="education")
 # devtools::load_all()
-# histogram_discrete(ds_observed=tibble::as_tibble(infert), variable_name="age")
+# histogram_discrete(d_observed=tibble::as_tibble(infert), variable_name="age")

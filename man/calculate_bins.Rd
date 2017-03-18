@@ -4,17 +4,17 @@
 \alias{calculate_bins}
 \title{Internal function for creating default bins for dataset variables.}
 \usage{
-calculate_bins(ds_observed, bin_count_suggestion = 30L)
+calculate_bins(d_observed, bin_count_suggestion = 30L)
 }
 \arguments{
-\item{ds_observed}{The \code{data.frame} with columns to calculate bins.}
+\item{d_observed}{The \code{data.frame} with columns to calculate bins.}
 
 \item{bin_count_suggestion}{An \code{integer} or \code{numeric} value for the suggested number of bins for each variable.}
 }
 \value{
-Returns a \code{list}, with two elements.  Each element is an array with as many values as columns in \code{ds_observed}.
+Returns a \code{list}, with two elements.  Each element is an array with as many values as columns in \code{d_observed}.
 \enumerate{
-\item{\code{bin_width} The variable name (in \code{ds_observed}).}
+\item{\code{bin_width} The variable name (in \code{d_observed}).}
 \item{\code{bin_start} The variable's \code{\link{class}}. (eg, numeric, Date, factor)}
 }
 }
@@ -22,6 +22,6 @@ Returns a \code{list}, with two elements.  Each element is an array with as many
 An internal function (ie, that's not currently exposed/exported outside the package) for creating default bins for dataset variables.
 }
 \examples{
-#calculate_bins(ds_observed=datasets::freeny)
-#calculate_bins(ds_observed=datasets::InsectSprays)
+#calculate_bins(d_observed=datasets::freeny)
+#calculate_bins(d_observed=datasets::InsectSprays)
 }

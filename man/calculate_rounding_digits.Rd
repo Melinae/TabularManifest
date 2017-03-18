@@ -4,20 +4,20 @@
 \alias{calculate_rounding_digits}
 \title{Internal function for calculating rounding digits for dataset variables}
 \usage{
-calculate_rounding_digits(ds_observed)
+calculate_rounding_digits(d_observed)
 }
 \arguments{
-\item{ds_observed}{The \code{data.frame} with columns to calculate bins.}
+\item{d_observed}{The \code{data.frame} with columns to calculate bins.}
 }
 \value{
 Returns a \code{numeric} vector, indicating how many rounding digits *might* be appropriate.
-  Each element is an array with as many values as columns in \code{ds_observed}.
+  Each element is an array with as many values as columns in \code{d_observed}.
 }
 \description{
 An internal function (ie, that's not currently exposed/exported outside the package) for creating default bins for dataset variables.
 }
 \examples{
-calculate_rounding_digits(ds_observed=freeny)
-calculate_rounding_digits(ds_observed=InsectSprays)
-calculate_rounding_digits(ds_observed=beaver1)
+calculate_rounding_digits(d_observed=freeny)
+calculate_rounding_digits(d_observed=InsectSprays)
+calculate_rounding_digits(d_observed=beaver1)
 }

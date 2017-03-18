@@ -5,7 +5,7 @@
 \title{Create a manifest for exploring univariate patterns.}
 \usage{
 create_manifest_explore_univariate(
-    ds_observed,
+    d_observed,
     write_to_disk = TRUE,
     path_out = getwd(),
     overwrite_file = FALSE,
@@ -24,7 +24,7 @@ create_manifest_explore_univariate(
 )
 }
 \arguments{
-\item{ds_observed}{The \code{data.frame} to create metadata for.}
+\item{d_observed}{The \code{data.frame} to create metadata for.}
 
 \item{write_to_disk}{Indicates if the meta-dataset should be saved as a CSV.}
 
@@ -39,10 +39,10 @@ create_manifest_explore_univariate(
 \item{bin_count_suggestion}{An \code{integer} value of the number of roughly the number bins desired for a histogram.}
 }
 \value{
-Returns a \code{data.frame} where each row in the metadata represents a column in \code{ds_observed}.
+Returns a \code{data.frame} where each row in the metadata represents a column in \code{d_observed}.
 The metadata contains the following columns
 \enumerate{
-\item{\code{variable_name} The variable name (in \code{ds_observed}). \code{character}.}
+\item{\code{variable_name} The variable name (in \code{d_observed}). \code{character}.}
 \item{\code{remark} A blank field that allows theuser to enter notes in the CSV for later reference.}
 \item{\code{class} The variable's \code{\link{class}} (eg, numeric, Date, factor).  \code{character}.}
 \item{\code{should_graph} A boolean value indicating if the variable should be graphed. \code{logical}.}

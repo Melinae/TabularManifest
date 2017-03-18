@@ -4,7 +4,7 @@
 \alias{scatter_model_continuous_x_binary_y_logit}
 \title{Internal function for examining a logit performance}
 \usage{
-scatter_model_continuous_x_binary_y_logit(ds_plot, x_name, y_name = "y",
+scatter_model_continuous_x_binary_y_logit(d_plot, x_name, y_name = "y",
   yhat_name = "yhat", residual_name = "residual", alpha_point = 0.05,
   alpha_se_band = 0.15, x_label_format = scales::comma,
   color_smooth_observed = "#1b9e77", color_smooth_predicted = "#d95f02",
@@ -14,7 +14,7 @@ scatter_model_continuous_x_binary_y_logit(ds_plot, x_name, y_name = "y",
   seed_value = NA_real_)
 }
 \arguments{
-\item{ds_plot}{The \code{data.frame} of observed and predicted values to plot.}
+\item{d_plot}{The \code{data.frame} of observed and predicted values to plot.}
 
 \item{x_name}{The name of the predictor \code{character}.}
 

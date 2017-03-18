@@ -7,7 +7,7 @@ expected_metadata_column_count <- 9L #This is a property of the function, and no
 
 test_that("Dataset: InsectSprays", {  
   #Declare the input.
-  ds_observed <- datasets::InsectSprays
+  d_observed <- datasets::InsectSprays
   
   #Declare the expected values.
   expected_metadata <- structure(list(variable_name = c("count", "spray"), remark = c("", 
@@ -19,17 +19,17 @@ test_that("Dataset: InsectSprays", {
                                                                                                   "bin_width", "bin_start", "rounding_digits"), row.names = c(NA, 
                                                                                                                                                               -2L), class = "data.frame")
   #Run the function
-  returned_metadata <- create_manifest_explore_univariate(ds_observed, write_to_disk=FALSE) #dput(returned_metadata)
+  returned_metadata <- create_manifest_explore_univariate(d_observed, write_to_disk=FALSE) #dput(returned_metadata)
   
   #Compare the returned & expected values.
   expect_equal(ncol(expected_metadata), expected_metadata_column_count, label="The number of metadata columns should be correct.")
-  expect_equal(nrow(expected_metadata), ncol(ds_observed), label="The number of metadata rows should equal the number of rows in ds_observed.")
+  expect_equal(nrow(expected_metadata), ncol(d_observed), label="The number of metadata rows should equal the number of rows in d_observed.")
   expect_equivalent(returned_metadata, expected=expected_metadata, label="The returned data.frame should be correct") # dput(returned_object$data)
 })
 
 test_that("Dataset: freeny", {  
   #Declare the input.
-  ds_observed <- datasets::freeny
+  d_observed <- datasets::freeny
   
   #Declare the expected values.
   expected_metadata <- structure(list(variable_name = c("y", "lag.quarterly.revenue", 
@@ -45,11 +45,11 @@ test_that("Dataset: freeny", {
                                                                                                                                "should_graph", "graph_function", "x_label_format", "bin_width", 
                                                                                                                                "bin_start", "rounding_digits"), row.names = c(NA, -5L), class = "data.frame")
   #Run the function
-  returned_metadata <- create_manifest_explore_univariate(ds_observed, write_to_disk=FALSE) #dput(returned_metadata)
+  returned_metadata <- create_manifest_explore_univariate(d_observed, write_to_disk=FALSE) #dput(returned_metadata)
   
   #Compare the returned & expected values.
   expect_equal(ncol(expected_metadata), expected_metadata_column_count, label="The number of metadata columns should be correct.")
-  expect_equal(nrow(expected_metadata), ncol(ds_observed), label="The number of metadata rows should equal the number of rows in ds_observed.")
+  expect_equal(nrow(expected_metadata), ncol(d_observed), label="The number of metadata rows should equal the number of rows in d_observed.")
   expect_equivalent(returned_metadata, expected=expected_metadata, label="The returned data.frame should be correct") # dput(returned_object$data)
 })
 

@@ -5,8 +5,8 @@ require(TabularManifest)
 require(datasets)
 require(scales)
 
-#ds_observed <- beaver1
-ds_observed <- InsectSprays
+#d_observed <- beaver1
+d_observed <- InsectSprays
 ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds, write_to_disk=FALSE)
 
 # get_with_package <- function( qualified_function ) {
@@ -33,7 +33,7 @@ ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds, write_to_
 #   
 #   bin_width <- ds_manifest[variable_index, "bin_width"]
 #   if( should_graph ) {
-#     graphing_fx(ds_observed=ds, variable_name=variable_name, bin_width=bin_width)
+#     graphing_fx(d_observed=ds, variable_name=variable_name, bin_width=bin_width)
 #   }
 # }
 
@@ -46,7 +46,7 @@ ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds, write_to_
 #   
 #   bin_width <- ds_manifest[variable_index, "bin_width"]
 #   if( should_graph ) 
-#     g <- graphing_fx(ds_observed=ds, variable_name=variable_name, bin_width=bin_width)
+#     g <- graphing_fx(d_observed=ds, variable_name=variable_name, bin_width=bin_width)
 #   else
 #     g <- NULL
 #   
@@ -58,7 +58,7 @@ ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds, write_to_
 # graph_list[[2]]$graph
 
 
-# construct_graph_univariate <- function( variable_name, ds_metadata, ds_observed ) {
+# construct_graph_univariate <- function( variable_name, ds_metadata, d_observed ) {
 #   ds_for_variable <- ds_metadata[ds_metadata$variable_name==variable_name, ]
 #   variable_name <- ds_for_variable$variable_name
 #   should_graph <- ds_for_variable$should_graph
@@ -68,14 +68,14 @@ ds_manifest <- TabularManifest::create_manifest_explore_univariate(ds, write_to_
 #   
 #   bin_width <- ds_for_variable$bin_width
 #   if( should_graph ) 
-#     g <- graphing_fx(ds_observed=ds_observed, variable_name=variable_name, bin_width=bin_width)
+#     g <- graphing_fx(d_observed=d_observed, variable_name=variable_name, bin_width=bin_width)
 #   else
 #     g <- NULL
 #   
 #   return(list(variable_name=variable_name, graph=g, remark=remark))
 # }
 
-# graph_list <- lapply(X=ds_manifest$variable_name, FUN=construct_graph_univariate, ds_metadata=ds_manifest, ds_observed=ds_observed)
+# graph_list <- lapply(X=ds_manifest$variable_name, FUN=construct_graph_univariate, ds_metadata=ds_manifest, d_observed=d_observed)
 
 
 rnorm(1)
