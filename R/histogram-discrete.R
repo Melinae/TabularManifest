@@ -80,7 +80,7 @@ histogram_discrete <- function(
     ggplot2::theme(panel.grid.major.y     = ggplot2::element_blank(), panel.grid.minor.y=ggplot2::element_blank()) +
     ggplot2::theme(axis.text.x            = ggplot2::element_text(colour="gray40")) +
     ggplot2::theme(axis.title.x           = ggplot2::element_text(colour="gray40")) +
-    ggplot2::theme(axis.text.y            = ggplot2::element_text(size=14)) +
+    ggplot2::theme(axis.text.y            = ggplot2::element_text(size=font_base_size + 2L)) +
     ggplot2::theme(panel.border           = ggplot2::element_rect(colour="gray80")) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank())
 
