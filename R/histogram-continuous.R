@@ -65,7 +65,8 @@ histogram_continuous <- function(
   g <- g + ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank())
 
-  ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$layout$panel_ranges[[1]]$y.range, .8)
+  # ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$layout$panel_ranges[[1]]$y.range, .8)
+  ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$layout$panel_scales_y[[1]]$range$range[2], .8)
   g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color="tomato", hjust=h_just, parse=TRUE)
   return( g )
 }
