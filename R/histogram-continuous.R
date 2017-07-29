@@ -54,13 +54,13 @@ histogram_continuous <- function(
     h_just <- c(0, 1)
   }
 
-  g <- ggplot2::ggplot(d_observed, ggplot2::aes_string(x=variable_name))
-  g <- g + ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray70", color="gray90", alpha=.7)
-  g <- g + ggplot2::geom_vline(xintercept=ds_mid_points$value, color="gray30")
-  g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=0, label="value_rounded"), color="tomato", hjust=h_just, vjust=.5)
-  g <- g + ggplot2::scale_x_continuous(labels=scales::comma_format())
-  g <- g + ggplot2::scale_y_continuous(labels=scales::comma_format())
-  g <- g + ggplot2::labs(title=main_title, x=x_title, y=y_title)
+  g <- ggplot2::ggplot(d_observed, ggplot2::aes_string(x=variable_name)) +
+    ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray70", color="gray90", alpha=.7) +
+    ggplot2::geom_vline(xintercept=ds_mid_points$value, color="gray30") +
+    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=0, label="value_rounded"), color="tomato", hjust=h_just, vjust=.5) +
+    ggplot2::scale_x_continuous(labels=scales::comma_format()) +
+    ggplot2::scale_y_continuous(labels=scales::comma_format()) +
+    ggplot2::labs(title=main_title, x=x_title, y=y_title)
   
   g <- g + ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank())
@@ -70,23 +70,3 @@ histogram_continuous <- function(
   g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color="tomato", hjust=h_just, parse=TRUE)
   return( g )
 }
-# ds_midpoints <- data.frame(Label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=F)
-# ds_midpoints$Value <- c(median(d_plot[, response_name], na.rm=TRUE), mean(d_plot[, response_name], na.rm=TRUE))
-# ds_midpoints$ValueRounded <- round(ds_midpoints$Value, rounded_digits)
-#
-# if( diff( ds_midpoints$Value) > 0) label_alignment <- c(1, 0) #The median is less than the mean
-# else label_alignment <- c(0, 1) #The mean is less than the median
-#
-# g <- ggplot(d_plot, aes_string(x=response_name))
-# g <- g + geom_bar(stat="bin", binwidth=bin_width, fill="gray70", color=color )
-# g <- g + geom_vline(xintercept=ds_midpoints$Value, color="gray30")
-# g <- g + geom_text(data=ds_midpoints, aes(x=Value, y=0, label=ValueRounded), color="red", hjust=label_alignment, vjust=.5)
-# g <- g + scale_x_continuous(labels=comma_format())
-# g <- g + scale_y_continuous(labels=comma_format())
-# g <- g + labs(title=title, x=xLabel, y=yLabel)
-# g <- g + ggplot2::theme_light()
-# ds_midpoints$Top <- quantile(ggplot_build(g)$panel$ranges[[1]]$y.range, .8)
-# g <- g + geom_text(data=ds_midpoints, aes(x=Value, y=Top, label=Label), color="red", hjust=label_alignment, parse=T)
-# return( g )
-
-# histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1, rounded_digits = 5)
