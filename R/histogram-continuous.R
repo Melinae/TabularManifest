@@ -48,7 +48,8 @@ histogram_continuous <- function(
 
   ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
   ds_mid_points$value <- c(stats::median(d_observed[[variable_name]]), base::mean(d_observed[[variable_name]]))
-  ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
+  ds_mid_points$value_rounded <- sprintf("%.*f", rounded_digits, ds_mid_points$value)
+  # ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
   
   if( ds_mid_points$value[1] < ds_mid_points$value[2] ) {
     h_just <- c(1, 0)
