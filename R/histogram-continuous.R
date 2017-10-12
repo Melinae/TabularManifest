@@ -76,7 +76,8 @@ histogram_continuous <- function(
   
   g <- g + ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank()) +
-    ggplot2::theme(panel.grid             = ggplot2::element_line(color="gray80")) +
+    ggplot2::theme(panel.grid.major       = ggplot2::element_line(color="gray90")) +
+    ggplot2::theme(panel.grid.minor       = ggplot2::element_line(color="gray94")) +
     ggplot2::theme(plot.caption           = ggplot2::element_text(color="gray60")) +
     ggplot2::theme(axis.title.y           = ggplot2::element_text(color="gray60"))
 
