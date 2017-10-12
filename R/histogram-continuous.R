@@ -54,28 +54,31 @@ histogram_continuous <- function(
   # ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
   
   if( ds_mid_points$value[1] < ds_mid_points$value[2] ) {
-    h_just <- c(1, 0)
+    h_just <- c( 1.1, -0.1)
   } else {
-    h_just <- c(0, 1)
+    h_just <- c(-0.1,  1.1)
   }
   
-  # palette_midpoint <- c("#2274A5", "#32936F") # https://coolors.co/app/ffbf00-e83f6f-2274a5-32936f-ffffff
-  palette_midpoint <- c("#118AB2", "#06D6A0") # https://coolors.co/app/ef476f-ffd166-06d6a0-118ab2-073b4c
+  palette_midpoint <- c("#2274A5", "#32936F") # https://coolors.co/app/ffbf00-e83f6f-2274a5-32936f-ffffff
+  # palette_midpoint <- c("#118AB2", "#06D6A0") # https://coolors.co/app/ef476f-ffd166-06d6a0-118ab2-073b4c
   
   g <- ggplot2::ggplot(d_observed, ggplot2::aes_string(x=variable_name)) +
-    ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray70", color="gray90", alpha=.7) +
+    ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray92", color="gray80", size=1, alpha=.7) +
     ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint) +
-    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=0, label="value_rounded"), color=palette_midpoint, hjust=h_just, vjust=.5) +
+    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=-Inf, label="value_rounded"), color=palette_midpoint, hjust=h_just, vjust=-0.2) +
+    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y= Inf, label="label"        ), color=palette_midpoint, hjust=h_just, vjust=1.2, parse=TRUE) +
     ggplot2::scale_x_continuous(labels=scales::comma_format()) +
     ggplot2::scale_y_continuous(labels=scales::comma_format()) +
     ggplot2::labs(title=main_title, subtitle=sub_title, caption=caption, x=x_title, y=y_title)
   
   g <- g + ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank()) +
-    ggplot2::theme(plot.caption           = ggplot2::element_text(color="gray60"))
+    ggplot2::theme(plot.caption           = ggplot2::element_text(color="gray60")) +
+    ggplot2::theme(axis.title.y           = ggplot2::element_text(color="gray60"))
 
   # ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$layout$panel_ranges[[1]]$y.range, .8)
-  ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$layout$panel_scales_y[[1]]$range$range[2], .8)
-  g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color=palette_midpoint, hjust=h_just, parse=TRUE)
+  # ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$layout$panel_scales_y[[1]]$range$range[2], .8)
+  # g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color=palette_midpoint, hjust=h_just, parse=TRUE)
+  # g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=Inf, label="label"), color=palette_midpoint, hjust=h_just, vjust=1.2, parse=TRUE)
   return( g )
 }
