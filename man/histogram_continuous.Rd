@@ -8,7 +8,8 @@ histogram_continuous(d_observed, variable_name, bin_width = NULL,
   main_title = base::gsub("_", " ", variable_name, perl = TRUE),
   sub_title = NULL, caption = paste0("each bin is ",
   scales::comma(bin_width), " units wide"), x_title = variable_name,
-  y_title = "Frequency", rounded_digits = 0L, font_base_size = 12)
+  y_title = "Frequency", x_axis_format = scales::comma_format(),
+  rounded_digits = 0L, font_base_size = 12)
 }
 \arguments{
 \item{d_observed}{The \code{data.frame} with the variable to graph.}
@@ -27,6 +28,8 @@ histogram_continuous(d_observed, variable_name, bin_width = NULL,
 
 \item{y_title}{The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.}
 
+\item{x_axis_format}{How the \emph{x}-axis digits are formatted. Defaults to \code{scales::comma_format()}.  \code{scale format}.}
+
 \item{rounded_digits}{The number of decimals to show for the mean and median annotations. \code{character}.}
 
 \item{font_base_size}{Sets font size through ggplot2's theme.}
@@ -44,5 +47,6 @@ library(datasets)
 #Don't run graphs on a headless machine without any the basic graphics packages installed.
 if( require(grDevices) ) {
   histogram_continuous(d_observed=-beaver1, variable_name="temp", bin_width=.1, rounded_digits=2)
+  histogram_continuous(d_observed=-beaver1, variable_name="temp", bin_width=.1, rounded_digits=2, x_axis_format = scales::percent_format())
 }
 }

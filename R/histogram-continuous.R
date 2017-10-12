@@ -16,6 +16,7 @@
 #' @param x_title The desired title on the \emph{x}-axis.  Defaults to the \code{variable_name}.  If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param y_title The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param rounded_digits The number of decimals to show for the mean and median annotations. \code{character}.
+#' @param x_axis_format How the \emph{x}-axis digits are formatted. Defaults to \code{scales::comma_format()}.  \code{scale format}.
 #' @param font_base_size Sets font size through ggplot2's theme.
 #'
 #' @return Returns a histogram as a \code{ggplot2} object.
@@ -24,6 +25,7 @@
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) ) {
 #'   histogram_continuous(d_observed=-beaver1, variable_name="temp", bin_width=.1, rounded_digits=2)
+#'   histogram_continuous(d_observed=-beaver1, variable_name="temp", bin_width=.1, rounded_digits=2, x_axis_format = scales::percent_format())
 #' }
 
 #TODO: switch the hadj if there's a negative skew (so the mean is on the left side of the median)
@@ -39,6 +41,7 @@ histogram_continuous <- function(
   caption                 = paste0("each bin is ", scales::comma(bin_width), " units wide"),
   x_title                 = variable_name,
   y_title                 = "Frequency",
+  x_axis_format           = scales::comma_format(),
   rounded_digits          = 0L,
   font_base_size          = 12
 ) {
@@ -67,12 +70,13 @@ histogram_continuous <- function(
     ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint) +
     ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=-Inf, label="value_rounded"), color=palette_midpoint, hjust=h_just, vjust=-0.2) +
     ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y= Inf, label="label"        ), color=palette_midpoint, hjust=h_just, vjust=1.2, parse=TRUE) +
-    ggplot2::scale_x_continuous(labels=scales::comma_format()) +
+    ggplot2::scale_x_continuous(labels=x_axis_format) +
     ggplot2::scale_y_continuous(labels=scales::comma_format()) +
     ggplot2::labs(title=main_title, subtitle=sub_title, caption=caption, x=x_title, y=y_title)
   
   g <- g + ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank()) +
+    ggplot2::theme(panel.grid             = ggplot2::element_line(color="gray80")) +
     ggplot2::theme(plot.caption           = ggplot2::element_text(color="gray60")) +
     ggplot2::theme(axis.title.y           = ggplot2::element_text(color="gray60"))
 
