@@ -11,7 +11,8 @@
 #' @param variable_name The name of the variable to graph. \code{character}.
 #' @param bin_width The width of the histogram bins. If NULL, the \code{ggplot2} default is used. \code{numeric}.
 #' @param main_title The desired title on top of the graph.  Defaults to \code{variable_name}, with underscores replaced with spaces. If no title is desired, pass a value of \code{NULL}. \code{character}.
-#' @param x_title The desired title on the \emph{x}-axis.  Defaults to the \code{variable_name} and the \code{bin_width}. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
+#' @param sub_title The desired subtitle near the top of the graph.  Defaults to the \code{bin_width}. If no subtitle is desired, pass a value of \code{NULL}. \code{character}.
+#' @param x_title The desired title on the \emph{x}-axis.  Defaults to the \code{variable_name}.  If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param y_title The desired title on the \emph{y}-axis.  Defaults to ``Frequency''. If no axis title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param rounded_digits The number of decimals to show for the mean and median annotations. \code{character}.
 #' @param font_base_size Sets font size through ggplot2's theme.
@@ -33,7 +34,8 @@ histogram_continuous <- function(
   variable_name,
   bin_width               = NULL,
   main_title              = base::gsub("_", " ", variable_name, perl=TRUE),
-  x_title                 = paste0(variable_name, " (each bin is ", scales::comma(bin_width), " units wide)"),
+  sub_title               = paste0("(each bin is ", scales::comma(bin_width), " units wide)"),
+  x_title                 = variable_name,
   y_title                 = "Frequency",
   rounded_digits          = 0L,
   font_base_size          = 12
@@ -60,7 +62,7 @@ histogram_continuous <- function(
     ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=0, label="value_rounded"), color="tomato", hjust=h_just, vjust=.5) +
     ggplot2::scale_x_continuous(labels=scales::comma_format()) +
     ggplot2::scale_y_continuous(labels=scales::comma_format()) +
-    ggplot2::labs(title=main_title, x=x_title, y=y_title)
+    ggplot2::labs(title=main_title, subtitle=sub_title, x=x_title, y=y_title)
   
   g <- g + ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank())
