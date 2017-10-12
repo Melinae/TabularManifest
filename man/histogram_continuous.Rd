@@ -6,9 +6,9 @@
 \usage{
 histogram_continuous(d_observed, variable_name, bin_width = NULL,
   main_title = base::gsub("_", " ", variable_name, perl = TRUE),
-  sub_title = paste0("(each bin is ", scales::comma(bin_width),
-  " units wide)"), x_title = variable_name, y_title = "Frequency",
-  rounded_digits = 0L, font_base_size = 12)
+  sub_title = NULL, caption = paste0("each bin is ",
+  scales::comma(bin_width), " units wide"), x_title = variable_name,
+  y_title = "Frequency", rounded_digits = 0L, font_base_size = 12)
 }
 \arguments{
 \item{d_observed}{The \code{data.frame} with the variable to graph.}
@@ -19,7 +19,9 @@ histogram_continuous(d_observed, variable_name, bin_width = NULL,
 
 \item{main_title}{The desired title on top of the graph.  Defaults to \code{variable_name}, with underscores replaced with spaces. If no title is desired, pass a value of \code{NULL}. \code{character}.}
 
-\item{sub_title}{The desired subtitle near the top of the graph.  Defaults to the \code{bin_width}. If no subtitle is desired, pass a value of \code{NULL}. \code{character}.}
+\item{sub_title}{The desired subtitle near the top of the graph.  Defaults to \code{NULL} If no subtitle is desired, pass a value of \code{NULL}. \code{character}.}
+
+\item{caption}{The desired text in the bottom-right, below the axis.  Defaults to the \code{bin_width}. If no caption is desired, pass a value of \code{NULL}. \code{character}.}
 
 \item{x_title}{The desired title on the \emph{x}-axis.  Defaults to the \code{variable_name}.  If no axis title is desired, pass a value of \code{NULL}. \code{character}.}
 
@@ -41,6 +43,6 @@ be desired for publication-quality plots.
 library(datasets)
 #Don't run graphs on a headless machine without any the basic graphics packages installed.
 if( require(grDevices) ) {
-  histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1)
+  histogram_continuous(d_observed=-beaver1, variable_name="temp", bin_width=.1, rounded_digits=2)
 }
 }
