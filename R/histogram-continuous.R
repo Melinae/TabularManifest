@@ -24,8 +24,10 @@
 #' library(datasets)
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) ) {
-#'   histogram_continuous(d_observed=-beaver1, variable_name="temp", bin_width=.1, rounded_digits=2)
-#'   histogram_continuous(d_observed=-beaver1, variable_name="temp", bin_width=.1, rounded_digits=2, x_axis_format = scales::percent_format())
+#'   histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1, rounded_digits=2)
+#'   
+#'   histogram_continuous(d_observed=beaver1[integer(0), ], variable_name="temp", bin_width=.1, rounded_digits=2)
+#'   histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1, rounded_digits=2, x_axis_format = scales::percent_format())
 #' }
 
 #TODO: switch the hadj if there's a negative skew (so the mean is on the left side of the median)
@@ -50,16 +52,35 @@ histogram_continuous <- function(
     stop("`d_observed` should inherit from the data.frame class.")
   
   d_observed <- d_observed[!base::is.na(d_observed[[variable_name]]), ]
-
-  ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
-  ds_mid_points$value <- c(stats::median(d_observed[[variable_name]]), base::mean(d_observed[[variable_name]]))
-  ds_mid_points$value_rounded <- sprintf("%.*f", rounded_digits, ds_mid_points$value)
-  # ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
   
-  if( ds_mid_points$value[1] < ds_mid_points$value[2] ) {
-    h_just <- c( 1.1, -0.1)
+  non_empty  <- (nrow(d_observed) >= 1L)
+  
+  if( non_empty ) {
+    ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
+    ds_mid_points$value <- c(stats::median(d_observed[[variable_name]]), base::mean(d_observed[[variable_name]]))
+    ds_mid_points$value_rounded <- sprintf("%.*f", rounded_digits, ds_mid_points$value)
+    # ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
+    
+    if( ds_mid_points$value[1] < ds_mid_points$value[2] ) {
+      h_just <- c( 1.1, -0.1)
+    } else {
+      h_just <- c(-0.1,  1.1)
+    }
   } else {
-    h_just <- c(-0.1,  1.1)
+    # d_observed    <- tibble::add_row(d_observed, !!(variable_name) := c(-1L, 1L))
+    #   rlang::quo(
+    #     
+    #   )variable_name = c(-1L, 1L)
+    # )
+    main_title <- paste0("Empty: ", main_title)
+    caption    <- "The variable contains only missing values.\nThere is nothing to graph."
+    
+    ds_mid_points <- tibble::tribble(
+      ~label,            ~value  , ~value_rounded,
+      "italic(X)[50]",   NA_real_, NA_character_,
+      "bar(italic(X))",  NA_real_, NA_character_
+    )
+    h_just <- c( 1.1, -0.1)
   }
   
   palette_midpoint <- c("#2274A5", "#32936F") # https://coolors.co/app/ffbf00-e83f6f-2274a5-32936f-ffffff
@@ -68,11 +89,15 @@ histogram_continuous <- function(
   g <- ggplot2::ggplot(d_observed, ggplot2::aes_string(x=variable_name)) +
     ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray92", color="gray80", size=1, alpha=.7) +
     ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint) +
-    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=-Inf, label="value_rounded"), color=palette_midpoint, hjust=h_just, vjust=-0.2) +
-    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y= Inf, label="label"        ), color=palette_midpoint, hjust=h_just, vjust=1.2, parse=TRUE) +
+    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=-Inf, label="value_rounded"), color=palette_midpoint, hjust=h_just, vjust=-0.2            , na.rm=T) +
+    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y= Inf, label="label"        ), color=palette_midpoint, hjust=h_just, vjust= 1.2, parse=TRUE, na.rm=T) +
     ggplot2::scale_x_continuous(labels=x_axis_format) +
     ggplot2::scale_y_continuous(labels=scales::comma_format()) +
     ggplot2::labs(title=main_title, subtitle=sub_title, caption=caption, x=x_title, y=y_title)
+  
+  # if( !non_empty ) {
+  #   g <- g + ggplot2::annotate("text", x=-Inf, y=Inf, label="The variable contains only missing values.\nThere is nothing to graph.")
+  # }
   
   g <- g + ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank()) +
@@ -81,9 +106,5 @@ histogram_continuous <- function(
     ggplot2::theme(plot.caption           = ggplot2::element_text(color="gray60")) +
     ggplot2::theme(axis.title.y           = ggplot2::element_text(color="gray60"))
 
-  # ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$layout$panel_ranges[[1]]$y.range, .8)
-  # ds_mid_points$top <- stats::quantile(ggplot2::ggplot_build(g)$layout$panel_scales_y[[1]]$range$range[2], .8)
-  # g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y="top", label="label"), color=palette_midpoint, hjust=h_just, parse=TRUE)
-  # g <- g + ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=Inf, label="label"), color=palette_midpoint, hjust=h_just, vjust=1.2, parse=TRUE)
   return( g )
 }
