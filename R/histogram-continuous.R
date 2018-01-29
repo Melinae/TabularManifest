@@ -24,15 +24,24 @@
 #' library(datasets)
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) ) {
+#'   # Simple Case
 #'   histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1, rounded_digits=2)
 #'   
+#'   # Variable has no nonmissing values
 #'   histogram_continuous(d_observed=beaver1[integer(0), ], variable_name="temp", bin_width=.1, rounded_digits=2)
-#'   histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1, rounded_digits=2, x_axis_format = scales::percent_format())
+#'   
+#'   # Adjust cosmetics of histogram
+#'   histogram_continuous(
+#'     d_observed         = beaver1, 
+#'     variable_name      = "temp", 
+#'     bin_width          = .1, 
+#'     rounded_digits     = 2, 
+#'     x_axis_format      = scales::percent_format()
+#'   )
 #' }
 
-#TODO: switch the hadj if there's a negative skew (so the mean is on the left side of the median)
 #TODO: display the number of plotted and the number of excluded/missing values.
-##TODO: add option for facet variable.
+#TODO: add option for facet variable.
 
 histogram_continuous <- function(
   d_observed,

@@ -1,8 +1,8 @@
 Package: TabularManifest
 Title: Tabular Manifest
 Description: Tabular configuration files are used to assist the manipulation and exploration of wide datasets.
-Date: 2017-07-28
-Version: 0.1-16.9002
+Date: 2018-01-29
+Version: 0.1-16.9003
 Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
     "wibeasley@hotmail.com"),
     person("Chad", "Scherrer", role = "ctb"),
@@ -21,7 +21,8 @@ Imports:
     grid,
     magrittr,
     mgcv,
-    scales
+    scales,
+    tibble
 Suggests:
     datasets,
     devtools,
