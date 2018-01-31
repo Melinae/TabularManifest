@@ -41,7 +41,19 @@ be desired for publication-quality plots.
 library(datasets)
 #Don't run graphs on a headless machine without any the basic graphics packages installed.
 if( require(grDevices) ) {
+  # Simple Casees
   histogram_discrete(d_observed=infert, variable_name="education")
   histogram_discrete(d_observed=infert, variable_name="age")
+  
+  # Variable has no nonmissing values
+  histogram_discrete(d_observed=infert[0, ], variable_name="age")
+  
+  # Adjust costmetics of bar-graph/histogram
+  histogram_discrete(
+    d_observed         = infert, 
+    variable_name      = "age",
+    levels_to_exclude  = c(21:29, 40:44),    # Show only subjects in their 30s.
+    main_title         = "Frequency of Subjects, by Age"
+  )
 }
 }
