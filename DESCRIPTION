@@ -4,7 +4,7 @@ Description: Tabular configuration files are used to assist the manipulation and
 Date: 2018-01-29
 Version: 0.1-16.9003
 Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
-    "wibeasley@hotmail.com"),
+    "wibeasley@hotmail.com", comment = c(ORCID = "0000-0002-5613-5006")),
     person("Chad", "Scherrer", role = "ctb"),
     person("Steve", "Soloway", role = "ctb"),
     person("Martin", "Lenardon", role = "ctb"))
