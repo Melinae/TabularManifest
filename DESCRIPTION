@@ -27,6 +27,7 @@ Suggests:
     datasets,
     devtools,
     knitr,
+    nycflights13,
     RColorBrewer,
     testit,
     testthat
