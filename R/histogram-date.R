@@ -24,17 +24,17 @@
 #' library(datasets)
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) & require(nycflights13) ) {
-#'   ds            <- nycflights13::flights
-#'   ds$date       <- as.Date(ISOdate(ds$year, ds$month, ds$day))
-#'   ds$date_blank <- as.Date(NA)
+#'   ds               <- nycflights13::flights
+#'   ds$date_depart   <- as.Date(ISOdate(ds$year, ds$month, ds$day))
+#'   ds$date_blank    <- as.Date(NA)
 #'   
-#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="day")
-#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="week")
-#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="month")
-#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="quarter")
-#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="year")
+#'   histogram_date(ds, variable_name="date_depart", bin_unit="day")
+#'   histogram_date(ds, variable_name="date_depart", bin_unit="week")
+#'   histogram_date(ds, variable_name="date_depart", bin_unit="month")
+#'   histogram_date(ds, variable_name="date_depart", bin_unit="quarter")
+#'   histogram_date(ds, variable_name="date_depart", bin_unit="year")
 #'   
-#'   histogram_date(d_observed=ds, variable_name="date_blank", bin_unit="day")
+#'   histogram_date(ds, variable_name="date_depart", bin_unit="day")
 #' }
 
 histogram_date <- function(
@@ -60,7 +60,7 @@ histogram_date <- function(
   if( non_empty ) {
     ds_mid_points <- base::data.frame(label=c("italic(X)[50]", "bar(italic(X))"), stringsAsFactors=FALSE)
     ds_mid_points$value <- c(stats::median(d_observed[[variable_name]]), base::mean(d_observed[[variable_name]]))
-    # ds_mid_points$value_rounded <- sprintf("%.*f", rounded_digits, ds_mid_points$value)
+    # ds_mid_points$value_pretty  <- sprintf("%.*f", rounded_digits, ds_mid_points$value)
     # ds_mid_points$value_rounded <- base::round(ds_mid_points$value, rounded_digits)
     
     if( ds_mid_points$value[1] < ds_mid_points$value[2] ) {
@@ -99,9 +99,9 @@ histogram_date <- function(
   g <- ggplot2::ggplot(d_observed, ggplot2::aes_string(x=variable_name)) +
     ggplot2::geom_histogram(breaks=breaks, closed="left", position=ggplot2::position_identity(), fill="gray92", color="gray80", size=1, alpha=.7) +
     ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint) +
-    # ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=-Inf, label="value_rounded"), color=palette_midpoint, hjust=h_just, vjust=-0.2            , na.rm=T) +
-    # ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y= Inf, label="label"        ), color=palette_midpoint, hjust=h_just, vjust= 1.2, parse=TRUE, na.rm=T) +
-    # ggplot2::scale_x_continuous(labels=x_axis_format) +
+    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=-Inf, label="value"), color=palette_midpoint, hjust=h_just, vjust=-0.2            , na.rm=T) +
+    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y= Inf, label="label"        ), color=palette_midpoint, hjust=h_just, vjust= 1.2, parse=TRUE, na.rm=T) +
+    ggplot2::scale_x_date(labels = scales::date_format("%Y\n%b\n%d")) +
     ggplot2::scale_y_continuous(labels=scales::comma_format()) +
     ggplot2::labs(title=main_title, subtitle=sub_title, caption=caption, x=x_title, y=y_title)
 
