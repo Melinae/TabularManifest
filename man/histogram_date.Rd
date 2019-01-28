@@ -52,8 +52,8 @@ if( require(grDevices) & require(nycflights13) ) {
   histogram_date(d_observed=ds, variable_name="date", bin_unit="week")
   histogram_date(d_observed=ds, variable_name="date", bin_unit="month")
   histogram_date(d_observed=ds, variable_name="date", bin_unit="quarter")
-  histogram_date(d_observed=ds, variable_name="date", bin_unit="day")
+  histogram_date(d_observed=ds, variable_name="date", bin_unit="year")
   
-  # histogram_date(d_observed=ds, variable_name="date_blank", bin_unit="day")
+  histogram_date(d_observed=ds, variable_name="date_blank", bin_unit="day")
 }
 }

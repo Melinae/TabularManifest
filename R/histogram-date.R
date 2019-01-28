@@ -32,9 +32,9 @@
 #'   histogram_date(d_observed=ds, variable_name="date", bin_unit="week")
 #'   histogram_date(d_observed=ds, variable_name="date", bin_unit="month")
 #'   histogram_date(d_observed=ds, variable_name="date", bin_unit="quarter")
-#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="day")
+#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="year")
 #'   
-#'   # histogram_date(d_observed=ds, variable_name="date_blank", bin_unit="day")
+#'   histogram_date(d_observed=ds, variable_name="date_blank", bin_unit="day")
 #' }
 
 histogram_date <- function(
@@ -73,8 +73,6 @@ histogram_date <- function(
     # range_lower <- seq.Date(range_base[1], by=paste("-1", bin_unit), length.out = 2)
     range_upper <- seq.Date(range_base[2], by=paste("+1", bin_unit), length.out = 2)
     range_date <- range(range_base, range_upper)
-    # message(range_date)
-    
   } else {
     # d_observed    <- tibble::add_row(d_observed, !!(variable_name) := c(-1L, 1L))
     #   rlang::quo(
@@ -86,21 +84,15 @@ histogram_date <- function(
     
     ds_mid_points <- tibble::tribble(
       ~label,            ~value  , ~value_rounded,
-      "italic(X)[50]",   NA_real_, NA_character_,
-      "bar(italic(X))",  NA_real_, NA_character_
+      "italic(X)[50]",   +Inf, "No non-missing values",
+      "bar(italic(X))",  -Inf, "No non-missing values"
     )
     h_just <- c( 1.1, -0.1)
     
-    
     range_date <- seq.Date(from=Sys.Date(), by=bin_unit, length.out = 2)
   }
-  message("This function is still under development.")
   
   breaks <- seq.Date(from=range_date[1], to=range_date[2], by=bin_unit)
-  # browser()
-  # h <- hist(x=d_observed[[variable_name]], breaks = breaks, right=FALSE, plot=T)
-  # d2 <- tibble::tibble(x=breaks[-length(breaks)], y=h$counts)
-  # message(breaks)
   palette_midpoint <- c("#2274A5", "#32936F") # https://coolors.co/app/ffbf00-e83f6f-2274a5-32936f-ffffff
   # palette_midpoint <- c("#118AB2", "#06D6A0") # https://coolors.co/app/ef476f-ffd166-06d6a0-118ab2-073b4c
   
@@ -112,11 +104,7 @@ histogram_date <- function(
     # ggplot2::scale_x_continuous(labels=x_axis_format) +
     ggplot2::scale_y_continuous(labels=scales::comma_format()) +
     ggplot2::labs(title=main_title, subtitle=sub_title, caption=caption, x=x_title, y=y_title)
-  
-  # if( !non_empty ) {
-  #   g <- g + ggplot2::annotate("text", x=-Inf, y=Inf, label="The variable contains only missing values.\nThere is nothing to graph.")
-  # }
-  
+
   g <- g + ggplot2::theme_light(base_size = font_base_size) +
     ggplot2::theme(axis.ticks             = ggplot2::element_blank()) +
     ggplot2::theme(panel.grid.major       = ggplot2::element_line(color="gray90")) +
