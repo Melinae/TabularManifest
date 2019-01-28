@@ -24,11 +24,17 @@
 #' library(datasets)
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) & require(nycflights13) ) {
-#'   ds <- nycflights13::flights
-#'   ds$date <- ISOdate(ds$year, ds$month, ds$day)
+#'   ds            <- nycflights13::flights
+#'   ds$date       <- as.Date(ISOdate(ds$year, ds$month, ds$day))
+#'   ds$date_blank <- as.Date(NA)
 #'   
 #'   histogram_date(d_observed=ds, variable_name="date", bin_unit="day")
+#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="week")
 #'   histogram_date(d_observed=ds, variable_name="date", bin_unit="month")
+#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="quarter")
+#'   histogram_date(d_observed=ds, variable_name="date", bin_unit="day")
+#'   
+#'   # histogram_date(d_observed=ds, variable_name="date_blank", bin_unit="day")
 #' }
 
 histogram_date <- function(
@@ -64,9 +70,9 @@ histogram_date <- function(
     }
     
     range_base <- range(d_observed[[variable_name]])
-    range_lower <- seq.Date(range_base[1], by=paste("-1", bin_unit), length.out = 2)
+    # range_lower <- seq.Date(range_base[1], by=paste("-1", bin_unit), length.out = 2)
     range_upper <- seq.Date(range_base[2], by=paste("+1", bin_unit), length.out = 2)
-    range_date <- range(range_lower, range_upper)
+    range_date <- range(range_base, range_upper)
     # message(range_date)
     
   } else {
@@ -88,18 +94,18 @@ histogram_date <- function(
     
     range_date <- seq.Date(from=Sys.Date(), by=bin_unit, length.out = 2)
   }
-  warning("This function is still under development.  I need to think of a consisitent way of handling the breakpoint for different units (eg, day vs week vs month).")
+  message("This function is still under development.")
   
   breaks <- seq.Date(from=range_date[1], to=range_date[2], by=bin_unit)
-  
-  # h <- hist(x=d_observed[[variable_name]], breaks = breaks, plot=T)
-  # d2 <- tibble::tibble(x=x, y=h$counts)
+  # browser()
+  # h <- hist(x=d_observed[[variable_name]], breaks = breaks, right=FALSE, plot=T)
+  # d2 <- tibble::tibble(x=breaks[-length(breaks)], y=h$counts)
   # message(breaks)
   palette_midpoint <- c("#2274A5", "#32936F") # https://coolors.co/app/ffbf00-e83f6f-2274a5-32936f-ffffff
   # palette_midpoint <- c("#118AB2", "#06D6A0") # https://coolors.co/app/ef476f-ffd166-06d6a0-118ab2-073b4c
   
   g <- ggplot2::ggplot(d_observed, ggplot2::aes_string(x=variable_name)) +
-    ggplot2::geom_histogram(breaks=breaks, position=ggplot2::position_identity(), fill="gray92", color="gray80", size=1, alpha=.7) +
+    ggplot2::geom_histogram(breaks=breaks, closed="left", position=ggplot2::position_identity(), fill="gray92", color="gray80", size=1, alpha=.7) +
     ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint) +
     # ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=-Inf, label="value_rounded"), color=palette_midpoint, hjust=h_just, vjust=-0.2            , na.rm=T) +
     # ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y= Inf, label="label"        ), color=palette_midpoint, hjust=h_just, vjust= 1.2, parse=TRUE, na.rm=T) +
