@@ -21,8 +21,7 @@
 #'
 #' @return Returns a histogram as a \code{ggplot2} object.
 #' @examples
-#' library(datasets)
-#' #Don't run graphs on a headless machine without any the basic graphics packages installed.
+#' # Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) & require(nycflights13) ) {
 #'   ds               <- nycflights13::flights
 #'   ds$date_depart   <- as.Date(ISOdate(ds$year, ds$month, ds$day))

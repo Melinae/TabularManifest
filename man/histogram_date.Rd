@@ -41,19 +41,18 @@ the researcher with a quick, yet thorough representation of the date.  The addit
 be desired for publication-quality plots.
 }
 \examples{
-library(datasets)
-#Don't run graphs on a headless machine without any the basic graphics packages installed.
+# Don't run graphs on a headless machine without any the basic graphics packages installed.
 if( require(grDevices) & require(nycflights13) ) {
-  ds            <- nycflights13::flights
-  ds$date       <- as.Date(ISOdate(ds$year, ds$month, ds$day))
-  ds$date_blank <- as.Date(NA)
+  ds               <- nycflights13::flights
+  ds$date_depart   <- as.Date(ISOdate(ds$year, ds$month, ds$day))
+  ds$date_blank    <- as.Date(NA)
   
-  histogram_date(d_observed=ds, variable_name="date", bin_unit="day")
-  histogram_date(d_observed=ds, variable_name="date", bin_unit="week")
-  histogram_date(d_observed=ds, variable_name="date", bin_unit="month")
-  histogram_date(d_observed=ds, variable_name="date", bin_unit="quarter")
-  histogram_date(d_observed=ds, variable_name="date", bin_unit="year")
+  histogram_date(ds, variable_name="date_depart", bin_unit="day")
+  histogram_date(ds, variable_name="date_depart", bin_unit="week")
+  histogram_date(ds, variable_name="date_depart", bin_unit="month")
+  histogram_date(ds, variable_name="date_depart", bin_unit="quarter")
+  histogram_date(ds, variable_name="date_depart", bin_unit="year")
   
-  histogram_date(d_observed=ds, variable_name="date_blank", bin_unit="day")
+  histogram_date(ds, variable_name="date_depart", bin_unit="day")
 }
 }
