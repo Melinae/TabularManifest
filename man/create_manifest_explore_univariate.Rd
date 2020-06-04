@@ -5,22 +5,15 @@
 \title{Create a manifest for exploring univariate patterns.}
 \usage{
 create_manifest_explore_univariate(
-    d_observed,
-    write_to_disk = TRUE,
-    path_out = getwd(),
-    overwrite_file = FALSE,
-    default_class_graph = c(
-      numeric = "histogram_continuous",
-      integer = "histogram_continuous",
-      factor = "histogram_discrete",
-      character = "histogram_discrete",
-      notMatched = "histogram_generic"
-    ),
-    default_format = c(
-      numeric = "scales::comma",
-      notMatched = "scales::comma"
-    ),
-    bin_count_suggestion = 30L
+  d_observed,
+  write_to_disk = TRUE,
+  path_out = getwd(),
+  overwrite_file = FALSE,
+  default_class_graph = c(numeric = "histogram_continuous", integer =
+    "histogram_continuous", factor = "histogram_discrete", character =
+    "histogram_discrete", notMatched = "histogram_generic"),
+  default_format = c(numeric = "scales::comma", notMatched = "scales::comma"),
+  bin_count_suggestion = 30L
 )
 }
 \arguments{

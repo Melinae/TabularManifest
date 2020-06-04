@@ -31,5 +31,5 @@ Suggests:
     RColorBrewer,
     testit,
     testthat
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Encoding: UTF-8

@@ -4,12 +4,19 @@
 \alias{histogram_continuous}
 \title{Generate a Histogram for a \code{numeric} or \code{integer} variable.}
 \usage{
-histogram_continuous(d_observed, variable_name, bin_width = NULL,
+histogram_continuous(
+  d_observed,
+  variable_name,
+  bin_width = NULL,
   main_title = base::gsub("_", " ", variable_name, perl = TRUE),
-  sub_title = NULL, caption = paste0("each bin is ",
-  scales::comma(bin_width), " units wide"), x_title = variable_name,
-  y_title = "Frequency", x_axis_format = scales::comma_format(),
-  rounded_digits = 0L, font_base_size = 12)
+  sub_title = NULL,
+  caption = paste0("each bin is ", scales::comma(bin_width), " units wide"),
+  x_title = variable_name,
+  y_title = "Frequency",
+  x_axis_format = scales::comma_format(),
+  rounded_digits = 0L,
+  font_base_size = 12
+)
 }
 \arguments{
 \item{d_observed}{The \code{data.frame} with the variable to graph.}

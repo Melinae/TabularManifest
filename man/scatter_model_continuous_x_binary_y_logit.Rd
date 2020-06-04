@@ -4,15 +4,23 @@
 \alias{scatter_model_continuous_x_binary_y_logit}
 \title{Internal function for examining a logit performance}
 \usage{
-scatter_model_continuous_x_binary_y_logit(d_plot, x_name, y_name = "y",
-  yhat_name = "yhat", residual_name = "residual", alpha_point = 0.05,
-  alpha_se_band = 0.15, x_label_format = scales::comma,
+scatter_model_continuous_x_binary_y_logit(
+  d_plot,
+  x_name,
+  y_name = "y",
+  yhat_name = "yhat",
+  residual_name = "residual",
+  alpha_point = 0.05,
+  alpha_se_band = 0.15,
+  x_label_format = scales::comma,
   color_smooth_observed = "#1b9e77",
   color_smooth_predicted = "#d95f02",
-  color_smooth_residual = "#7570b3", vertical_limits = c(-0.05, 1.05),
+  color_smooth_residual = "#7570b3",
+  vertical_limits = c(-0.05, 1.05),
   jitter_observed = ggplot2::position_jitter(w = 0, h = 0.2),
   jitter_predicted = ggplot2::position_jitter(w = 0, h = 0),
-  seed_value = NA_real_)
+  seed_value = NA_real_
+)
 }
 \arguments{
 \item{d_plot}{The \code{data.frame} of observed and predicted values to plot.}

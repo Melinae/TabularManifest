@@ -4,12 +4,18 @@
 \alias{histogram_date}
 \title{Generate a Histogram for a \code{date} variable.}
 \usage{
-histogram_date(d_observed, variable_name, bin_unit = c("day", "week",
-  "month", "quarter", "year"), main_title = base::gsub("_", " ",
-  variable_name, perl = TRUE), sub_title = NULL,
+histogram_date(
+  d_observed,
+  variable_name,
+  bin_unit = c("day", "week", "month", "quarter", "year"),
+  main_title = base::gsub("_", " ", variable_name, perl = TRUE),
+  sub_title = NULL,
   caption = paste0("each bin is 1 ", bin_unit, " wide"),
-  x_title = variable_name, y_title = "Frequency",
-  x_axis_format = scales::comma_format(), font_base_size = 12)
+  x_title = variable_name,
+  y_title = "Frequency",
+  x_axis_format = scales::comma_format(),
+  font_base_size = 12
+)
 }
 \arguments{
 \item{d_observed}{The \code{data.frame} with the variable to graph.}

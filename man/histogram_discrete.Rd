@@ -4,11 +4,17 @@
 \alias{histogram_discrete}
 \title{Generate a Histogram for a \code{character} or \code{factor} variable.}
 \usage{
-histogram_discrete(d_observed, variable_name,
-  levels_to_exclude = character(0), main_title = base::gsub("_", " ",
-  variable_name, perl = TRUE), x_title = NULL,
-  y_title = "Number of Included Records", text_size_percentage = 6,
-  bin_width = 1L, font_base_size = 12)
+histogram_discrete(
+  d_observed,
+  variable_name,
+  levels_to_exclude = character(0),
+  main_title = base::gsub("_", " ", variable_name, perl = TRUE),
+  x_title = NULL,
+  y_title = "Number of Included Records",
+  text_size_percentage = 6,
+  bin_width = 1L,
+  font_base_size = 12
+)
 }
 \arguments{
 \item{d_observed}{The \code{data.frame} with the variable to graph.}
