@@ -54,7 +54,7 @@ if( require(grDevices) ) {
   # Variable has no nonmissing values
   histogram_discrete(d_observed=infert[0, ], variable_name="age")
   
-  # Adjust costmetics of bar-graph/histogram
+  # Adjust cosmetics of bar-graph/histogram
   histogram_discrete(
     d_observed         = infert, 
     variable_name      = "age",

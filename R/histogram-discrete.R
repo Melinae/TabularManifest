@@ -1,6 +1,7 @@
 #' @name histogram_discrete
 #' @export
 #' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 #' @title Generate a Histogram for a \code{character} or \code{factor} variable.
 #'
@@ -31,7 +32,7 @@
 #'   # Variable has no nonmissing values
 #'   histogram_discrete(d_observed=infert[0, ], variable_name="age")
 #'   
-#'   # Adjust costmetics of bar-graph/histogram
+#'   # Adjust cosmetics of bar-graph/histogram
 #'   histogram_discrete(
 #'     d_observed         = infert, 
 #'     variable_name      = "age",
@@ -71,11 +72,11 @@ histogram_discrete <- function(
   count_record_stop   <- nrow(d_observed)
 
   d_summary <- d_observed %>%
-    dplyr::count_("iv") %>%
-    dplyr::mutate_(
-      "count"             = "n",
-      "proportion"        = "n / sum(n)",
-      "percent_pretty"    = "base::paste0(base::round(proportion*100), '%')"
+    dplyr::count(.data$iv) %>%
+    dplyr::mutate(
+      count             = .data$n,
+      proportion        = .data$n / sum(.data$n),
+      percent_pretty    = sprintf("%1.0f%%", .data$proportion*100),
     )
 
   y_title <- base::paste0(

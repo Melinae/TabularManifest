@@ -21,6 +21,7 @@ Imports:
     grid,
     magrittr,
     mgcv,
+    rlang,
     scales,
     tibble
 Suggests:
