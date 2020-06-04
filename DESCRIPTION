@@ -17,6 +17,7 @@ Depends:
     stats
 Imports:
     dplyr,
+    forcats,
     ggplot2,
     grid,
     magrittr,

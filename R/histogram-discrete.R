@@ -58,14 +58,20 @@ histogram_discrete <- function(
   font_base_size          = 12
 
 ) {
-
   if( !inherits(d_observed, "data.frame") )
     stop("`d_observed` should inherit from the data.frame class.")
 
-  if( !base::is.factor(d_observed[[variable_name]]) )
+  if( !inherits(d_observed[[variable_name]], "factor") )
     d_observed[[variable_name]] <- base::factor(d_observed[[variable_name]])
+  
+  d_observed[[variable_name]] <- forcats::fct_explicit_na(d_observed[[variable_name]])
 
-  d_observed$iv <- base::ordered(d_observed[[variable_name]], levels=rev(levels(d_observed[[variable_name]])))
+  d_observed$iv <- 
+    base::factor(
+      x       = d_observed[[variable_name]], 
+      levels  = rev(levels(d_observed[[variable_name]]))
+    )
+  # d_observed$iv <- forcats::fct_explicit_na(d_observed$iv)
 
   count_record_start  <- nrow(d_observed)
   d_observed          <- d_observed[!(d_observed$iv %in% levels_to_exclude), ]
