@@ -36,7 +36,8 @@
 #'     variable_name      = "temp", 
 #'     bin_width          = .1, 
 #'     rounded_digits     = 2, 
-#'     x_axis_format      = scales::percent_format()
+#'     x_axis_format      = scales::comma_format(),
+#'     y_title            = "Count of 10-min Measurements"
 #'   )
 #' }
 
@@ -97,7 +98,7 @@ histogram_continuous <- function(
   
   g <- ggplot2::ggplot(d_observed, ggplot2::aes_string(x=variable_name)) +
     ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray92", color="gray80", size=1, alpha=.7) +
-    ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint) +
+    ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint, na.rm=T) +
     ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y=-Inf, label="value_rounded"), color=palette_midpoint, hjust=h_just, vjust=-0.2            , na.rm=T) +
     ggplot2::geom_text(data=ds_mid_points, ggplot2::aes_string(x="value", y= Inf, label="label"        ), color=palette_midpoint, hjust=h_just, vjust= 1.2, parse=TRUE, na.rm=T) +
     ggplot2::scale_x_continuous(labels=x_axis_format) +

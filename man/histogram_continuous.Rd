@@ -65,7 +65,8 @@ if( require(grDevices) ) {
     variable_name      = "temp", 
     bin_width          = .1, 
     rounded_digits     = 2, 
-    x_axis_format      = scales::percent_format()
+    x_axis_format      = scales::comma_format(),
+    y_title            = "Count of 10-min Measurements"
   )
 }
 }

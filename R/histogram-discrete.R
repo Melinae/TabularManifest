@@ -24,8 +24,20 @@
 #' library(datasets)
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) ) {
+#'   # Simple Casees
 #'   histogram_discrete(d_observed=infert, variable_name="education")
 #'   histogram_discrete(d_observed=infert, variable_name="age")
+#'   
+#'   # Variable has no nonmissing values
+#'   histogram_discrete(d_observed=infert[0, ], variable_name="age")
+#'   
+#'   # Adjust costmetics of bar-graph/histogram
+#'   histogram_discrete(
+#'     d_observed         = infert, 
+#'     variable_name      = "age",
+#'     levels_to_exclude  = c(21:29, 40:44),    # Show only subjects in their 30s.
+#'     main_title         = "Frequency of Subjects, by Age"
+#'   )
 #' }
 
 ##TODO: also include the number of missing & excluded records.  Possibly the excluded levels too.
@@ -54,7 +66,9 @@ histogram_discrete <- function(
 
   d_observed$iv <- base::ordered(d_observed[[variable_name]], levels=rev(levels(d_observed[[variable_name]])))
 
-  d_observed <- d_observed[!(d_observed$iv %in% levels_to_exclude), ]
+  count_record_start  <- nrow(d_observed)
+  d_observed          <- d_observed[!(d_observed$iv %in% levels_to_exclude), ]
+  count_record_stop   <- nrow(d_observed)
 
   d_summary <- d_observed %>%
     dplyr::count_("iv") %>%
@@ -64,7 +78,13 @@ histogram_discrete <- function(
       "percent_pretty"    = "base::paste0(base::round(proportion*100), '%')"
     )
 
-  y_title <- base::paste0(y_title, " (n=", scales::comma(base::sum(d_summary$n)), ")")
+  y_title <- base::paste0(
+    y_title, 
+    ", n=", scales::comma(base::sum(d_summary$n)), 
+    "\n(Excluded records, m=",
+    scales::comma(count_record_start - count_record_stop),
+    ")"
+  )
 
   g <- ggplot2::ggplot(d_summary, ggplot2::aes_string(x="iv", y="count", fill="iv", label="percent_pretty")) +
     ggplot2::geom_bar(stat="identity", alpha=.4) +
