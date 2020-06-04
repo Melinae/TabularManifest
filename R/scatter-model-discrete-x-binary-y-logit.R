@@ -103,3 +103,5 @@ scatter_model_discrete_x_binary_y_logit <- function(
   print(g_residual, vp=vp_layout(4, 1))
   grid::popViewport()
 }
+
+if(getRversion() >= "2.15.1")  utils::globalVariables(c("..count..")) # https://stackoverflow.com/questions/9439256/how-can-i-handle-r-cmd-check-no-visible-binding-for-global-variable-notes-when

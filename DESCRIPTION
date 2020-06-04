@@ -17,17 +17,21 @@ Depends:
     stats
 Imports:
     dplyr,
+    forcats,
     ggplot2,
     grid,
     magrittr,
     mgcv,
+    rlang,
     scales,
     tibble
 Suggests:
     datasets,
     devtools,
     knitr,
+    nycflights13,
     RColorBrewer,
     testit,
     testthat
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.0
+Encoding: UTF-8

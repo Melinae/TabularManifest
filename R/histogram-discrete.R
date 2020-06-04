@@ -1,6 +1,7 @@
 #' @name histogram_discrete
 #' @export
 #' @importFrom magrittr %>%
+#' @importFrom rlang .data
 #'
 #' @title Generate a Histogram for a \code{character} or \code{factor} variable.
 #'
@@ -31,7 +32,7 @@
 #'   # Variable has no nonmissing values
 #'   histogram_discrete(d_observed=infert[0, ], variable_name="age")
 #'   
-#'   # Adjust costmetics of bar-graph/histogram
+#'   # Adjust cosmetics of bar-graph/histogram
 #'   histogram_discrete(
 #'     d_observed         = infert, 
 #'     variable_name      = "age",
@@ -57,25 +58,31 @@ histogram_discrete <- function(
   font_base_size          = 12
 
 ) {
-
   if( !inherits(d_observed, "data.frame") )
     stop("`d_observed` should inherit from the data.frame class.")
 
-  if( !base::is.factor(d_observed[[variable_name]]) )
+  if( !inherits(d_observed[[variable_name]], "factor") )
     d_observed[[variable_name]] <- base::factor(d_observed[[variable_name]])
+  
+  d_observed[[variable_name]] <- forcats::fct_explicit_na(d_observed[[variable_name]])
 
-  d_observed$iv <- base::ordered(d_observed[[variable_name]], levels=rev(levels(d_observed[[variable_name]])))
+  d_observed$iv <- 
+    base::factor(
+      x       = d_observed[[variable_name]], 
+      levels  = rev(levels(d_observed[[variable_name]]))
+    )
+  # d_observed$iv <- forcats::fct_explicit_na(d_observed$iv)
 
   count_record_start  <- nrow(d_observed)
   d_observed          <- d_observed[!(d_observed$iv %in% levels_to_exclude), ]
   count_record_stop   <- nrow(d_observed)
 
   d_summary <- d_observed %>%
-    dplyr::count_("iv") %>%
-    dplyr::mutate_(
-      "count"             = "n",
-      "proportion"        = "n / sum(n)",
-      "percent_pretty"    = "base::paste0(base::round(proportion*100), '%')"
+    dplyr::count(.data$iv) %>%
+    dplyr::mutate(
+      count             = .data$n,
+      proportion        = .data$n / sum(.data$n),
+      percent_pretty    = sprintf("%1.0f%%", .data$proportion*100),
     )
 
   y_title <- base::paste0(

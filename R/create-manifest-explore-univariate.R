@@ -7,26 +7,6 @@
 #' and optionally saves the meta-dataset as a CSV.  The meta-dataset specifies how the variables
 #' should be plotted.
 #'
-#' @usage
-#' create_manifest_explore_univariate(
-#'     d_observed,
-#'     write_to_disk = TRUE,
-#'     path_out = getwd(),
-#'     overwrite_file = FALSE,
-#'     default_class_graph = c(
-#'       numeric = "histogram_continuous",
-#'       integer = "histogram_continuous",
-#'       factor = "histogram_discrete",
-#'       character = "histogram_discrete",
-#'       notMatched = "histogram_generic"
-#'     ),
-#'     default_format = c(
-#'       numeric = "scales::comma",
-#'       notMatched = "scales::comma"
-#'     ),
-#'     bin_count_suggestion = 30L
-#' )
-#'
 #'
 #' @param d_observed The \code{data.frame} to create metadata for.
 #' @param write_to_disk Indicates if the meta-dataset should be saved as a CSV.
