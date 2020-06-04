@@ -14,7 +14,7 @@ test_that("Dataset: InsectSprays", {
                                                                                       ""), class = c("numeric", "factor"), should_graph = c(TRUE, TRUE
                                                                                       ), graph_function = c("histogram_continuous", "histogram_discrete"
                                                                                       ), x_label_format = c("scales::comma", "scales::comma"), bin_width = c(1, 1), 
-                                      bin_start = c(0, 1), rounding_digits = c(0, 1)), .Names = c("variable_name", 
+                                      bin_start = c(0, 1), rounding_digits = c(2, 1)), .Names = c("variable_name", 
                                                                                                   "remark", "class", "should_graph", "graph_function", "x_label_format", 
                                                                                                   "bin_width", "bin_start", "rounding_digits"), row.names = c(NA, 
                                                                                                                                                               -2L), class = "data.frame")
@@ -41,7 +41,7 @@ test_that("Dataset: freeny", {
                                                                                                                                                                                                                                                                              "scales::comma", "scales::comma", "scales::comma"), bin_width = c(1, 0.0500000000000007, 
                                                                                                                                                                                                                                                                                                                        0.0199999999999996, 0.00999999999999979, 0.00500000000000078), 
                                       bin_start = c(1, 8.75, 4.26, 5.82, 12.965), rounding_digits = c(1, 
-                                                                                                      2, 2, 2, 2)), .Names = c("variable_name", "remark", "class", 
+                                                                                                      6, 6, 6, 6)), .Names = c("variable_name", "remark", "class", 
                                                                                                                                "should_graph", "graph_function", "x_label_format", "bin_width", 
                                                                                                                                "bin_start", "rounding_digits"), row.names = c(NA, -5L), class = "data.frame")
   #Run the function
