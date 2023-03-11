@@ -24,6 +24,7 @@ Imports:
     scales,
     tibble
 Suggests:
+    covr,
     datasets,
     devtools,
     knitr,
