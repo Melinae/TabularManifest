@@ -17,14 +17,17 @@ Sasha Popovych and Will Beasley
 
 If your organization is interested in the consulting services of Melinae, please contact [Sasha Popovych](https://www.linkedin.com/in/aleksandra-popovych-64739582) at <spopovych@melinae.com>.  If you have a question about the package, please consider [starting a new issue](https://github.com/Melinae/TabularManifest/issues/new).
 
-For those interested in use the development version of `TabularManifest`, run the following code:
-```r
-#Install the 'devetools' package (assuming it's not already installed)
-install.packages("devtools")
+Build Status and Package Characteristics
+-------------------------
 
-#Install the 'TabularManifest' package.
-devtools::install_github(repo="Melinae/TabularManifest")
+| [Branch](https://github.com/Melinae/TabularManifest) | [GitHub Actions](https://github.com/Melinae/TabularManifest/actions) | [Codecov](https://app.codecov.io/gh/Melinae/TabularManifest) |
+| :----- | :---------------------------: | :-------: |
+| [Main](https://github.com/Melinae/TabularManifest/tree/main) | [![R-CMD-check](https://github.com/Melinae/TabularManifest/workflows/R-CMD-check/badge.svg?branch=main)](https://github.com/Melinae/TabularManifest/actions) |  [![codecov](https://codecov.io/gh/Melinae/TabularManifest/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Melinae/TabularManifest/branch/main) |
+| [Dev](https://github.com/Melinae/TabularManifest/tree/dev) | [![R-CMD-check](https://github.com/Melinae/TabularManifest/workflows/R-CMD-check/badge.svg?branch=dev)](https://github.com/Melinae/TabularManifest/actions) | [![codecov](https://codecov.io/gh/Melinae/TabularManifest/branch/dev/graph/badge.svg)](https://app.codecov.io/gh/Melinae/TabularManifest/branch/dev) |
+| | *Ubuntu Latest* | *Test Coverage* |
 
-#Load the package into memory
-library(TabularManifest)
-```
+| Key | Value |
+| :--- | :----- |
+| [License](https://choosealicense.com/) | [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/) |
+| [Zenodo Archive](https://zenodo.org/search?ln=en&p=TabularManifest) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7719674.svg)](https://doi.org/10.5281/zenodo.7719674) |
+| [Development Doc](https://Melinae.github.io/TabularManifest/) | [![rdoc](https://img.shields.io/badge/pkgdown-GitHub.io-orange.svg?longCache=true&style=style=for-the-badge)](https://Melinae.github.io/TabularManifest/) |
