@@ -9,10 +9,10 @@ Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
     person("Martin", "Lenardon", role = "ctb"))
 License: LGPL
 LazyData: TRUE
-URL: https://melinae.com/
+URL: https://github.com/Melinae/TabularManifest, https://melinae.com/
+BugReports: https://github.com/Melinae/TabularManifest/issues
 Depends:
-    R(>= 3.0.0),
-    stats
+    R(>= 4.2.0)
 Imports:
     dplyr,
     forcats,
