@@ -2,9 +2,11 @@ rm(list=ls(all=TRUE))
 require(devtools)
 options(device = "windows") #http://support.rstudio.org/help/discussions/problems/80-error-in-function-only-one-rstudio-graphics-device-is-permitted
 
-devtools::document()
-devtools::check_man() #Should return NULL
-# system("R CMD Rd2pdf --force --output=./documentation-peek.pdf ." )
+spelling::spell_check_package()
+# spelling::update_wordlist()
+lintr::lint_package()
+# lintr::lint("R/redcap-metadata-coltypes.R")
+urlchecker::url_check(); urlchecker::url_update()
 
 devtools::run_examples(); dev.off() #This overwrites the NAMESPACE file too
 # devtools::run_examples(, "Go.Rd")

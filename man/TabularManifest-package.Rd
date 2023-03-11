@@ -26,14 +26,14 @@ some starting material described in the \code{./documentation_for_developers/} d
 hosted at our \href{https://github.com/Melinae/TabularManifest}{GitHub} server.
 
 If your organization is interested in the consulting services of Melinae, please contact
-\href{http://melinae.com/}{Steve Soloway} at (what material belongs here)?
+\href{http://melinae.com/}{Jim Quallen} at (what material belongs here)?
 
 Is there anything else someone would like to include?
 
-#TODO: this line needs to be adapated when we move to GitHub.  For those interested in use the development version of
+#TODO: this line needs to be adapted when we move to GitHub.  For those interested in use the development version of
 \code{TabularManifest}, run
 
-\code{devtools::install_github(repo="Melinae/TabularManifest")}
+\code{remotes::install_github("Melinae/TabularManifest")}
 }
 \examples{
 

@@ -10,7 +10,7 @@
 #'
 #' @param d_observed The \code{data.frame} with the variable to graph.
 #' @param variable_name The name of the variable to graph. \code{character}.
-#' @param bin_unit The width of the histogram bins. Balue is passed to [base::seq.Date()]. Defaults to 'day'. \code{numeric}.
+#' @param bin_unit The width of the histogram bins. Value is passed to [base::seq.Date()]. Defaults to 'day'. \code{numeric}.
 #' @param main_title The desired title on top of the graph.  Defaults to \code{variable_name}, with underscores replaced with spaces. If no title is desired, pass a value of \code{NULL}. \code{character}.
 #' @param sub_title The desired subtitle near the top of the graph.  Defaults to \code{NULL} If no subtitle is desired, pass a value of \code{NULL}. \code{character}.
 #' @param caption The desired text in the bottom-right, below the axis.  Defaults to the \code{bin_width}. If no caption is desired, pass a value of \code{NULL}. \code{character}.
