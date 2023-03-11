@@ -105,7 +105,7 @@ rnorm(1)
 # dynamicFunction2 <-  getExportedValue('psych', 'alpha')
 #
 #
-# gsub("^(\\w*)*(::)*(\\w+)$", replacement="\\3", c("comma", "scales::comma"), perl=T)
+# gsub("^(\\w*)*(::)*(\\w+)$", replacement="\\3", c("comma", "scales::comma"), perl=TRUE)
 #
 # split_values <- strsplit("scales::comma", "::")
 # split_values[[1]][1]

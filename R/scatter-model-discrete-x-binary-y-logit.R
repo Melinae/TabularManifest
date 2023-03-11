@@ -56,7 +56,7 @@ scatter_model_discrete_x_binary_y_logit <- function(
     set.seed(seed_value) #Set a seed so that jittering doesn't create new graphs for git to manage.
 
   g_obs <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::ensym(x_name), y=!! rlang::ensym(y_name))) +
-    ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=T, position=jitter_observed) +
+    ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=TRUE, position=jitter_observed) +
     ggplot2::stat_summary(fun.y="mean", geom="point", color=color_smooth_observed, shape=5, size=10) + #Chang's Cookbook, Section 6.8
     ggplot2::stat_summary(fun.y="median", geom="point", color=color_smooth_observed, shape="--", size=15) +
     ggplot2::geom_text(ggplot2::aes(label=paste0("n=",scales::comma( ..count..)), y=NULL), y=Inf, stat="bin", vjust=1.4, col=color_group_count, size=4, na.rm=TRUE) +
@@ -68,7 +68,7 @@ scatter_model_discrete_x_binary_y_logit <- function(
     purchase_relationship_theme
 
   g_predicted <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::ensym(x_name), y=!! rlang::ensym(y_hat_name))) +
-    ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=T, position=jitter_predicted) +
+    ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=TRUE, position=jitter_predicted) +
     ggplot2::geom_boxplot(na.rm=TRUE, color=color_smooth_predicted, outlier.size=0, size=.5, fill=NA) +
     ggplot2::stat_summary(fun.y="mean", geom="point", color=color_smooth_predicted, shape=5, size=10) + #Chang's Cookbook, Section 6.8
     ggplot2::stat_summary(ggplot2::aes(y=!! rlang::ensym(y_name)),fun.y="mean", geom="point", color=color_smooth_observed, shape=5, size=5) + #Chang's Cookbook, Section 6.8
@@ -79,7 +79,7 @@ scatter_model_discrete_x_binary_y_logit <- function(
     purchase_relationship_theme
 
   g_residual <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::ensym(x_name), y=!! rlang::ensym(residual_name))) +
-    ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=T, position=jitter_predicted) +
+    ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=TRUE, position=jitter_predicted) +
     ggplot2::geom_boxplot(na.rm=TRUE, color=color_smooth_residual, outlier.size=0, size=.5, fill=NA) +
     ggplot2::stat_summary(fun.y="mean", geom="point", color=color_smooth_residual, shape=5, size=10) + #Chang's Cookbook, Section 6.8
     ggplot2::scale_x_discrete(label=x_label_format) +

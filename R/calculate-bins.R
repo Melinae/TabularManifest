@@ -24,8 +24,8 @@ calculate_bins <- function( d_observed, bin_count_suggestion=30L ) {
   bin_breaks <- base::lapply(X=d_observed[,is_continuous, drop=FALSE], FUN=pretty, n=bin_count_suggestion) #, simplify=FALSE)
   bin_differences <- base::lapply(bin_breaks, diff)
 
-  bin_width <- base::vapply(X=bin_differences   , FUN=stats::median   , na.rm=T, numeric(1))
-  bin_start <- base::vapply(X=bin_breaks        , FUN=base::min       , na.rm=T, numeric(1))
+  bin_width <- base::vapply(X=bin_differences   , FUN=stats::median   , na.rm=TRUE, numeric(1))
+  bin_start <- base::vapply(X=bin_breaks        , FUN=base::min       , na.rm=TRUE, numeric(1))
 
   widths_all <- rep(x=1L, times=ncol(d_observed))
   starts_all <- rep(x=1L, times=ncol(d_observed))
