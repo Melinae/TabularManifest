@@ -10,8 +10,8 @@ calculate_rounding_digits(d_observed)
 \item{d_observed}{The \code{data.frame} with columns to calculate bins.}
 }
 \value{
-Returns a \code{numeric} vector, indicating how many rounding digits *might* be appropriate.
-  Each element is an array with as many values as columns in \code{d_observed}.
+Returns a \code{numeric} vector, indicating how many rounding digits \emph{might} be appropriate.
+Each element is an array with as many values as columns in \code{d_observed}.
 }
 \description{
 An internal function (ie, that's not currently exposed/exported outside the package) for creating default bins for dataset variables.

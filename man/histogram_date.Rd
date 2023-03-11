@@ -22,7 +22,7 @@ histogram_date(
 
 \item{variable_name}{The name of the variable to graph. \code{character}.}
 
-\item{bin_unit}{The width of the histogram bins. Balue is passed to [base::seq.Date()]. Defaults to 'day'. \code{numeric}.}
+\item{bin_unit}{The width of the histogram bins. Balue is passed to \code{\link[base:seq.Date]{base::seq.Date()}}. Defaults to 'day'. \code{numeric}.}
 
 \item{main_title}{The desired title on top of the graph.  Defaults to \code{variable_name}, with underscores replaced with spaces. If no title is desired, pass a value of \code{NULL}. \code{character}.}
 
