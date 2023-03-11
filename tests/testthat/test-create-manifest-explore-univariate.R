@@ -22,7 +22,7 @@ test_that("Dataset: InsectSprays", {
   #Compare the returned & expected values.
   expect_equal(ncol(expected_metadata), expected_metadata_column_count, label="The number of metadata columns should be correct.")
   expect_equal(nrow(expected_metadata), ncol(d_observed), label="The number of metadata rows should equal the number of rows in d_observed.")
-  expect_equivalent(returned_metadata, expected=expected_metadata, label="The returned data.frame should be correct") # dput(returned_object$data)
+  expect_equal(returned_metadata, expected=expected_metadata, label="The returned data.frame should be correct", ignore_attr = TRUE) # dput(returned_object$data)
 })
 
 test_that("Dataset: freeny", {  
@@ -48,7 +48,7 @@ test_that("Dataset: freeny", {
   #Compare the returned & expected values.
   expect_equal(ncol(expected_metadata), expected_metadata_column_count, label="The number of metadata columns should be correct.")
   expect_equal(nrow(expected_metadata), ncol(d_observed), label="The number of metadata rows should equal the number of rows in d_observed.")
-  expect_equivalent(returned_metadata, expected=expected_metadata, label="The returned data.frame should be correct") # dput(returned_object$data)
+  expect_equal(returned_metadata, expected=expected_metadata, label="The returned data.frame should be correct", ignore_attr = TRUE) # dput(returned_object$data)
 })
 
 # test_that("InsectSprays2", {  
@@ -66,7 +66,7 @@ test_that("Dataset: freeny", {
 #   returned_object <- create_manifest_explore_univariate(datasets::InsectSprays, write_to_disk=FALSE) #dput(returned_object)
 #   
 #   
-#   expect_equivalent(returned_object, expected=expected_data, label="The returned data.frame should be correct") # dput(returned_object$data)
+#   expect_equal(returned_object, expected=expected_data, label="The returned data.frame should be correct", ignore_attr = TRUE) # dput(returned_object$data)
 #   
 # })
 rm(expected_metadata_column_count)

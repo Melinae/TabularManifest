@@ -14,7 +14,7 @@ test_that("Dataset: InsectSprays; Bin count: default", {
   
   #Compare the returned & expected values.
   expect_equal(names(returned_bins), expected_element_names, label="The element names should be correct.")
-  expect_equivalent(returned_bins, expected=expected_bins, label="The calculated bin characteristics should be correct.") # dput(returned_object$data)
+  expect_equal(returned_bins, expected=expected_bins, label="The calculated bin characteristics should be correct.", ignore_attr = TRUE) # dput(returned_object$data)
 })
 test_that("Dataset: freeny; Bin count: default", {  
   #Declare the input.
@@ -29,7 +29,7 @@ test_that("Dataset: freeny; Bin count: default", {
   
   #Compare the returned & expected values.
   expect_equal(names(returned_bins), expected_element_names, label="The element names should be correct.")
-  expect_equivalent(returned_bins, expected=expected_bins, label="The calculated bin characteristics should be correct.") # dput(returned_object$data)
+  expect_equal(returned_bins, expected=expected_bins, label="The calculated bin characteristics should be correct.", ignore_attr = TRUE) # dput(returned_object$data)
 })
 
 rm(expected_element_names)
