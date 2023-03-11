@@ -56,7 +56,7 @@ scatter_model_continuous_x_binary_y_logit <- function(
   if( !is.na(seed_value) )
     set.seed(seed_value) #Set a seed so that jittering doesn't create new graphs for git to manage.
 
-  g_obs <- ggplot2::ggplot(d_plot, ggplot2::aes_string(x=x_name, y=y_name)) +
+  g_obs <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::ensym(x_name), y=!! rlang::ensym(y_name))) +
     ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=T, position=jitter_observed) +
     ggplot2::geom_smooth(method="gam", formula=y~s(x,bs="cs"), alpha=alpha_se_band, color=color_smooth_observed, fill=color_smooth_observed, size=1, na.rm=TRUE) +
     ggplot2::scale_x_continuous(label=x_label_format) +
@@ -66,17 +66,17 @@ scatter_model_continuous_x_binary_y_logit <- function(
     ggplot2::labs(x=NULL, y="Purchased") +
     purchase_relationship_theme
 
-  g_predicted <- ggplot2::ggplot(d_plot, ggplot2::aes_string(x=x_name, y=yhat_name)) +
+  g_predicted <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::ensym(x_name), y=!! rlang::ensym(yhat_name))) +
     ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=T, position=jitter_predicted) +
     ggplot2::geom_smooth(method=mgcv::gam, formula=y~s(x,bs="cs"), alpha=alpha_se_band, color=color_smooth_predicted, fill=color_smooth_predicted, size=1, na.rm=TRUE) +
-    ggplot2::geom_smooth(ggplot2::aes_string(y=y_name), method="gam", formula=y~s(x,bs="cs"), alpha=alpha_se_band*alpha_se_band, color=color_smooth_observed, fill=color_smooth_observed, na.rm=TRUE) +
+    ggplot2::geom_smooth(ggplot2::aes(y=!! rlang::ensym(y_name)), method="gam", formula=y~s(x,bs="cs"), alpha=alpha_se_band*alpha_se_band, color=color_smooth_observed, fill=color_smooth_observed, na.rm=TRUE) +
     ggplot2::scale_x_continuous(label=x_label_format) +
     ggplot2::scale_y_continuous(limits=vertical_limits, label=scales::percent) +
     ggplot2::theme_light() +
     ggplot2::labs(x=NULL, y="Predicted Pr(purchase)")  +
     purchase_relationship_theme
 
-  g_residual <- ggplot2::ggplot(d_plot, ggplot2::aes_string(x=x_name, y=residual_name)) +
+  g_residual <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::ensym(x_name), y=!! rlang::ensym(residual_name))) +
     ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=T, position=jitter_predicted) +
     ggplot2::geom_smooth(method=mgcv::gam, formula=y~s(x,bs="cs"), alpha=alpha_se_band, color=color_smooth_residual, fill=color_smooth_residual, size=1, na.rm=TRUE) +
     ggplot2::scale_x_continuous(label=x_label_format) +

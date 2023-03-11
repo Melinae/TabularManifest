@@ -93,7 +93,7 @@ histogram_discrete <- function(
     ")"
   )
 
-  g <- ggplot2::ggplot(d_summary, ggplot2::aes_string(x="iv", y="count", fill="iv", label="percent_pretty")) +
+  g <- ggplot2::ggplot(d_summary, ggplot2::aes(x=iv, y=count, fill=iv, label=percent_pretty)) +
     ggplot2::geom_bar(stat="identity", alpha=.4) +
     ggplot2::geom_text(stat="identity", size=text_size_percentage, hjust=.5) +
     ggplot2::scale_y_continuous(labels=scales::comma_format())
