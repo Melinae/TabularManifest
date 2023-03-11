@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/404.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/404.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/authors.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/authors.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/index.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/index.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/TabularManifest-package.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/TabularManifest-package.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/calculate_bins.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/calculate_bins.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/calculate_rounding_digits.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/calculate_rounding_digits.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/construct_graph.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/construct_graph.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/create_manifest_explore_univariate.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/create_manifest_explore_univariate.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/histogram_continuous.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/histogram_continuous.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/histogram_date.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/histogram_date.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/histogram_discrete.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/histogram_discrete.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/index.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/scatter_model_continuous_x_binary_y_logit.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/scatter_model_continuous_x_binary_y_logit.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/scatter_model_discrete_x_binary_y_logit.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/scatter_model_discrete_x_binary_y_logit.html</loc>
   </url>
   <url>
-    <loc>https://Melinae.github.io/TabularManifest/reference/univariate_trim.html</loc>
+    <loc>https://melinae.github.io/TabularManifest/reference/univariate_trim.html</loc>
   </url>
 </urlset>
