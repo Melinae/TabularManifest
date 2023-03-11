@@ -93,6 +93,7 @@ histogram_discrete <- function(
     ")"
   )
 
+  iv <- count <- percent_pretty <- NULL
   g <- ggplot2::ggplot(d_summary, ggplot2::aes(x=iv, y=count, fill=iv, label=percent_pretty)) +
     ggplot2::geom_bar(stat="identity", alpha=.4) +
     ggplot2::geom_text(stat="identity", size=text_size_percentage, hjust=.5) +

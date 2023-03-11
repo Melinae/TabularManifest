@@ -95,11 +95,12 @@ histogram_date <- function(
   palette_midpoint <- c("#2274A5", "#32936F") # https://coolors.co/app/ffbf00-e83f6f-2274a5-32936f-ffffff
   # palette_midpoint <- c("#118AB2", "#06D6A0") # https://coolors.co/app/ef476f-ffd166-06d6a0-118ab2-073b4c
   
+  value <- label <- NULL
   g <- ggplot2::ggplot(d_observed, ggplot2::aes(x=!! rlang::ensym(variable_name))) +
     ggplot2::geom_histogram(breaks=breaks, closed="left", position=ggplot2::position_identity(), fill="gray92", color="gray80", size=1, alpha=.7) +
     ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint) +
     ggplot2::geom_text(data=ds_mid_points, ggplot2::aes(x=value, y=-Inf, label=value), color=palette_midpoint, hjust=h_just, vjust=-0.2            , na.rm=T) +
-    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes(x=value, y= Inf, label=label        ), color=palette_midpoint, hjust=h_just, vjust= 1.2, parse=TRUE, na.rm=T) +
+    ggplot2::geom_text(data=ds_mid_points, ggplot2::aes(x=value, y= Inf, label=label), color=palette_midpoint, hjust=h_just, vjust= 1.2, parse=TRUE, na.rm=T) +
     ggplot2::scale_x_date(labels = scales::date_format("%Y\n%b\n%d")) +
     ggplot2::scale_y_continuous(labels=scales::comma_format()) +
     ggplot2::labs(title=main_title, subtitle=sub_title, caption=caption, x=x_title, y=y_title)

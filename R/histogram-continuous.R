@@ -96,6 +96,7 @@ histogram_continuous <- function(
   palette_midpoint <- c("#2274A5", "#32936F") # https://coolors.co/app/ffbf00-e83f6f-2274a5-32936f-ffffff
   # palette_midpoint <- c("#118AB2", "#06D6A0") # https://coolors.co/app/ef476f-ffd166-06d6a0-118ab2-073b4c
   
+  value <- value_rounded <- label <- NULL
   g <- ggplot2::ggplot(d_observed, ggplot2::aes(x=!! rlang::ensym(variable_name))) +
     ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray92", color="gray80", size=1, alpha=.7) +
     ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint, na.rm=T) +
