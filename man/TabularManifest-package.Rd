@@ -14,7 +14,7 @@ a substitute of thoughtful inspection in our later analyses, these make the expl
 allow us to more quickly start developing innovative solutions and delivering results.
 
 The idea behind this package is that \emph{configuring} metadata is quicker and more robust than \emph{coding} the same repetitive code.
-\link{We need to write more as the package takes shape.}
+We need to write more as the package takes shape.
 
 Thanks, the Melinae Analytics Team
 }
@@ -26,9 +26,9 @@ some starting material described in the \code{./documentation_for_developers/} d
 hosted at our \href{https://github.com/Melinae/TabularManifest}{GitHub} server.
 
 If your organization is interested in the consulting services of Melinae, please contact
-\href{http://melinae.com/}{Steve Soloway} at \link{what material belongs here}?
+\href{http://melinae.com/}{Steve Soloway} at (what material belongs here)?
 
-\link{Is there anything else someone would like to include?}
+Is there anything else someone would like to include?
 
 #TODO: this line needs to be adapated when we move to GitHub.  For those interested in use the development version of
 \code{TabularManifest}, run
@@ -45,7 +45,7 @@ if( require(grDevices) ) {
 }
 }
 \references{
-\link{Do any article or book references make sense?  Maybe reproducible research?}
+(Do any article or book references make sense?  Maybe reproducible research?)
 }
 \author{
 \href{http://scholar.google.com/citations?user=ffsJTC0AAAAJ}{William Howard Beasley}
