@@ -7,7 +7,6 @@ Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
     person("Chad", "Scherrer", role = "ctb"),
     person("Steve", "Soloway", role = "ctb"),
     person("Martin", "Lenardon", role = "ctb"))
-License: LGPL
 LazyData: TRUE
 URL: https://melinae.github.io/TabularManifest/,
     https://github.com/Melinae/TabularManifest,
@@ -34,6 +33,7 @@ Suggests:
     RColorBrewer,
     testit,
     testthat
+License: MIT + file LICENSE
 VignetteBuilder: knitr
 Language: en-US
 Encoding: UTF-8
