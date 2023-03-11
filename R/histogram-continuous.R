@@ -23,12 +23,22 @@
 #' @examples
 #' library(datasets)
 #' #Don't run graphs on a headless machine without any the basic graphics packages installed.
-#' if( require(grDevices) ) {
+#' if (require(grDevices)) {
 #'   # Simple Case
-#'   histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1, rounded_digits=2)
+#'   histogram_continuous(
+#'     d_observed = beaver1, 
+#'     variable_name  = "temp", 
+#'     bin_width      = .1, 
+#'     rounded_digits = 2
+#'    )
 #'   
 #'   # Variable has no nonmissing values
-#'   histogram_continuous(d_observed=beaver1[integer(0), ], variable_name="temp", bin_width=.1, rounded_digits=2)
+#'   histogram_continuous(
+#'     d_observed     = beaver1[integer(0), ], 
+#'     variable_name  = "temp", 
+#'     bin_width      = .1, 
+#'     rounded_digits = 2
+#'   )
 #'   
 #'   # Adjust cosmetics of histogram
 #'   histogram_continuous(
