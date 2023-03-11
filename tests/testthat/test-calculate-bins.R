@@ -1,8 +1,5 @@
-require(testthat)
+library(testthat)
 
-###########
-context("Calculate Bins")
-###########
 expected_element_names <- c("bin_width", "bin_start")
 
 test_that("Dataset: InsectSprays; Bin count: default", {  

@@ -1,9 +1,4 @@
-require(testthat)
-#For a definition of 'smoke test': http://stackoverflow.com/questions/745192/what-is-a-smoke-testing-and-what-will-it-do-for-me
-
-###########
-context("Graphing Smoke Tests") 
-###########
+library(testthat)
 
 test_that("histogram_continuous: InsectSprays", {  
   histogram_continuous(d_observed=InsectSprays, variable_name="count", bin_width=1)

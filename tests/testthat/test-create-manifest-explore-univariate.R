@@ -1,8 +1,5 @@
-require(testthat)
+library(testthat)
 
-###########
-context("Create Manifest Explore")
-###########
 expected_metadata_column_count <- 9L #This is a property of the function, and not the input dataset.
 
 test_that("Dataset: InsectSprays", {  
