@@ -16,11 +16,11 @@
 #' @export
 
 calculate_rounding_digits <- function( d_observed ) {
-  column_class <- base::sapply(X=d_observed, FUN=base::class)
+  column_class <- base::vapply(X=d_observed, FUN=base::class, character(1))
   is_continuous <- (column_class  %in% c("numeric", "integer"))
 
   #TODO: mapply might be more memory efficient.  An entire data.frame is recreated (minus the non-contintuous variables).
-  digits <- base::sapply(d_observed[,is_continuous, drop=FALSE], FUN=function( x ){1 - log10(scales:::precision(x))})
+  digits <- base::vapply(d_observed[,is_continuous, drop=FALSE], FUN=function( x ){1 - log10(scales:::precision(x))}, numeric(1))
 
   digits_all <- rep(x=1L, times=ncol(d_observed))
   digits_all[is_continuous] <- max(0L, digits)

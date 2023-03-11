@@ -56,7 +56,7 @@ create_manifest_explore_univariate <- function(
   ) {
 
   #Determine the variable's class (eg, numeric, integer, factor, ...).
-  column_class <- sapply(X=d_observed, FUN=class)
+  column_class <- vapply(X=d_observed, FUN=class, character(1))
 
   #Determine the index of the most appropriate graph.
   matched_index_graph  <- match(column_class, names(default_class_graph))
