@@ -10,3 +10,7 @@ documentation-peek.pdf
 documentation-for-developers/
 playgrounds/
 utility/
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$

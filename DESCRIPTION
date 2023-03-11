@@ -9,7 +9,9 @@ Authors@R: c(person("Will", "Beasley", role = c("aut", "cre"), email =
     person("Martin", "Lenardon", role = "ctb"))
 License: LGPL
 LazyData: TRUE
-URL: https://github.com/Melinae/TabularManifest, https://melinae.com/
+URL: http://melinae.github.io/TabularManifest/,
+    https://github.com/Melinae/TabularManifest,
+    https://melinae.com/
 BugReports: https://github.com/Melinae/TabularManifest/issues
 Depends:
     R(>= 4.2.0)
