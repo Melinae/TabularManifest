@@ -1,5 +1,0 @@
-# Travis's native R Image (https://docs.travis-ci.com/user/languages/r/)
-language: r
-sudo: false
-cache: packages
-warnings_are_errors: true
