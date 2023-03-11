@@ -1,53 +1,53 @@
 #' @title Tabular Manifest
-#' 
-#' @description 
-#' Our consulting company, \href{http://melinae.com/}{Melinae}, frequently assists clients with large datasets 
-#' consisting of many variables of varying quality.  Before we can develop sophisticated statistical models to provide our 
-#' client with insight and a competitive advantage, we first learn the characteristics of their existing datasets.  
-#' This package provides tools that assist our initial exploration of real-world datasets.  Although these tools are not 
-#' a substitute of thoughtful inspection in our later analyses, these make the exploration more time efficient.  These tools 
+#'
+#' @description
+#' Our consulting company, \href{https://melinae.com/}{Melinae}, frequently assists clients with large datasets
+#' consisting of many variables of varying quality.  Before we can develop sophisticated statistical models to provide our
+#' client with insight and a competitive advantage, we first learn the characteristics of their existing datasets.
+#' This package provides tools that assist our initial exploration of real-world datasets.  Although these tools are not
+#' a substitute of thoughtful inspection in our later analyses, these make the exploration more time efficient.  These tools
 #' allow us to more quickly start developing innovative solutions and delivering results.
-#' 
-#' The idea behind this package is that \emph{configuring} metadata is quicker and more robust than \emph{coding} the same repetitive code. 
+#'
+#' The idea behind this package is that \emph{configuring} metadata is quicker and more robust than \emph{coding} the same repetitive code.
 #' We need to write more as the package takes shape.
-#' 
+#'
 #' Thanks, the Melinae Analytics Team
-#' 
+#'
 #' @docType package
 #' @name TabularManifest-package
 #' @aliases TabularManifest
-#' @note 
-#' Our company has benefited from many tools developed by the community, and we'd like to contribute back.  
-#' Suggestions, criticisms, and code contributions are welcome.  If any developer is interested in trying a direction 
-#' that suits them better, we'll be happy to explain the package's internals and help you fork your own version.  We have 
+#' @note
+#' Our company has benefited from many tools developed by the community, and we'd like to contribute back.
+#' Suggestions, criticisms, and code contributions are welcome.  If any developer is interested in trying a direction
+#' that suits them better, we'll be happy to explain the package's internals and help you fork your own version.  We have
 #' some starting material described in the \code{./documentation_for_developers/} directory.  The repository is currently
 #' hosted at our \href{https://github.com/Melinae/TabularManifest}{GitHub} server.
-#' 
-#' If your organization is interested in the consulting services of Melinae, please contact 
-#' \href{http://melinae.com/}{Jim Quallen} at (what material belongs here)?  
-#' 
+#'
+#' If your organization is interested in the consulting services of Melinae, please contact
+#' \href{https://melinae.com/}{Jim Quallen} at (what material belongs here)?
+#'
 #' Is there anything else someone would like to include?
-#' 
-#' #TODO: this line needs to be adapted when we move to GitHub.  For those interested in use the development version of 
-#' \code{TabularManifest}, run 
-#' 
+#'
+#' #TODO: this line needs to be adapted when we move to GitHub.  For those interested in use the development version of
+#' \code{TabularManifest}, run
+#'
 #' \code{remotes::install_github("Melinae/TabularManifest")}
-#' 
-#' @author 
-#'  \href{http://scholar.google.com/citations?user=ffsJTC0AAAAJ}{William Howard Beasley}
-#'   
+#'
+#' @author
+#'  \href{https://scholar.google.com/citations?user=ffsJTC0AAAAJ}{William Howard Beasley}
+#'
 #'  Chad Scherrer
-#'  
+#'
 #'  Steve Soloway
-#' 
+#'
 #' Maintainer: Will Beasley <wibeasley@@hotmail.com>
-#' 
+#'
 #' @references (Do any article or book references make sense?  Maybe reproducible research?)
 #' @keywords package
 #' @examples
-#' 
+#'
 #' create_manifest_explore_univariate(datasets::InsectSprays, write_to_disk=FALSE)
-#' 
+#'
 #' if( require(grDevices) ) {
 #'   histogram_continuous(d_observed=beaver1, variable_name="temp", bin_width=.1)
 #'   histogram_discrete(d_observed=infert, variable_name="age")

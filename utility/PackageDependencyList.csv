@@ -9,7 +9,7 @@ grid,FALSE,TRUE,,foundation underneath ggplot2.
 gridExtra,FALSE,TRUE,,Additional functions for manipulating `grid` objects.
 knitr,TRUE,TRUE,,For reporting.
 lubridate,FALSE,TRUE,,Consistent/convenient function signatures for manipulating dates.
-RColorBrewer,TRUE,TRUE,,Explicit control over the Color Brewer colors.  See http://colorbrewer2.org/.
+RColorBrewer,TRUE,TRUE,,Explicit control over the Color Brewer colors.  See https://colorbrewer2.org/.
 roxygen2,TRUE,FALSE,,Creates documentation Rd file from (well-formed) comments.
 testit,TRUE,TRUE,,Has the useful `assert()` function.
 testthat,FALSE,TRUE,hadley,Heavier testing framework that's good for package development.

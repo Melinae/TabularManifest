@@ -6,7 +6,7 @@
 \alias{TabularManifest}
 \title{Tabular Manifest}
 \description{
-Our consulting company, \href{http://melinae.com/}{Melinae}, frequently assists clients with large datasets
+Our consulting company, \href{https://melinae.com/}{Melinae}, frequently assists clients with large datasets
 consisting of many variables of varying quality.  Before we can develop sophisticated statistical models to provide our
 client with insight and a competitive advantage, we first learn the characteristics of their existing datasets.
 This package provides tools that assist our initial exploration of real-world datasets.  Although these tools are not
@@ -26,7 +26,7 @@ some starting material described in the \code{./documentation_for_developers/} d
 hosted at our \href{https://github.com/Melinae/TabularManifest}{GitHub} server.
 
 If your organization is interested in the consulting services of Melinae, please contact
-\href{http://melinae.com/}{Jim Quallen} at (what material belongs here)?
+\href{https://melinae.com/}{Jim Quallen} at (what material belongs here)?
 
 Is there anything else someone would like to include?
 
@@ -48,7 +48,7 @@ if( require(grDevices) ) {
 (Do any article or book references make sense?  Maybe reproducible research?)
 }
 \author{
-\href{http://scholar.google.com/citations?user=ffsJTC0AAAAJ}{William Howard Beasley}
+\href{https://scholar.google.com/citations?user=ffsJTC0AAAAJ}{William Howard Beasley}
 
 Chad Scherrer
 

@@ -1,4 +1,4 @@
-# Travis's native R Image (http://docs.travis-ci.com/user/languages/r/)
+# Travis's native R Image (https://docs.travis-ci.com/user/languages/r/)
 language: r
 sudo: false
 cache: packages
