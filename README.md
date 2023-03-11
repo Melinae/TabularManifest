@@ -1,10 +1,6 @@
-Travis-CI on Ubuntu 12.04 LTS: [![Build Status](https://travis-ci.org/Melinae/TabularManifest.png?branch=master)](https://travis-ci.org/Melinae/TabularManifest);
-AppVeyor on Windows Server 2012: [![Build status](https://ci.appveyor.com/api/projects/status/4elq22d0i3fvqufx/branch/master?svg=true)](https://ci.appveyor.com/project/wibeasley/tabularmanifest/branch/master).
-
-Independently-hosted Archive: [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.186464.svg)](https://doi.org/10.5281/zenodo.186464).
-
 Tabular Manifest
 =======
+
 Our consulting company, [Melinae](https://melinae.com/), frequently assists clients with large datasets consisting of many variables of varying quality.  Before we can develop sophisticated statistical models to provide our client with insight and a competitive advantage, we first learn the characteristics of their existing datasets.  This package provides tools that assist our initial exploration of real-world datasets.  Although these tools are not a substitute of thoughtful inspection in our later analyses, these make the exploration more time efficient.  These tools allow us to more quickly start developing innovative solutions and delivering results.
 
 The idea behind this [R](https://www.r-project.org/) package is that *configuring* metadata is quicker and more robust than *coding* the same repetitive code.
@@ -29,5 +25,5 @@ Build Status and Package Characteristics
 | Key | Value |
 | :--- | :----- |
 | [License](https://choosealicense.com/) | [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/) |
-| [Zenodo Archive](https://zenodo.org/search?ln=en&p=TabularManifest) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7719674.svg)](https://doi.org/10.5281/zenodo.7719674) |
+| [Zenodo Archive](https://zenodo.org/search?ln=en&p=TabularManifest) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.186464.svg)](https://doi.org/10.5281/zenodo.186464) |
 | [Development Doc](https://Melinae.github.io/TabularManifest/) | [![rdoc](https://img.shields.io/badge/pkgdown-GitHub.io-orange.svg?longCache=true&style=style=for-the-badge)](https://Melinae.github.io/TabularManifest/) |
