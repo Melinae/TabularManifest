@@ -73,14 +73,13 @@ histogram_discrete <- function(
   if( !inherits(d_observed[[variable_name]], "factor") )
     d_observed[[variable_name]] <- base::factor(d_observed[[variable_name]])
   
-  d_observed[[variable_name]] <- forcats::fct_na_value_to_level(d_observed[[variable_name]])
+  d_observed[[variable_name]] <- forcats::fct_na_value_to_level(d_observed[[variable_name]], level = "(Missing)")
 
   d_observed$iv <- 
     base::factor(
       x       = d_observed[[variable_name]], 
       levels  = rev(levels(d_observed[[variable_name]]))
     )
-  # d_observed$iv <- forcats::fct_na_value_to_level(d_observed$iv)
 
   count_record_start  <- nrow(d_observed)
   d_observed          <- d_observed[!(d_observed$iv %in% levels_to_exclude), ]
