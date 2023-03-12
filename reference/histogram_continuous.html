@@ -25,6 +25,9 @@ be desired for publication-quality plots."><!-- mathjax --><script src="https://
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -126,12 +129,22 @@ be desired for publication-quality plots.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co">#Don't run graphs on a headless machine without any the basic graphics packages installed.</span></span></span>
-<span class="r-in"><span><span class="kw">if</span><span class="op">(</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">grDevices</span><span class="op">)</span> <span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">grDevices</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span>  <span class="co"># Simple Case</span></span></span>
-<span class="r-in"><span>  <span class="fu">histogram_continuous</span><span class="op">(</span>d_observed<span class="op">=</span><span class="va">beaver1</span>, variable_name<span class="op">=</span><span class="st">"temp"</span>, bin_width<span class="op">=</span><span class="fl">.1</span>, rounded_digits<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">histogram_continuous</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    d_observed <span class="op">=</span> <span class="va">beaver1</span>, </span></span>
+<span class="r-in"><span>    variable_name  <span class="op">=</span> <span class="st">"temp"</span>, </span></span>
+<span class="r-in"><span>    bin_width      <span class="op">=</span> <span class="fl">.1</span>, </span></span>
+<span class="r-in"><span>    rounded_digits <span class="op">=</span> <span class="fl">2</span></span></span>
+<span class="r-in"><span>   <span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span>  <span class="co"># Variable has no nonmissing values</span></span></span>
-<span class="r-in"><span>  <span class="fu">histogram_continuous</span><span class="op">(</span>d_observed<span class="op">=</span><span class="va">beaver1</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>, <span class="op">]</span>, variable_name<span class="op">=</span><span class="st">"temp"</span>, bin_width<span class="op">=</span><span class="fl">.1</span>, rounded_digits<span class="op">=</span><span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">histogram_continuous</span><span class="op">(</span></span></span>
+<span class="r-in"><span>    d_observed     <span class="op">=</span> <span class="va">beaver1</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/integer.html" class="external-link">integer</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>, <span class="op">]</span>, </span></span>
+<span class="r-in"><span>    variable_name  <span class="op">=</span> <span class="st">"temp"</span>, </span></span>
+<span class="r-in"><span>    bin_width      <span class="op">=</span> <span class="fl">.1</span>, </span></span>
+<span class="r-in"><span>    rounded_digits <span class="op">=</span> <span class="fl">2</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span>  <span class="co"># Adjust cosmetics of histogram</span></span></span>
 <span class="r-in"><span>  <span class="fu">histogram_continuous</span><span class="op">(</span></span></span>

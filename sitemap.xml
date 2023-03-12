@@ -4,10 +4,16 @@
     <loc>https://melinae.github.io/TabularManifest/404.html</loc>
   </url>
   <url>
+    <loc>https://melinae.github.io/TabularManifest/LICENSE-text.html</loc>
+  </url>
+  <url>
     <loc>https://melinae.github.io/TabularManifest/authors.html</loc>
   </url>
   <url>
     <loc>https://melinae.github.io/TabularManifest/index.html</loc>
+  </url>
+  <url>
+    <loc>https://melinae.github.io/TabularManifest/news/index.html</loc>
   </url>
   <url>
     <loc>https://melinae.github.io/TabularManifest/reference/TabularManifest-package.html</loc>

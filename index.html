@@ -38,6 +38,9 @@
 <li class="nav-item">
   <a class="nav-link" href="reference/index.html">Reference</a>
 </li>
+<li class="nav-item">
+  <a class="nav-link" href="news/index.html">Changelog</a>
+</li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
@@ -57,29 +60,73 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><p>Travis-CI on Ubuntu 12.04 LTS: <a href="https://travis-ci.org/Melinae/TabularManifest" class="external-link"><img src="https://travis-ci.org/Melinae/TabularManifest.png?branch=master" alt="Build Status"></a>; AppVeyor on Windows Server 2012: <a href="https://ci.appveyor.com/project/wibeasley/tabularmanifest/branch/master" class="external-link"><img src="https://ci.appveyor.com/api/projects/status/4elq22d0i3fvqufx/branch/master?svg=true" alt="Build status"></a>.</p>
-<p>Independently-hosted Archive: <a href="https://doi.org/10.5281/zenodo.186464" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.186464.svg" alt="DOI"></a>.</p>
-<div class="section level1">
+  <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header"><h1 id="tabular-manifest">Tabular Manifest<a class="anchor" aria-label="anchor" href="#tabular-manifest"></a>
 </h1></div>
 <p>Our consulting company, <a href="https://melinae.com/" class="external-link">Melinae</a>, frequently assists clients with large datasets consisting of many variables of varying quality. Before we can develop sophisticated statistical models to provide our client with insight and a competitive advantage, we first learn the characteristics of their existing datasets. This package provides tools that assist our initial exploration of real-world datasets. Although these tools are not a substitute of thoughtful inspection in our later analyses, these make the exploration more time efficient. These tools allow us to more quickly start developing innovative solutions and delivering results.</p>
 <p>The idea behind this <a href="https://www.r-project.org/" class="external-link">R</a> package is that <em>configuring</em> metadata is quicker and more robust than <em>coding</em> the same repetitive code.</p>
-<p>Our company has benefited from many tools developed by the community, and we’d like to contribute back. Suggestions, criticisms, and code contributions are welcome. If any developer is interested in trying a direction that suits them better, we’ll be happy to explain the package’s internals and help you fork your own version. We have some starting material described in the <code>./documentation_for_developers/</code> directory.</p>
+<p>Our company has benefited from many tools developed by the community, and we’d like to contribute back. Suggestions, criticisms, and code contributions are welcome. If any developer is interested in trying a direction that suits them better, we’ll be happy to explain the package’s internals and help you fork your own version. We have some starting material described in the <code>documentation-for-developers/</code> directory.</p>
 <p>Thanks, the <a href="https://melinae.com/" class="external-link">Melinae</a> Analytics Team</p>
-<p>Sasha Popovych and Will Beasley</p>
-<p>If your organization is interested in the consulting services of Melinae, please contact <a href="https://www.linkedin.com/in/aleksandra-popovych-64739582" class="external-link">Sasha Popovych</a> at <a href="mailto:spopovych@melinae.com" class="email">spopovych@melinae.com</a>. If you have a question about the package, please consider <a href="https://github.com/Melinae/TabularManifest/issues/new" class="external-link">starting a new issue</a>.</p>
-<p>For those interested in use the development version of <code>TabularManifest</code>, run the following code:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">#Install the 'devetools' package (assuming it's not already installed)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">#Install the 'TabularManifest' package.</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span>repo<span class="op">=</span><span class="st">"Melinae/TabularManifest"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co">#Load the package into memory</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://melinae.github.io/TabularManifest/" class="external-link">TabularManifest</a></span><span class="op">)</span></span></code></pre></div>
+<p>Jim Quallen and Will Beasley</p>
+<p>If your organization is interested in the consulting services of Melinae, please contact <a href="https://www.linkedin.com/in/jim-quallen/" class="external-link">Jim Quallen</a> at <a href="mailto:jim@melinae.com" class="email">jim@melinae.com</a>. If you have a question about the package, please consider <a href="https://github.com/Melinae/TabularManifest/issues/new" class="external-link">starting a new issue</a>.</p>
+<div class="section level2">
+<h2 id="build-status-and-package-characteristics">Build Status and Package Characteristics<a class="anchor" aria-label="anchor" href="#build-status-and-package-characteristics"></a>
+</h2>
+<table class="table">
+<colgroup>
+<col width="13%">
+<col width="65%">
+<col width="20%">
+</colgroup>
+<thead><tr class="header">
+<th align="left"><a href="https://github.com/Melinae/TabularManifest" class="external-link">Branch</a></th>
+<th align="center"><a href="https://github.com/Melinae/TabularManifest/actions" class="external-link">GitHub Actions</a></th>
+<th align="center"><a href="https://app.codecov.io/gh/Melinae/TabularManifest" class="external-link">Codecov</a></th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="https://github.com/Melinae/TabularManifest/tree/main" class="external-link">Main</a></td>
+<td align="center"><a href="https://github.com/Melinae/TabularManifest/actions" class="external-link"><img src="https://github.com/Melinae/TabularManifest/workflows/R-CMD-check/badge.svg?branch=main" alt="R-CMD-check"></a></td>
+<td align="center"><a href="https://app.codecov.io/gh/Melinae/TabularManifest/branch/main" class="external-link"><img src="https://codecov.io/gh/Melinae/TabularManifest/branch/main/graph/badge.svg" alt="codecov"></a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://github.com/Melinae/TabularManifest/tree/dev" class="external-link">Dev</a></td>
+<td align="center"><a href="https://github.com/Melinae/TabularManifest/actions" class="external-link"><img src="https://github.com/Melinae/TabularManifest/workflows/R-CMD-check/badge.svg?branch=dev" alt="R-CMD-check"></a></td>
+<td align="center"><a href="https://app.codecov.io/gh/Melinae/TabularManifest/branch/dev" class="external-link"><img src="https://codecov.io/gh/Melinae/TabularManifest/branch/dev/graph/badge.svg" alt="codecov"></a></td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="center"><em>Ubuntu Latest</em></td>
+<td align="center"><em>Test Coverage</em></td>
+</tr>
+</tbody>
+</table>
+<table class="table">
+<colgroup>
+<col width="40%">
+<col width="60%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Key</th>
+<th align="left">Value</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left"><a href="https://choosealicense.com/" class="external-link">License</a></td>
+<td align="left"><a href="https://choosealicense.com/licenses/mit/" class="external-link"><img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License: MIT"></a></td>
+</tr>
+<tr class="even">
+<td align="left"><a href="https://zenodo.org/search?ln=en&amp;p=TabularManifest" class="external-link">Zenodo Archive</a></td>
+<td align="left"><a href="https://doi.org/10.5281/zenodo.186464" class="external-link"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.186464.svg" alt="DOI"></a></td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="https://Melinae.github.io/TabularManifest/" class="external-link">Development Doc</a></td>
+<td align="left"><a href="https://Melinae.github.io/TabularManifest/" class="external-link"><img src="https://img.shields.io/badge/pkgdown-GitHub.io-orange.svg?longCache=true&amp;style=style=for-the-badge" alt="rdoc"></a></td>
+</tr>
+</tbody>
+</table>
 </div>
-
+</div>
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
@@ -91,7 +138,9 @@
 <div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
-<li>LGPL</li>
+<li>
+<a href="https://opensource.org/licenses/mit-license.php" class="external-link">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
 </ul>
 </div>
 
