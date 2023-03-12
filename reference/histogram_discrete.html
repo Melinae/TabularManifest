@@ -117,28 +117,36 @@ be desired for publication-quality plots.</p>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">datasets</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co">#Don't run graphs on a headless machine without any the basic graphics packages installed.</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="fu">datasets</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/r/datasets/infert.html" class="external-link">infert</a></span> <span class="op">|&gt;</span> </span></span>
+<span class="r-in"><span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span><span class="co"># Simulate missing values</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">education</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">20</span><span class="op">:</span><span class="fl">29</span>, <span class="fl">80</span><span class="op">:</span><span class="fl">95</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span></span>
+<span class="r-in"><span><span class="va">ds</span><span class="op">$</span><span class="va">age</span><span class="op">[</span>      <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">5</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">14</span><span class="op">:</span><span class="fl">22</span>, <span class="fl">70</span><span class="op">:</span><span class="fl">85</span><span class="op">)</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  </span></span>
+<span class="r-in"><span><span class="co"># Don't run graphs on a headless machine without any the basic graphics packages installed.</span></span></span>
 <span class="r-in"><span><span class="kw">if</span><span class="op">(</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="va">grDevices</span><span class="op">)</span> <span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span>  <span class="co"># Simple Casees</span></span></span>
+<span class="r-in"><span>  <span class="co"># Simple Cases</span></span></span>
 <span class="r-in"><span>  <span class="fu">histogram_discrete</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    d_observed     <span class="op">=</span> <span class="va">infert</span>, </span></span>
+<span class="r-in"><span>    d_observed     <span class="op">=</span> <span class="va">ds</span>, </span></span>
 <span class="r-in"><span>    variable_name  <span class="op">=</span> <span class="st">"education"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="fu">histogram_discrete</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    d_observed     <span class="op">=</span> <span class="va">infert</span>, </span></span>
+<span class="r-in"><span>    d_observed     <span class="op">=</span> <span class="va">ds</span>, </span></span>
 <span class="r-in"><span>    variable_name  <span class="op">=</span> <span class="st">"age"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
 <span class="r-in"><span>  </span></span>
 <span class="r-in"><span>  <span class="co"># Variable has no nonmissing values</span></span></span>
 <span class="r-in"><span>  <span class="fu">histogram_discrete</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    d_observed     <span class="op">=</span> <span class="va">infert</span><span class="op">[</span><span class="fl">0</span>, <span class="op">]</span>, </span></span>
+<span class="r-in"><span>    d_observed     <span class="op">=</span> <span class="va">ds</span><span class="op">[</span><span class="fl">100</span><span class="op">:</span><span class="fl">200</span>, <span class="op">]</span>, </span></span>
 <span class="r-in"><span>    variable_name  <span class="op">=</span> <span class="st">"age"</span></span></span>
 <span class="r-in"><span>  <span class="op">)</span></span></span>
-<span class="r-in"><span>  </span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># Adjust cosmetics of bar-graph/histogram</span></span></span>
 <span class="r-in"><span>  <span class="fu">histogram_discrete</span><span class="op">(</span></span></span>
-<span class="r-in"><span>    d_observed         <span class="op">=</span> <span class="va">infert</span>, </span></span>
+<span class="r-in"><span>    d_observed         <span class="op">=</span> <span class="va">ds</span>, </span></span>
 <span class="r-in"><span>    variable_name      <span class="op">=</span> <span class="st">"age"</span>,</span></span>
 <span class="r-in"><span>    levels_to_exclude  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">21</span><span class="op">:</span><span class="fl">29</span>, <span class="fl">40</span><span class="op">:</span><span class="fl">44</span><span class="op">)</span>,    <span class="co"># Show only subjects in their 30s.</span></span></span>
 <span class="r-in"><span>    main_title         <span class="op">=</span> <span class="st">"Frequency of Subjects, by Age"</span></span></span>
