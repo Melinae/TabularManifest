@@ -5,13 +5,13 @@ Our consulting company, [Melinae](https://melinae.com/), frequently assists clie
 
 The idea behind this [R](https://www.r-project.org/) package is that *configuring* metadata is quicker and more robust than *coding* the same repetitive code.
 
-Our company has benefited from many tools developed by the community, and we'd like to contribute back.  Suggestions, criticisms, and code contributions are welcome.  If any developer is interested in trying a direction that suits them better, we'll be happy to explain the package's internals and help you fork your own version.  We have some starting material described in the `./documentation_for_developers/` directory.
+Our company has benefited from many tools developed by the community, and we'd like to contribute back.  Suggestions, criticisms, and code contributions are welcome.  If any developer is interested in trying a direction that suits them better, we'll be happy to explain the package's internals and help you fork your own version.  We have some starting material described in the `documentation-for-developers/` directory.
 
 Thanks, the [Melinae](https://melinae.com/) Analytics Team
 
-Sasha Popovych and Will Beasley
+Jim Quallen and Will Beasley
 
-If your organization is interested in the consulting services of Melinae, please contact [Sasha Popovych](https://www.linkedin.com/in/aleksandra-popovych-64739582) at <spopovych@melinae.com>.  If you have a question about the package, please consider [starting a new issue](https://github.com/Melinae/TabularManifest/issues/new).
+If your organization is interested in the consulting services of Melinae, please contact [Jim Quallen](https://www.linkedin.com/in/jim-quallen/) at <jim@melinae.com>.  If you have a question about the package, please consider [starting a new issue](https://github.com/Melinae/TabularManifest/issues/new).
 
 Build Status and Package Characteristics
 -------------------------
