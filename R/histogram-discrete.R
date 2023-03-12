@@ -22,28 +22,36 @@
 #'
 #' @return Returns a histogram as a \code{ggplot2} object.
 #' @examples
-#' library(datasets)
-#' #Don't run graphs on a headless machine without any the basic graphics packages installed.
+#' ds <-
+#'   datasets::infert |> 
+#'   tibble::as_tibble()
+#'   
+#' # Simulate missing values
+#' ds$education[c(3:9, 20:29, 80:95)] <- NA
+#' ds$age[      c(5:8, 14:22, 70:85)] <- NA
+#'
+#'   
+#' # Don't run graphs on a headless machine without any the basic graphics packages installed.
 #' if( require(grDevices) ) {
-#'   # Simple Casees
+#'   # Simple Cases
 #'   histogram_discrete(
-#'     d_observed     = infert, 
+#'     d_observed     = ds, 
 #'     variable_name  = "education"
 #'   )
 #'   histogram_discrete(
-#'     d_observed     = infert, 
+#'     d_observed     = ds, 
 #'     variable_name  = "age"
 #'   )
 #'   
 #'   # Variable has no nonmissing values
 #'   histogram_discrete(
-#'     d_observed     = infert[0, ], 
+#'     d_observed     = ds[100:200, ], 
 #'     variable_name  = "age"
 #'   )
-#'   
+#'
 #'   # Adjust cosmetics of bar-graph/histogram
 #'   histogram_discrete(
-#'     d_observed         = infert, 
+#'     d_observed         = ds, 
 #'     variable_name      = "age",
 #'     levels_to_exclude  = c(21:29, 40:44),    # Show only subjects in their 30s.
 #'     main_title         = "Frequency of Subjects, by Age"
