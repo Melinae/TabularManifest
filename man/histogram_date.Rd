@@ -52,13 +52,13 @@ if( require(grDevices) & require(nycflights13) ) {
   ds               <- nycflights13::flights
   ds$date_depart   <- as.Date(ISOdate(ds$year, ds$month, ds$day))
   ds$date_blank    <- as.Date(NA)
-  
+
   histogram_date(ds, variable_name="date_depart", bin_unit="day")
   histogram_date(ds, variable_name="date_depart", bin_unit="week")
   histogram_date(ds, variable_name="date_depart", bin_unit="month")
   histogram_date(ds, variable_name="date_depart", bin_unit="quarter")
   histogram_date(ds, variable_name="date_depart", bin_unit="year")
-  
+
   histogram_date(ds, variable_name="date_depart", bin_unit="day")
 }
 }
