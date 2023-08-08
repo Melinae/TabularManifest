@@ -56,3 +56,23 @@ scatter_model_continuous_x_binary_y_logit(
 \description{
 Internal function for examining a logit performance
 }
+\examples{
+ds <-
+  mtcars |>
+  dplyr::mutate(
+    # am  = as.logical(am)
+  ) |>
+  dplyr::select(
+    mpg,
+    am,
+  ) |>
+  tibble::rownames_to_column("model")
+
+scatter_model_continuous_x_binary_y_logit(
+  d_plot = ds,
+  x_name = "mpg",
+  y_name = "am",
+  yhat_name = NULL
+)
+
+}

@@ -21,6 +21,25 @@
 #' @param jitter_predicted A function dictating how the predicted values are jittered.
 #' @param seed_value The value of the RNG seed, which affects jittering. No seed is set if a value of \code{NA} is passed.  \code{numeric}.
 
+#' @examples
+#' ds <-
+#'   mtcars |>
+#'   dplyr::mutate(
+#'     # am  = as.logical(am)
+#'   ) |>
+#'   dplyr::select(
+#'     mpg,
+#'     am,
+#'   ) |>
+#'   tibble::rownames_to_column("model")
+#'
+#' scatter_model_continuous_x_binary_y_logit(
+#'   d_plot = ds,
+#'   x_name = "mpg",
+#'   y_name = "am",
+#'   yhat_name = NULL
+#' )
+#'
 scatter_model_continuous_x_binary_y_logit <- function(
   d_plot,
   x_name,
