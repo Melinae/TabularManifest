@@ -34,12 +34,12 @@
 #'   ) |>
 #'   tibble::rownames_to_column("model")
 #'
-#' scatter_model_discrete_x_binary_y_logit(
-#'   d_plot = ds,
-#'   x_name = "cyl",
-#'   y_name = "am",
-#'   yhat_name = NULL
-#' )
+#' # scatter_model_discrete_x_binary_y_logit(
+#' #   d_plot = ds,
+#' #   x_name = "cyl",
+#' #   y_name = "am",
+#' #   yhat_name = NULL
+#' # )
 #'
 scatter_model_discrete_x_binary_y_logit <- function(
   d_plot,
@@ -64,7 +64,7 @@ scatter_model_discrete_x_binary_y_logit <- function(
       axis.title          = ggplot2::element_text(color="gray30", size=9),
       axis.text           = ggplot2::element_text(color="gray30"),
       axis.ticks          = ggplot2::element_blank(),
-      axis.text.x         = ggplot2::element_text(margin = ggplot2::margin(.00001, "cm")),
+      axis.text.x         = ggplot2::element_text(margin = ggplot2::margin(.00001, 0, 0, 0, "cm")),
       #   panel.grid.minor.y  = element_line(color="gray90", size=.1),
       panel.grid.major    = ggplot2::element_line(color="gray85", size=.15),
       panel.spacing       = grid::unit(c(0, 0, 0, 0), "cm"),

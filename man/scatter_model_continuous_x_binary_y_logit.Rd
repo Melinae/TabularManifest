@@ -68,11 +68,11 @@ ds <-
   ) |>
   tibble::rownames_to_column("model")
 
-scatter_model_continuous_x_binary_y_logit(
-  d_plot = ds,
-  x_name = "mpg",
-  y_name = "am",
-  yhat_name = NULL
-)
+# scatter_model_continuous_x_binary_y_logit(
+#   d_plot = ds,
+#   x_name = "mpg",
+#   y_name = "am",
+#   yhat_name = NULL
+# )
 
 }

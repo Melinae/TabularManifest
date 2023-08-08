@@ -33,12 +33,12 @@
 #'   ) |>
 #'   tibble::rownames_to_column("model")
 #'
-#' scatter_model_continuous_x_binary_y_logit(
-#'   d_plot = ds,
-#'   x_name = "mpg",
-#'   y_name = "am",
-#'   yhat_name = NULL
-#' )
+#' # scatter_model_continuous_x_binary_y_logit(
+#' #   d_plot = ds,
+#' #   x_name = "mpg",
+#' #   y_name = "am",
+#' #   yhat_name = NULL
+#' # )
 #'
 scatter_model_continuous_x_binary_y_logit <- function(
   d_plot,
@@ -65,7 +65,7 @@ scatter_model_continuous_x_binary_y_logit <- function(
       axis.title          = ggplot2::element_text(color="gray30", size=9),
       axis.text           = ggplot2::element_text(color="gray30"),
       axis.ticks          = ggplot2::element_blank(),
-      axis.text.x         = ggplot2::element_text(margin = ggplot2::margin(.00001, "cm")),
+      axis.text.x         = ggplot2::element_text(margin = ggplot2::margin(.00001, 0, 0, 0, "cm")),
       #   panel.grid.minor.y  = element_line(color="gray90", size=.1),
       panel.grid.major    = ggplot2::element_line(color="gray85", size=.15),
       panel.spacing       = grid::unit(c(0, 0, 0, 0), "cm"),
@@ -75,10 +75,11 @@ scatter_model_continuous_x_binary_y_logit <- function(
   if( !is.na(seed_value) )
     set.seed(seed_value) #Set a seed so that jittering doesn't create new graphs for git to manage.
 
+    browser()
   g_obs <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::enquo(x_name), y=!! rlang::enquo(y_name))) +
     ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=TRUE, position=jitter_observed) +
     ggplot2::geom_smooth(method="gam", formula=y~s(x,bs="cs"), alpha=alpha_se_band, color=color_smooth_observed, fill=color_smooth_observed, size=1, na.rm=TRUE) +
-    ggplot2::scale_x_continuous(label=x_label_format) +
+    ggplot2::scale_x_continuous() +
     ggplot2::scale_y_continuous(limits=vertical_limits, breaks=0:1, labels=c("No", "    Yes")) + #The extra spaces are a hack to get the panels to line up.
     #     scale_y_continuous(limits=c(0,1), breaks=0:2, labels=c("No", "Yes","100%")) + #A failed attempt to get the panel borders to line up.
     ggplot2::theme_light() +

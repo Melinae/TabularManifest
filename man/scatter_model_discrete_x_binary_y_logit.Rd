@@ -8,7 +8,7 @@ scatter_model_discrete_x_binary_y_logit(
   d_plot,
   x_name,
   y_name = "y",
-  y_hat_name = "yhat",
+  yhat_name = "yhat",
   residual_name = "residual",
   alpha_point = 0.05,
   alpha_se_band = 0.15,
@@ -30,7 +30,7 @@ scatter_model_discrete_x_binary_y_logit(
 
 \item{y_name}{The name of the observed response \code{character}.}
 
-\item{y_hat_name}{The name of the predicted response \code{character}.}
+\item{yhat_name}{The name of the predicted response \code{character}.}
 
 \item{residual_name}{The name of the model residual. \code{character}.}
 
@@ -58,4 +58,24 @@ scatter_model_discrete_x_binary_y_logit(
 }
 \description{
 Internal function for examining a logit performance
+}
+\examples{
+ds <-
+  mtcars |>
+  dplyr::mutate(
+    cyl  = as.character(cyl)
+  ) |>
+  dplyr::select(
+    cyl,
+    am,
+  ) |>
+  tibble::rownames_to_column("model")
+
+# scatter_model_discrete_x_binary_y_logit(
+#   d_plot = ds,
+#   x_name = "cyl",
+#   y_name = "am",
+#   yhat_name = NULL
+# )
+
 }
