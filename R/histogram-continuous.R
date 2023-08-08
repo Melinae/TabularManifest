@@ -108,7 +108,7 @@ histogram_continuous <- function(
 
   value <- value_rounded <- label <- NULL
   g <- ggplot2::ggplot(d_observed, ggplot2::aes(x=!! rlang::ensym(variable_name))) +
-    ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray92", color="gray80", size=1, alpha=.7) +
+    ggplot2::geom_histogram(binwidth=bin_width, position=ggplot2::position_identity(), fill="gray92", color="gray80", linewidth=1, alpha=.7) +
     ggplot2::geom_vline(xintercept=ds_mid_points$value, color=palette_midpoint, na.rm=TRUE) +
     ggplot2::geom_text(data=ds_mid_points, ggplot2::aes(x=value, y=-Inf, label=value_rounded), color=palette_midpoint, hjust=h_just, vjust=-0.2            , na.rm=TRUE) +
     ggplot2::geom_text(data=ds_mid_points, ggplot2::aes(x=value, y= Inf, label=label        ), color=palette_midpoint, hjust=h_just, vjust= 1.2, parse=TRUE, na.rm=TRUE) +
