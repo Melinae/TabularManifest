@@ -65,7 +65,7 @@ scatter_model_continuous_x_binary_y_logit <- function(
       axis.title          = ggplot2::element_text(color="gray30", size=9),
       axis.text           = ggplot2::element_text(color="gray30"),
       axis.ticks          = ggplot2::element_blank(),
-      axis.ticks.margin   = grid::unit(.00001, "cm"),
+      axis.text.x         = ggplot2::element_text(margin = ggplot2::margin(.00001, "cm")),
       #   panel.grid.minor.y  = element_line(color="gray90", size=.1),
       panel.grid.major    = ggplot2::element_line(color="gray85", size=.15),
       panel.spacing       = grid::unit(c(0, 0, 0, 0), "cm"),
