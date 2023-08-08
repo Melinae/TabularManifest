@@ -86,18 +86,18 @@ scatter_model_discrete_x_binary_y_logit <- function(
     ggplot2::labs(x=NULL, y="Purchased") +
     purchase_relationship_theme
 
-  g_predicted <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::ensym(x_name), y=!! rlang::ensym(y_hat_name))) +
+  g_predicted <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::enquo(x_name), y=!! rlang::enquo(y_hat_name))) +
     ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=TRUE, position=jitter_predicted) +
     ggplot2::geom_boxplot(na.rm=TRUE, color=color_smooth_predicted, outlier.size=0, size=.5, fill=NA) +
     ggplot2::stat_summary(fun.y="mean", geom="point", color=color_smooth_predicted, shape=5, size=10) + #Chang's Cookbook, Section 6.8
-    ggplot2::stat_summary(ggplot2::aes(y=!! rlang::ensym(y_name)),fun.y="mean", geom="point", color=color_smooth_observed, shape=5, size=5) + #Chang's Cookbook, Section 6.8
+    ggplot2::stat_summary(ggplot2::aes(y=!! rlang::enquo(y_name)),fun.y="mean", geom="point", color=color_smooth_observed, shape=5, size=5) + #Chang's Cookbook, Section 6.8
     ggplot2::scale_x_discrete(label=x_label_format) +
     ggplot2::scale_y_continuous(limits=vertical_limits, label=scales::percent) +
     ggplot2::theme_light() +
     ggplot2::labs(x=NULL, y="Predicted Pr(purchase)")  +
     purchase_relationship_theme
 
-  g_residual <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::ensym(x_name), y=!! rlang::ensym(residual_name))) +
+  g_residual <- ggplot2::ggplot(d_plot, ggplot2::aes(x=!! rlang::enquo(x_name), y=!! rlang::enquo(residual_name))) +
     ggplot2::geom_point(pch=1, alpha=alpha_point, na.rm=TRUE, position=jitter_predicted) +
     ggplot2::geom_boxplot(na.rm=TRUE, color=color_smooth_residual, outlier.size=0, size=.5, fill=NA) +
     ggplot2::stat_summary(fun.y="mean", geom="point", color=color_smooth_residual, shape=5, size=10) + #Chang's Cookbook, Section 6.8
