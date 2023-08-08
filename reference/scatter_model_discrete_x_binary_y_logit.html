@@ -55,7 +55,7 @@
 <span>  <span class="va">d_plot</span>,</span>
 <span>  <span class="va">x_name</span>,</span>
 <span>  y_name <span class="op">=</span> <span class="st">"y"</span>,</span>
-<span>  y_hat_name <span class="op">=</span> <span class="st">"yhat"</span>,</span>
+<span>  yhat_name <span class="op">=</span> <span class="st">"yhat"</span>,</span>
 <span>  residual_name <span class="op">=</span> <span class="st">"residual"</span>,</span>
 <span>  alpha_point <span class="op">=</span> <span class="fl">0.05</span>,</span>
 <span>  alpha_se_band <span class="op">=</span> <span class="fl">0.15</span>,</span>
@@ -85,7 +85,7 @@
 <dd><p>The name of the observed response <code>character</code>.</p></dd>
 
 
-<dt>y_hat_name</dt>
+<dt>yhat_name</dt>
 <dd><p>The name of the predicted response <code>character</code>.</p></dd>
 
 
@@ -138,6 +138,28 @@
 
 </dl></div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">ds</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>  <span class="va">mtcars</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    cyl  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html" class="external-link">as.character</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span></span></span>
+<span class="r-in"><span>    <span class="va">cyl</span>,</span></span>
+<span class="r-in"><span>    <span class="va">am</span>,</span></span>
+<span class="r-in"><span>  <span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>  <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/rownames.html" class="external-link">rownames_to_column</a></span><span class="op">(</span><span class="st">"model"</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># scatter_model_discrete_x_binary_y_logit(</span></span></span>
+<span class="r-in"><span><span class="co">#   d_plot = ds,</span></span></span>
+<span class="r-in"><span><span class="co">#   x_name = "cyl",</span></span></span>
+<span class="r-in"><span><span class="co">#   y_name = "am",</span></span></span>
+<span class="r-in"><span><span class="co">#   yhat_name = NULL</span></span></span>
+<span class="r-in"><span><span class="co"># )</span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside></div>
 
