@@ -21,7 +21,26 @@
 #' @param jitter_observed A function dictating how the observed values are jittered.
 #' @param jitter_predicted A function dictating how the predicted values are jittered.
 #' @param seed_value The value of the RNG seed, which affects jittering. No seed is set if a value of \code{NA} is passed.  \code{numeric}.
-
+#'
+#' @examples
+#' ds <-
+#'   mtcars |>
+#'   dplyr::mutate(
+#'     cyl  = as.factor(cyl)
+#'   ) |>
+#'   dplyr::select(
+#'     cyl,
+#'     am,
+#'   ) |>
+#'   tibble::rownames_to_column("model")
+#'
+#' scatter_model_discrete_x_binary_y_logit(
+#'   d_plot = ds,
+#'   x_name = "cyl",
+#'   y_name = "am",
+#'   y_hat_name = NULL
+#' )
+#'
 scatter_model_discrete_x_binary_y_logit <- function(
   d_plot,
   x_name,
@@ -48,7 +67,7 @@ scatter_model_discrete_x_binary_y_logit <- function(
       axis.ticks.margin   = grid::unit(.00001, "cm"),
       #   panel.grid.minor.y  = element_line(color="gray90", size=.1),
       panel.grid.major    = ggplot2::element_line(color="gray85", size=.15),
-      panel.margin        = grid::unit(c(0, 0, 0, 0), "cm"),
+      panel.spacing       = grid::unit(c(0, 0, 0, 0), "cm"),
       plot.margin         = grid::unit(c(0, .05, .25, 0), "cm")
     )
 
