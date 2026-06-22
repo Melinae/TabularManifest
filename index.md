@@ -35,14 +35,14 @@ new issue](https://github.com/Melinae/TabularManifest/issues/new).
 
 ## Build Status and Package Characteristics
 
-| [Branch](https://github.com/Melinae/TabularManifest)         |                                             [GitHub Actions](https://github.com/Melinae/TabularManifest/actions)                                             |                                              [Codecov](https://app.codecov.io/gh/Melinae/TabularManifest)                                              |
-|:-------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| [Branch](https://github.com/Melinae/TabularManifest) | [GitHub Actions](https://github.com/Melinae/TabularManifest/actions) | [Codecov](https://app.codecov.io/gh/Melinae/TabularManifest) |
+|:---|:--:|:--:|
 | [Main](https://github.com/Melinae/TabularManifest/tree/main) | [![R-CMD-check](https://github.com/Melinae/TabularManifest/workflows/R-CMD-check/badge.svg?branch=main)](https://github.com/Melinae/TabularManifest/actions) | [![codecov](https://codecov.io/gh/Melinae/TabularManifest/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Melinae/TabularManifest/branch/main) |
-| [Dev](https://github.com/Melinae/TabularManifest/tree/dev)   | [![R-CMD-check](https://github.com/Melinae/TabularManifest/workflows/R-CMD-check/badge.svg?branch=dev)](https://github.com/Melinae/TabularManifest/actions)  |  [![codecov](https://codecov.io/gh/Melinae/TabularManifest/branch/dev/graph/badge.svg)](https://app.codecov.io/gh/Melinae/TabularManifest/branch/dev)  |
-|                                                              |                                                                       *Ubuntu Latest*                                                                        |                                                                    *Test Coverage*                                                                     |
+| [Dev](https://github.com/Melinae/TabularManifest/tree/dev) | [![R-CMD-check](https://github.com/Melinae/TabularManifest/workflows/R-CMD-check/badge.svg?branch=dev)](https://github.com/Melinae/TabularManifest/actions) | [![codecov](https://codecov.io/gh/Melinae/TabularManifest/branch/dev/graph/badge.svg)](https://app.codecov.io/gh/Melinae/TabularManifest/branch/dev) |
+|  | *Ubuntu Latest* | *Test Coverage* |
 
-| Key                                                                 | Value                                                                                                                                                     |
-|:--------------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [License](https://choosealicense.com/)                              | [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/)                                            |
-| [Zenodo Archive](https://zenodo.org/search?ln=en&p=TabularManifest) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.186464.svg)](https://doi.org/10.5281/zenodo.186464)                                                   |
-| [Development Doc](https://Melinae.github.io/TabularManifest/)       | [![rdoc](https://img.shields.io/badge/pkgdown-GitHub.io-orange.svg?longCache=true&style=style=for-the-badge)](https://Melinae.github.io/TabularManifest/) |
+| Key | Value |
+|:---|:---|
+| [License](https://choosealicense.com/) | [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://choosealicense.com/licenses/mit/) |
+| [Zenodo Archive](https://zenodo.org/search?ln=en&p=TabularManifest) | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.186464.svg)](https://doi.org/10.5281/zenodo.186464) |
+| [Development Doc](https://Melinae.github.io/TabularManifest/) | [![rdoc](https://img.shields.io/badge/pkgdown-GitHub.io-orange.svg?longCache=true&style=style=for-the-badge)](https://Melinae.github.io/TabularManifest/) |

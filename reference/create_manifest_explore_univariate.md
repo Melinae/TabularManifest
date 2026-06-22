@@ -84,6 +84,7 @@ column in `d_observed`. The metadata contains the following columns
 ## Examples
 
 ``` r
+
 create_manifest_explore_univariate(datasets::InsectSprays, write_to_disk=FALSE)
 #>   variable_name remark   class should_graph       graph_function x_label_format
 #> 1         count        numeric         TRUE histogram_continuous  scales::comma

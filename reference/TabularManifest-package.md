@@ -58,6 +58,7 @@ Maintainer: Will Beasley <wibeasley@hotmail.com>
 ## Examples
 
 ``` r
+
 create_manifest_explore_univariate(datasets::InsectSprays, write_to_disk=FALSE)
 #>   variable_name remark   class should_graph       graph_function x_label_format
 #> 1         count        numeric         TRUE histogram_continuous  scales::comma
